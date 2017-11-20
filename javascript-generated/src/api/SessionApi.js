@@ -33,7 +33,7 @@
   /**
    * Session service.
    * @module api/SessionApi
-   * @version 0.0.13
+   * @version 0.0.14
    */
 
   /**

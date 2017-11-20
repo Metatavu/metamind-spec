@@ -33,7 +33,7 @@
   /**
    * Organizations service.
    * @module api/OrganizationsApi
-   * @version 0.0.13
+   * @version 0.0.14
    */
 
   /**
