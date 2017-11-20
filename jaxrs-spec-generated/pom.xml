@@ -4,8 +4,8 @@
   <artifactId>metamind-spec</artifactId>
   <packaging>jar</packaging>
   <name>metamind-spec</name>
-  <version>0.0.1</version>
-  <description>KYKY API specifications</description>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Metamind API specifications</description>
   <url>https://github.com/Metatavu/kyky-spec</url>
 
   <licenses>
@@ -26,13 +26,13 @@
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/Metatavu/kykyapi-spec/issues</url>
+    <url>https://github.com/Metatavu/metamind-spec/issues</url>
   </issueManagement>
 
   <scm>
-    <developerConnection>scm:git:git@github.com:Metatavu/kykyapi-spec.git</developerConnection>
-    <url>git@github.com:Metatavu/kykyapi-spec.git</url>
-    <connection>scm:git:git@github.com:Metatavu/kykyapi-spec.git</connection>
+    <developerConnection>scm:git:git@github.com:Metatavu/metamind-spec.git</developerConnection>
+    <url>git@github.com:Metatavu/metamind-spec.git</url>
+    <connection>scm:git:git@github.com:Metatavu/metamind-spec.git</connection>
     <tag>0.0.1</tag>
   </scm>
 
