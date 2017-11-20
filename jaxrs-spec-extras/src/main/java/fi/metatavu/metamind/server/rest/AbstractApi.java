@@ -1,10 +1,10 @@
-package fi.metatavu.kykyapi.server.rest;
+package fi.metatavu.metamind.server.rest;
 
-import fi.metatavu.kykyapi.server.rest.model.BadRequest;
-import fi.metatavu.kykyapi.server.rest.model.Forbidden;
-import fi.metatavu.kykyapi.server.rest.model.InternalServerError;
-import fi.metatavu.kykyapi.server.rest.model.NotImplemented;
-import fi.metatavu.kykyapi.server.rest.model.NotFound;
+import fi.metatavu.metamind.server.rest.model.BadRequest;
+import fi.metatavu.metamind.server.rest.model.Forbidden;
+import fi.metatavu.metamind.server.rest.model.InternalServerError;
+import fi.metatavu.metamind.server.rest.model.NotImplemented;
+import fi.metatavu.metamind.server.rest.model.NotFound;
 import javax.ws.rs.core.Response;
 
 public abstract class AbstractApi {
