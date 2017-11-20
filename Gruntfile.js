@@ -51,7 +51,7 @@ module.exports = function(grunt) {
         }
       },
       'jaxrs-spec-release': {
-        command : 'git add src pom.xml swagger.json && git commit -m "Generated source" && git push && mvn -B release:clean release:prepare release:perform',
+        command : 'git add src pom.xml swagger.json && git commit -m "Generated source" && git push -f && mvn -B release:clean release:prepare release:perform',
         options: {
           execOptions: {
             cwd: 'jaxrs-spec-generated'
