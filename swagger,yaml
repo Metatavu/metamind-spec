@@ -1,0 +1,163 @@
+swagger: '2.0'
+info:
+  title: Metamind API
+  description: Brain spec for Metamind.
+  version: "0.0.1"
+schemes:
+  - https
+basePath: /v1
+consumes:
+  - application/json;charset=utf-8
+produces:
+  - application/json;charset=utf-8
+paths:
+  /sessions:
+    post:
+      operationId: createSession
+      summary: Creates new session
+      description: Creates new chat session
+      parameters:
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Session'
+      tags:
+        - Session
+      responses:
+        200:
+          description: Created session
+          schema:
+            $ref: '#/definitions/Session'
+        400:
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        403:
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  /messages/:
+    post:
+      operationId: postMessage
+      summary: Posts new message
+      description: Posts new message
+      parameters:
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Message'
+      tags:
+        - Organizations
+      responses:
+        200:
+          description: Returns message with bot's response details
+          schema:
+            $ref: '#/definitions/Message'
+             
+        400:
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        403:
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+definitions:
+  Session:
+    type: object
+    properties:
+      id:
+        description: Session id.
+        type: string
+        format: uuid
+      locale:
+        description: Session locale
+        type: string
+      visitor:
+        description: Visitor details
+        type: string
+      created:
+        description: Time the session was initiated
+        type: string
+        format: date-time
+  Message:
+    type: object
+    properties:
+      id:
+        description: Message id
+        type: string
+        format: uuid
+      sessionId:
+        description: Session id the message belongs to 
+        type: string
+        format: uuid
+      content:
+        description: Message content
+        type: string
+      response:
+        description: Response text. Used only when responding
+        type: string
+      hint:
+        description: Hint text. Used only when responding
+        type: string
+      quickResponses:
+        description: List of quick responses. Used only when responding
+        type: array 
+        items:
+          type: string
+      created:
+        description: Time the session was initiated
+        type: string
+        format: date-time
+  InternalServerError:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  Forbidden:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  BadRequest:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  NotImplemented:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+  NotFound:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
