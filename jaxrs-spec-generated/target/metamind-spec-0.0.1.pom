@@ -4,7 +4,7 @@
   <artifactId>metamind-spec</artifactId>
   <packaging>jar</packaging>
   <name>metamind-spec</name>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <description>KYKY API specifications</description>
   <url>https://github.com/Metatavu/kyky-spec</url>
 

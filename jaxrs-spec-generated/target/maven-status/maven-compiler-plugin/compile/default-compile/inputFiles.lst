@@ -1,0 +1,9 @@
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/SessionsApi.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/model/Message.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/model/Forbidden.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/model/NotImplemented.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/model/Session.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/model/BadRequest.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/model/NotFound.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/model/InternalServerError.java
+/home/belvain/projects/metamind-spec/jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/rest/MessagesApi.java

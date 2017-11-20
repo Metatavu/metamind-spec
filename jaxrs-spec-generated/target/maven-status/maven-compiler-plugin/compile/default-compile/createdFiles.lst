@@ -1,0 +1,9 @@
+fi/metatavu/metamind/server/rest/model/BadRequest.class
+fi/metatavu/metamind/server/rest/model/Forbidden.class
+fi/metatavu/metamind/server/rest/SessionsApi.class
+fi/metatavu/metamind/server/rest/MessagesApi.class
+fi/metatavu/metamind/server/rest/model/InternalServerError.class
+fi/metatavu/metamind/server/rest/model/Message.class
+fi/metatavu/metamind/server/rest/model/Session.class
+fi/metatavu/metamind/server/rest/model/NotImplemented.class
+fi/metatavu/metamind/server/rest/model/NotFound.class
