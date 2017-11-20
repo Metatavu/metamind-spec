@@ -1,0 +1,224 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Brain spec for Metamind.",
+    "version" : "0.0.1",
+    "title" : "Metamind API"
+  },
+  "basePath" : "/v1",
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json;charset=utf-8" ],
+  "produces" : [ "application/json;charset=utf-8" ],
+  "paths" : {
+    "/sessions" : {
+      "post" : {
+        "tags" : [ "Session" ],
+        "summary" : "Creates new session",
+        "description" : "Creates new chat session",
+        "operationId" : "createSession",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Payload",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Session"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Created session",
+            "schema" : {
+              "$ref" : "#/definitions/Session"
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "schema" : {
+              "$ref" : "#/definitions/BadRequest"
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "schema" : {
+              "$ref" : "#/definitions/Forbidden"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/messages/" : {
+      "post" : {
+        "tags" : [ "Organizations" ],
+        "summary" : "Posts new message",
+        "description" : "Posts new message",
+        "operationId" : "postMessage",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Payload",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Message"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns message with bot's response details",
+            "schema" : {
+              "$ref" : "#/definitions/Message"
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "schema" : {
+              "$ref" : "#/definitions/BadRequest"
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "schema" : {
+              "$ref" : "#/definitions/Forbidden"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Session" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid",
+          "description" : "Session id."
+        },
+        "locale" : {
+          "type" : "string",
+          "description" : "Session locale"
+        },
+        "visitor" : {
+          "type" : "string",
+          "description" : "Visitor details"
+        },
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Time the session was initiated"
+        }
+      }
+    },
+    "Message" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid",
+          "description" : "Message id"
+        },
+        "sessionId" : {
+          "type" : "string",
+          "format" : "uuid",
+          "description" : "Session id the message belongs to"
+        },
+        "content" : {
+          "type" : "string",
+          "description" : "Message content"
+        },
+        "response" : {
+          "type" : "string",
+          "description" : "Response text. Used only when responding"
+        },
+        "hint" : {
+          "type" : "string",
+          "description" : "Hint text. Used only when responding"
+        },
+        "quickResponses" : {
+          "type" : "array",
+          "description" : "List of quick responses. Used only when responding",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Time the session was initiated"
+        }
+      }
+    },
+    "InternalServerError" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Forbidden" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "BadRequest" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "NotImplemented" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "NotFound" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
