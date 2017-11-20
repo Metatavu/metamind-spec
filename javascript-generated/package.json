@@ -1,6 +1,6 @@
 {
   "name": "metamind-client",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Brain_spec_for_Metamind_",
   "license": "gpl-3.0",
   "main": "src/index.js",
