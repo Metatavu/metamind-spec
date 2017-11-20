@@ -36,7 +36,7 @@
   /**
    * The Session model module.
    * @module model/Session
-   * @version 0.0.1
+   * @version 0.0.2
    */
 
   /**
