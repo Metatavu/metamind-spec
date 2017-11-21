@@ -14,6 +14,7 @@ public class Session   {
   
   private @Valid UUID id = null;
   private @Valid String locale = null;
+  private @Valid String timeZone = null;
   private @Valid String visitor = null;
   private @Valid OffsetDateTime created = null;
 
@@ -49,6 +50,23 @@ public class Session   {
   }
   public void setLocale(String locale) {
     this.locale = locale;
+  }
+
+  /**
+   * Session time zone
+   **/
+  public Session timeZone(String timeZone) {
+    this.timeZone = timeZone;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Session time zone")
+  public String getTimeZone() {
+    return timeZone;
+  }
+  public void setTimeZone(String timeZone) {
+    this.timeZone = timeZone;
   }
 
   /**
@@ -97,13 +115,14 @@ public class Session   {
     Session session = (Session) o;
     return Objects.equals(id, session.id) &&
         Objects.equals(locale, session.locale) &&
+        Objects.equals(timeZone, session.timeZone) &&
         Objects.equals(visitor, session.visitor) &&
         Objects.equals(created, session.created);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locale, visitor, created);
+    return Objects.hash(id, locale, timeZone, visitor, created);
   }
 
   @Override
@@ -113,6 +132,7 @@ public class Session   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    visitor: ").append(toIndentedString(visitor)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("}");

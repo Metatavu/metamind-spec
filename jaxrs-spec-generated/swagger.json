@@ -110,6 +110,10 @@
           "type" : "string",
           "description" : "Session locale"
         },
+        "timeZone" : {
+          "type" : "string",
+          "description" : "Session time zone"
+        },
         "visitor" : {
           "type" : "string",
           "description" : "Visitor details"
