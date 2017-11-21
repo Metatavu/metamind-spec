@@ -36,7 +36,7 @@
   /**
    * The Session model module.
    * @module model/Session
-   * @version 0.0.17
+   * @version 0.0.18
    */
 
   /**
@@ -46,6 +46,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -70,6 +71,9 @@
       if (data.hasOwnProperty('locale')) {
         obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
       }
+      if (data.hasOwnProperty('timeZone')) {
+        obj['timeZone'] = ApiClient.convertToType(data['timeZone'], 'String');
+      }
       if (data.hasOwnProperty('visitor')) {
         obj['visitor'] = ApiClient.convertToType(data['visitor'], 'String');
       }
@@ -90,6 +94,11 @@
    * @member {String} locale
    */
   exports.prototype['locale'] = undefined;
+  /**
+   * Session time zone
+   * @member {String} timeZone
+   */
+  exports.prototype['timeZone'] = undefined;
   /**
    * Visitor details
    * @member {String} visitor

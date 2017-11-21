@@ -36,7 +36,7 @@
   /**
    * The Message model module.
    * @module model/Message
-   * @version 0.0.17
+   * @version 0.0.18
    */
 
   /**
