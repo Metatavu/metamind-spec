@@ -85,6 +85,9 @@ definitions:
       locale:
         description: Session locale
         type: string
+      timeZone:
+        description: Session time zone
+        type: string
       visitor:
         description: Visitor details
         type: string
