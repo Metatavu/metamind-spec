@@ -33,7 +33,7 @@
   /**
    * Messages service.
    * @module api/MessagesApi
-   * @version 0.0.21
+   * @version 0.0.22
    */
 
   /**
@@ -54,12 +54,12 @@
      * @param {module:model/Message} body Payload
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Message} and HTTP response
      */
-    this.postMessageWithHttpInfo = function(body) {
+    this.createMessageWithHttpInfo = function(body) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling postMessage");
+        throw new Error("Missing the required parameter 'body' when calling createMessage");
       }
 
 
@@ -92,8 +92,8 @@
      * @param {module:model/Message} body Payload
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Message}
      */
-    this.postMessage = function(body) {
-      return this.postMessageWithHttpInfo(body)
+    this.createMessage = function(body) {
+      return this.createMessageWithHttpInfo(body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

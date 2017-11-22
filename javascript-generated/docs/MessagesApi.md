@@ -4,12 +4,12 @@ All URIs are relative to *https://localhost/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**postMessage**](MessagesApi.md#postMessage) | **POST** /messages | Posts new message
+[**createMessage**](MessagesApi.md#createMessage) | **POST** /messages | Posts new message
 
 
-<a name="postMessage"></a>
-# **postMessage**
-> Message postMessage(body)
+<a name="createMessage"></a>
+# **createMessage**
+> Message createMessage(body)
 
 Posts new message
 
@@ -23,7 +23,7 @@ var apiInstance = new MetamindClient.MessagesApi();
 
 var body = new MetamindClient.Message(); // Message | Payload
 
-apiInstance.postMessage(body).then(function(data) {
+apiInstance.createMessage(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
