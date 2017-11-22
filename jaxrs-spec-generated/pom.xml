@@ -4,7 +4,7 @@
   <artifactId>metamind-spec</artifactId>
   <packaging>jar</packaging>
   <name>metamind-spec</name>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3</version>
   <description>Metamind API specifications</description>
   <url>https://github.com/Metatavu/metamind-spec</url>
 
@@ -33,7 +33,7 @@
     <developerConnection>scm:git:git@github.com:Metatavu/metamind-spec.git</developerConnection>
     <url>git@github.com:Metatavu/metamind-spec.git</url>
     <connection>scm:git:git@github.com:Metatavu/metamind-spec.git</connection>
-    <tag>HEAD</tag>
+    <tag>0.0.3</tag>
   </scm>
 
   <organization>
