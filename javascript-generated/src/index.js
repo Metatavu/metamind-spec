@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/Message', 'model/NotFound', 'model/NotImplemented', 'model/Session', 'api/MessageApi', 'api/SessionApi'], factory);
+    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/Message', 'model/NotFound', 'model/NotImplemented', 'model/Session', 'api/MessagesApi', 'api/SessionsApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/BadRequest'), require('./model/Forbidden'), require('./model/InternalServerError'), require('./model/Message'), require('./model/NotFound'), require('./model/NotImplemented'), require('./model/Session'), require('./api/MessageApi'), require('./api/SessionApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/BadRequest'), require('./model/Forbidden'), require('./model/InternalServerError'), require('./model/Message'), require('./model/NotFound'), require('./model/NotImplemented'), require('./model/Session'), require('./api/MessagesApi'), require('./api/SessionsApi'));
   }
-}(function(ApiClient, BadRequest, Forbidden, InternalServerError, Message, NotFound, NotImplemented, Session, MessageApi, SessionApi) {
+}(function(ApiClient, BadRequest, Forbidden, InternalServerError, Message, NotFound, NotImplemented, Session, MessagesApi, SessionsApi) {
   'use strict';
 
   /**
@@ -53,7 +53,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.0.20
+   * @version 0.0.21
    */
   var exports = {
     /**
@@ -97,15 +97,15 @@
      */
     Session: Session,
     /**
-     * The MessageApi service constructor.
-     * @property {module:api/MessageApi}
+     * The MessagesApi service constructor.
+     * @property {module:api/MessagesApi}
      */
-    MessageApi: MessageApi,
+    MessagesApi: MessagesApi,
     /**
-     * The SessionApi service constructor.
-     * @property {module:api/SessionApi}
+     * The SessionsApi service constructor.
+     * @property {module:api/SessionsApi}
      */
-    SessionApi: SessionApi
+    SessionsApi: SessionsApi
   };
 
   return exports;
