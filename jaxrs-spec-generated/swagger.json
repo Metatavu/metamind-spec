@@ -12,7 +12,7 @@
   "paths" : {
     "/sessions" : {
       "post" : {
-        "tags" : [ "Session" ],
+        "tags" : [ "Sessions" ],
         "summary" : "Creates new session",
         "description" : "Creates new chat session",
         "operationId" : "createSession",
@@ -53,9 +53,9 @@
         }
       }
     },
-    "/messages/" : {
+    "/messages" : {
       "post" : {
-        "tags" : [ "Message" ],
+        "tags" : [ "Messages" ],
         "summary" : "Posts new message",
         "description" : "Posts new message",
         "operationId" : "postMessage",
