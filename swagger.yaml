@@ -24,7 +24,7 @@ paths:
           schema:
             $ref: '#/definitions/Session'
       tags:
-        - Session
+        - Sessions
       responses:
         200:
           description: Created session
@@ -42,7 +42,7 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  /messages/:
+  /messages:
     post:
       operationId: postMessage
       summary: Posts new message
@@ -55,7 +55,7 @@ paths:
           schema:
             $ref: '#/definitions/Message'
       tags:
-        - Message
+        - Messages
       responses:
         200:
           description: Returns message with bot's response details
