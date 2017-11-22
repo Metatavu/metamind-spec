@@ -21,7 +21,7 @@ import java.lang.Exception;
 @Api(description = "the messages API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-11-21T22:18:51.929+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-11-22T13:16:28.798+02:00")
 
 
 public interface MessagesApi  {
@@ -30,7 +30,7 @@ public interface MessagesApi  {
     @Path("/")
     @Consumes({ "application/json;charset&#x3D;utf-8" })
     @Produces({ "application/json;charset&#x3D;utf-8" })
-    @ApiOperation(value = "Posts new message", notes = "Posts new message", response = Message.class, tags={ "Organizations" })
+    @ApiOperation(value = "Posts new message", notes = "Posts new message", response = Message.class, tags={ "Message" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Returns message with bot's response details", response = Message.class),
         @ApiResponse(code = 400, message = "Invalid request was sent to the server", response = BadRequest.class),

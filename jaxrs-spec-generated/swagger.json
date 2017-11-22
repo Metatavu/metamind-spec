@@ -55,7 +55,7 @@
     },
     "/messages/" : {
       "post" : {
-        "tags" : [ "Organizations" ],
+        "tags" : [ "Message" ],
         "summary" : "Posts new message",
         "description" : "Posts new message",
         "operationId" : "postMessage",
