@@ -21,7 +21,7 @@ import java.lang.Exception;
 @Api(description = "the sessions API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-11-22T14:32:51.732+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-11-22T15:01:34.241+02:00")
 
 
 public interface SessionsApi  {

@@ -58,7 +58,7 @@
         "tags" : [ "Messages" ],
         "summary" : "Posts new message",
         "description" : "Posts new message",
-        "operationId" : "postMessage",
+        "operationId" : "createMessage",
         "parameters" : [ {
           "in" : "body",
           "name" : "body",
