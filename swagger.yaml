@@ -44,7 +44,7 @@ paths:
             $ref: '#/definitions/InternalServerError'
   /messages:
     post:
-      operationId: postMessage
+      operationId: createMessage
       summary: Posts new message
       description: Posts new message
       parameters:
