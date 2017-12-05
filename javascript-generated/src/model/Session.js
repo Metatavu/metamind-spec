@@ -36,7 +36,7 @@
   /**
    * The Session model module.
    * @module model/Session
-   * @version 0.0.22
+   * @version 0.0.23
    */
 
   /**
@@ -46,6 +46,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -77,6 +78,9 @@
       if (data.hasOwnProperty('visitor')) {
         obj['visitor'] = ApiClient.convertToType(data['visitor'], 'String');
       }
+      if (data.hasOwnProperty('story')) {
+        obj['story'] = ApiClient.convertToType(data['story'], 'String');
+      }
       if (data.hasOwnProperty('created')) {
         obj['created'] = ApiClient.convertToType(data['created'], 'Date');
       }
@@ -104,6 +108,11 @@
    * @member {String} visitor
    */
   exports.prototype['visitor'] = undefined;
+  /**
+   * Story name
+   * @member {String} story
+   */
+  exports.prototype['story'] = undefined;
   /**
    * Time the session was initiated
    * @member {Date} created

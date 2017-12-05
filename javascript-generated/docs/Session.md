@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **locale** | **String** | Session locale | [optional] 
 **timeZone** | **String** | Session time zone | [optional] 
 **visitor** | **String** | Visitor details | [optional] 
+**story** | **String** | Story name | [optional] 
 **created** | **Date** | Time the session was initiated | [optional] 
 
 

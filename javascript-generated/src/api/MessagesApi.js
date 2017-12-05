@@ -33,7 +33,7 @@
   /**
    * Messages service.
    * @module api/MessagesApi
-   * @version 0.0.22
+   * @version 0.0.23
    */
 
   /**
