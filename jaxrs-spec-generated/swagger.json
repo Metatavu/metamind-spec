@@ -118,6 +118,10 @@
           "type" : "string",
           "description" : "Visitor details"
         },
+        "story" : {
+          "type" : "string",
+          "description" : "Story name"
+        },
         "created" : {
           "type" : "string",
           "format" : "date-time",
