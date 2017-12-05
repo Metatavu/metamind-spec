@@ -91,6 +91,9 @@ definitions:
       visitor:
         description: Visitor details
         type: string
+      story:
+        description: Story name
+        type: string
       created:
         description: Time the session was initiated
         type: string
