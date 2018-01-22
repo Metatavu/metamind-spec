@@ -9,6 +9,9 @@
   "schemes" : [ "https" ],
   "consumes" : [ "application/json;charset=utf-8" ],
   "produces" : [ "application/json;charset=utf-8" ],
+  "security" : [ {
+    "basicAuth" : [ ]
+  } ],
   "paths" : {
     "/sessions" : {
       "post" : {
@@ -95,6 +98,11 @@
           }
         }
       }
+    }
+  },
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "type" : "basic"
     }
   },
   "definitions" : {
