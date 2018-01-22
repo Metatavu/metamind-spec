@@ -32,7 +32,7 @@
 
   /**
    * @module ApiClient
-   * @version 0.0.23
+   * @version 0.0.25
    */
 
   /**
@@ -55,6 +55,7 @@
      * @type {Array.<String>}
      */
     this.authentications = {
+      'basicAuth': {type: 'basic'}
     };
     /**
      * The default HTTP headers to be included for all API calls.

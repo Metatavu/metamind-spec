@@ -18,6 +18,12 @@ Posts new message
 ### Example
 ```javascript
 var MetamindClient = require('metamind-client');
+var defaultClient = MetamindClient.ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME';
+basicAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new MetamindClient.MessagesApi();
 
@@ -43,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[basicAuth](../README.md#basicAuth)
 
 ### HTTP request headers
 

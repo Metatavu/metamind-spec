@@ -33,7 +33,7 @@
   /**
    * Messages service.
    * @module api/MessagesApi
-   * @version 0.0.23
+   * @version 0.0.25
    */
 
   /**
@@ -74,7 +74,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['basicAuth'];
       var contentTypes = ['application/json;charset=utf-8'];
       var accepts = ['application/json;charset=utf-8'];
       var returnType = Message;
