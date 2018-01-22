@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   
   const JAVASCRIPT_VERSION = require('./javascript-generated/package.json').version;
-  const SWAGGER_SRC = "https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-codegen-cli/3.0.0-SNAPSHOT/swagger-codegen-cli-3.0.0-20170924.102354-5.jar";
+  const SWAGGER_SRC = "https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-codegen-cli/3.0.0-SNAPSHOT/swagger-codegen-cli-3.0.0-20180112.231857-20.jar";
   
   grunt.registerMultiTask('javascript-package-update', 'Updates package.json -file', function () {
     const packageJson = JSON.parse(fs.readFileSync('javascript-generated/package.json'));
