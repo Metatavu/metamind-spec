@@ -6,6 +6,11 @@ info:
 schemes:
   - https
 basePath: /v1
+securityDefinitions:
+  basicAuth:
+    type: basic
+security:
+- basicAuth: []
 consumes:
   - application/json;charset=utf-8
 produces:
