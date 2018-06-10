@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   
   const JAVASCRIPT_VERSION = require('./javascript-generated/package.json').version;
+  const PHP_CLIENT_VERSION = "0.0.1";
   const SWAGGER_SRC = "https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-codegen-cli/3.0.0-SNAPSHOT/swagger-codegen-cli-3.0.0-20180112.231857-20.jar";
   
   grunt.registerMultiTask('javascript-package-update', 'Updates package.json -file', function () {
@@ -24,8 +25,7 @@ module.exports = function(grunt) {
       'jaxrs-spec-cruft': [
         'jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/RestApplication.java'
       ],
-      'jaxrs-spec-sources': ['jaxrs-spec-generated/src'],
-      'metaforms': ['metaforms']
+      'jaxrs-spec-sources': ['jaxrs-spec-generated/src']
     },
     'shell': {
       'jaxrs-spec-generate': {
@@ -88,7 +88,23 @@ module.exports = function(grunt) {
             cwd: 'javascript-generated'
           }
         }
-      }
+      },
+      'php-client-generate': {
+        command : 'java -jar swagger-codegen-cli.jar generate ' +
+          '-i ./swagger.yaml ' +
+          '-l php ' +
+          '--template-dir php-templates ' +
+          '-o php-generated ' +
+          '--additional-properties packagePath=metamind-client-php,composerVendorName=metatavu,composerProjectName=metamind-client-php,variableNamingConvention=camelCase,invokerPackage=Metatavu\\\\Metamind,apiPackage=Api,modelPackage=Api\\\\Model,artifactVersion=' + PHP_CLIENT_VERSION
+      },
+      'php-client-publish': {
+        command : 'sh git_push.sh',
+        options: {
+          execOptions: {
+            cwd: 'php-generated/metamind-client-php'
+          }
+        }
+      },
     },
     'javascript-package-update': {
       'javascript-package': {
@@ -109,7 +125,9 @@ module.exports = function(grunt) {
   grunt.registerTask('javascript', [ 'javascript-gen', 'shell:javascript-bump-version', 'shell:javascript-push', 'shell:javascript-publish']);
   grunt.registerTask('jaxrs-gen', [ 'download-dependencies', 'clean:jaxrs-spec-sources', 'shell:jaxrs-spec-generate', 'clean:jaxrs-spec-cruft', 'shell:jaxrs-spec-install' ]);
   grunt.registerTask('jaxrs-spec', [ 'jaxrs-gen', 'shell:jaxrs-spec-release' ]);
+  grunt.registerTask('php-gen', [ "shell:php-client-generate" ]);
+  grunt.registerTask('php', [ "php-gen", "shell:php-client-publish" ]);
   
-  grunt.registerTask('default', ['javascript', 'jaxrs-spec' ]);
+  grunt.registerTask('default', ['javascript', 'jaxrs-spec', "php" ]);
   
 };
