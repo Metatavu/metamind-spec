@@ -105,6 +105,36 @@ module.exports = function(grunt) {
           }
         }
       },
+      'typescript-generate': {
+        command : 'java -jar swagger-codegen-cli.jar generate ' +
+          '-i ./swagger.yaml ' +
+          '-l typescript-fetch ' +
+          '-t typescript-template/ ' +
+          '-o typescript-generated/ ' +
+          '--type-mappings Date=string ' +
+          '--additional-properties projectName=metamind-ts-client,npmName=metamind-ts-client,npmVersion=' + require('./typescript-generated/package.json').version
+      },
+      'typescript-bump-version': {
+        command: 'npm version patch',
+        options: {
+          execOptions: {
+            cwd: 'typescript-generated'
+          }
+        }
+      },
+      'typescript-push': {
+        command : 'git add . && git commit -m "Generated javascript source" && git push',
+        options: {
+          execOptions: {
+            cwd: 'typescript-generated'
+          }
+        }
+      }
+    },
+    'publish': {
+      'publish-typescript-client': {
+        src: ['typescript-generated']
+      }
     },
     'javascript-package-update': {
       'javascript-package': {
@@ -127,7 +157,9 @@ module.exports = function(grunt) {
   grunt.registerTask('jaxrs-spec', [ 'jaxrs-gen', 'shell:jaxrs-spec-release' ]);
   grunt.registerTask('php-gen', [ "shell:php-client-generate" ]);
   grunt.registerTask('php', [ "php-gen", "shell:php-client-publish" ]);
-  
-  grunt.registerTask('default', ['javascript', 'jaxrs-spec', "php" ]);
+  grunt.registerTask('typescript-gen', [ 'download-dependencies', 'shell:typescript-generate']);
+  grunt.registerTask('typescript', ['typescript-gen', 'shell:typescript-bump-version', 'shell:typescript-push', 'publish:publish-typescript-client']);
+
+  grunt.registerTask('default', ['javascript', 'jaxrs-spec', "php", "typescript"]);
   
 };
