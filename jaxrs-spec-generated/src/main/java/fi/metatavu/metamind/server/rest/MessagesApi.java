@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @Api(description = "the messages API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-11-06T23:51:47.625+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-11-07T00:05:29.271+02:00")
 public interface MessagesApi {
 
     @POST
@@ -33,5 +33,5 @@ public interface MessagesApi {
         @ApiResponse(code = 400, message = "Invalid request was sent to the server", response = BadRequest.class),
         @ApiResponse(code = 403, message = "Attempted to make a call with unauthorized client", response = Forbidden.class),
         @ApiResponse(code = 500, message = "Internal server error", response = InternalServerError.class) })
-    Message createMessage(@Valid Message body);
+    Response createMessage(@Valid Message body);
 }
