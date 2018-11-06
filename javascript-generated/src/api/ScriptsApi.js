@@ -16,29 +16,29 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/Message'], factory);
+    define(['ApiClient', 'model/BadRequest', 'model/Forbidden', 'model/InternalServerError', 'model/Script'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/Message'));
+    module.exports = factory(require('../ApiClient'), require('../model/BadRequest'), require('../model/Forbidden'), require('../model/InternalServerError'), require('../model/Script'));
   } else {
     // Browser globals (root is window)
     if (!root.MetamindClient) {
       root.MetamindClient = {};
     }
-    root.MetamindClient.MessagesApi = factory(root.MetamindClient.ApiClient, root.MetamindClient.BadRequest, root.MetamindClient.Forbidden, root.MetamindClient.InternalServerError, root.MetamindClient.Message);
+    root.MetamindClient.ScriptsApi = factory(root.MetamindClient.ApiClient, root.MetamindClient.BadRequest, root.MetamindClient.Forbidden, root.MetamindClient.InternalServerError, root.MetamindClient.Script);
   }
-}(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, Message) {
+}(this, function(ApiClient, BadRequest, Forbidden, InternalServerError, Script) {
   'use strict';
 
   /**
-   * Messages service.
-   * @module api/MessagesApi
+   * Scripts service.
+   * @module api/ScriptsApi
    * @version 0.0.26
    */
 
   /**
-   * Constructs a new MessagesApi. 
-   * @alias module:api/MessagesApi
+   * Constructs a new ScriptsApi. 
+   * @alias module:api/ScriptsApi
    * @class
    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -49,17 +49,17 @@
 
 
     /**
-     * Posts new message
-     * Posts new message
-     * @param {module:model/Message} body Payload
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Message} and HTTP response
+     * Posts new script
+     * Posts new script
+     * @param {module:model/Script} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Script} and HTTP response
      */
-    this.createMessageWithHttpInfo = function(body) {
+    this.createScriptWithHttpInfo = function(body) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createMessage");
+        throw new Error("Missing the required parameter 'body' when calling createScript");
       }
 
 
@@ -77,23 +77,23 @@
       var authNames = ['basicAuth'];
       var contentTypes = ['application/json;charset=utf-8'];
       var accepts = ['application/json;charset=utf-8'];
-      var returnType = Message;
+      var returnType = Script;
 
       return this.apiClient.callApi(
-        '/messages', 'POST',
+        '/scripts', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Posts new message
-     * Posts new message
-     * @param {module:model/Message} body Payload
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Message}
+     * Posts new script
+     * Posts new script
+     * @param {module:model/Script} body Payload
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Script}
      */
-    this.createMessage = function(body) {
-      return this.createMessageWithHttpInfo(body)
+    this.createScript = function(body) {
+      return this.createScriptWithHttpInfo(body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
