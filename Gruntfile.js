@@ -39,7 +39,7 @@ module.exports = function(grunt) {
           '--artifact-id metamind-spec ' +
           '--artifact-version `cat jaxrs-spec-generated/pom.xml.before|grep version -m 1|sed -e \'s/.*<version>//\'|sed -e \'s/<.*//\'` ' +
           '--template-dir jaxrs-spec-templates ' +
-          '--additional-properties dateLibrary=java8,useBeanValidation=true,sourceFolder=src/main/java,interfaceOnly=true ' +
+          '--additional-properties dateLibrary=java8,useBeanValidation=true,sourceFolder=src/main/java,interfaceOnly=true,returnResponse=true ' +
           '-o jaxrs-spec-generated/'
       },
       'jaxrs-spec-install': {
