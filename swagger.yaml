@@ -66,7 +66,37 @@ paths:
           description: Returns message with bot's response details
           schema:
             $ref: '#/definitions/Message'
-             
+        400:
+          description: Invalid request was sent to the server
+          schema:
+            $ref: '#/definitions/BadRequest'
+        403:
+          description: Attempted to make a call with unauthorized client
+          schema:
+            $ref: '#/definitions/Forbidden'
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/InternalServerError'
+  /scripts:
+    post:
+      operationId: createScript
+      summary: Posts new script
+      description: Posts new script
+      parameters:
+        - name: body
+          in: body
+          description: Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Script'
+      tags:
+        - Scripts
+      responses:
+        200:
+          description: Returns created a script
+          schema:
+            $ref: '#/definitions/Script'
         400:
           description: Invalid request was sent to the server
           schema:
@@ -132,6 +162,30 @@ definitions:
         description: Time the session was initiated
         type: string
         format: date-time
+  Script:
+    type: object
+    required:
+      - name
+      - version
+      - language
+      - content
+    properties:
+      id:
+        description: Script id
+        type: string,
+        format: uuid
+      name:
+        description: Script name
+        type: string
+      version:
+        description: Script version
+        type: string
+      language:
+        description: Script language
+        type: string
+      content:
+        description: Script content
+        type: string
   InternalServerError:
     type: object
     properties:
