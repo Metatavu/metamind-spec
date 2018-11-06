@@ -33,7 +33,7 @@
   /**
    * Scripts service.
    * @module api/ScriptsApi
-   * @version 0.0.28
+   * @version 0.0.29
    */
 
   /**
