@@ -14,23 +14,18 @@ import java.util.Map;
 import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-import java.lang.Exception;
 
 @Path("/messages")
-
 @Api(description = "the messages API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-01-22T11:01:30.435+02:00")
-
-
-public interface MessagesApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-11-06T23:51:47.625+02:00")
+public interface MessagesApi {
 
     @POST
-    
-    @Consumes({ "application/json;charset&#x3D;utf-8" })
-    @Produces({ "application/json;charset&#x3D;utf-8" })
-    @ApiOperation(value = "Posts new message", notes = "Posts new message", response = Message.class, authorizations = {
+    @Consumes({ "application/json;charset=utf-8" })
+    @Produces({ "application/json;charset=utf-8" })
+    @ApiOperation(value = "Posts new message", notes = "Posts new message", authorizations = {
         @Authorization(value = "basicAuth")
     }, tags={ "Messages" })
     @ApiResponses(value = { 
@@ -38,5 +33,5 @@ public interface MessagesApi  {
         @ApiResponse(code = 400, message = "Invalid request was sent to the server", response = BadRequest.class),
         @ApiResponse(code = 403, message = "Attempted to make a call with unauthorized client", response = Forbidden.class),
         @ApiResponse(code = 500, message = "Internal server error", response = InternalServerError.class) })
-    public Response createMessage(@Valid Message body) throws Exception;
+    Message createMessage(@Valid Message body);
 }

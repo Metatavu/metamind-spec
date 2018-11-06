@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.*;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Message   {
@@ -19,7 +20,7 @@ public class Message   {
   private @Valid String content = null;
   private @Valid String response = null;
   private @Valid String hint = null;
-  private @Valid List<String> quickResponses = new ArrayList<String>();
+  private @Valid List<String> quickResponses = new ArrayList<>();
   private @Valid OffsetDateTime created = null;
 
   /**
@@ -32,6 +33,7 @@ public class Message   {
 
   
   @ApiModelProperty(value = "Message id")
+  @JsonProperty("id")
   public UUID getId() {
     return id;
   }
@@ -49,6 +51,7 @@ public class Message   {
 
   
   @ApiModelProperty(value = "Session id the message belongs to")
+  @JsonProperty("sessionId")
   public UUID getSessionId() {
     return sessionId;
   }
@@ -66,6 +69,7 @@ public class Message   {
 
   
   @ApiModelProperty(value = "Message content")
+  @JsonProperty("content")
   public String getContent() {
     return content;
   }
@@ -83,6 +87,7 @@ public class Message   {
 
   
   @ApiModelProperty(value = "Response text. Used only when responding")
+  @JsonProperty("response")
   public String getResponse() {
     return response;
   }
@@ -100,6 +105,7 @@ public class Message   {
 
   
   @ApiModelProperty(value = "Hint text. Used only when responding")
+  @JsonProperty("hint")
   public String getHint() {
     return hint;
   }
@@ -117,6 +123,7 @@ public class Message   {
 
   
   @ApiModelProperty(value = "List of quick responses. Used only when responding")
+  @JsonProperty("quickResponses")
   public List<String> getQuickResponses() {
     return quickResponses;
   }
@@ -134,6 +141,7 @@ public class Message   {
 
   
   @ApiModelProperty(value = "Time the session was initiated")
+  @JsonProperty("created")
   public OffsetDateTime getCreated() {
     return created;
   }

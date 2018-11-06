@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.*;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class InternalServerError   {
@@ -22,6 +23,7 @@ public class InternalServerError   {
 
   
   @ApiModelProperty(value = "")
+  @JsonProperty("code")
   public Integer getCode() {
     return code;
   }
@@ -38,6 +40,7 @@ public class InternalServerError   {
 
   
   @ApiModelProperty(value = "")
+  @JsonProperty("message")
   public String getMessage() {
     return message;
   }

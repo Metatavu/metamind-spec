@@ -3,7 +3,7 @@ package fi.metatavu.metamind.server.rest;
 import fi.metatavu.metamind.server.rest.model.BadRequest;
 import fi.metatavu.metamind.server.rest.model.Forbidden;
 import fi.metatavu.metamind.server.rest.model.InternalServerError;
-import fi.metatavu.metamind.server.rest.model.Session;
+import fi.metatavu.metamind.server.rest.model.Script;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -15,23 +15,23 @@ import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-@Path("/sessions")
-@Api(description = "the sessions API")
+@Path("/scripts")
+@Api(description = "the scripts API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-11-06T23:51:47.625+02:00")
-public interface SessionsApi {
+public interface ScriptsApi {
 
     @POST
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
-    @ApiOperation(value = "Creates new session", notes = "Creates new chat session", authorizations = {
+    @ApiOperation(value = "Posts new script", notes = "Posts new script", authorizations = {
         @Authorization(value = "basicAuth")
-    }, tags={ "Sessions" })
+    }, tags={ "Scripts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Created session", response = Session.class),
+        @ApiResponse(code = 200, message = "Returns created a script", response = Script.class),
         @ApiResponse(code = 400, message = "Invalid request was sent to the server", response = BadRequest.class),
         @ApiResponse(code = 403, message = "Attempted to make a call with unauthorized client", response = Forbidden.class),
         @ApiResponse(code = 500, message = "Internal server error", response = InternalServerError.class) })
-    Session createSession(@Valid Session body);
+    Script createScript(@Valid Script body);
 }

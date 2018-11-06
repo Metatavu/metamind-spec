@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.*;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Session   {
@@ -29,6 +30,7 @@ public class Session   {
 
   
   @ApiModelProperty(value = "Session id.")
+  @JsonProperty("id")
   public UUID getId() {
     return id;
   }
@@ -46,6 +48,7 @@ public class Session   {
 
   
   @ApiModelProperty(value = "Session locale")
+  @JsonProperty("locale")
   public String getLocale() {
     return locale;
   }
@@ -63,6 +66,7 @@ public class Session   {
 
   
   @ApiModelProperty(value = "Session time zone")
+  @JsonProperty("timeZone")
   public String getTimeZone() {
     return timeZone;
   }
@@ -80,6 +84,7 @@ public class Session   {
 
   
   @ApiModelProperty(value = "Visitor details")
+  @JsonProperty("visitor")
   public String getVisitor() {
     return visitor;
   }
@@ -97,6 +102,7 @@ public class Session   {
 
   
   @ApiModelProperty(value = "Story name")
+  @JsonProperty("story")
   public String getStory() {
     return story;
   }
@@ -114,6 +120,7 @@ public class Session   {
 
   
   @ApiModelProperty(value = "Time the session was initiated")
+  @JsonProperty("created")
   public OffsetDateTime getCreated() {
     return created;
   }
