@@ -172,7 +172,7 @@ definitions:
     properties:
       id:
         description: Script id
-        type: string,
+        type: string
         format: uuid
       name:
         description: Script name
