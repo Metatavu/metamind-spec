@@ -36,7 +36,7 @@
   /**
    * The Script model module.
    * @module model/Script
-   * @version 0.0.29
+   * @version 0.0.30
    */
 
   /**
@@ -50,6 +50,7 @@
    */
   var exports = function(name, version, language, content) {
     var _this = this;
+
 
     _this['name'] = name;
     _this['version'] = version;
@@ -68,6 +69,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
@@ -84,6 +88,11 @@
     return obj;
   }
 
+  /**
+   * Script id
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
   /**
    * Script name
    * @member {String} name
