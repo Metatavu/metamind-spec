@@ -1,5 +1,6 @@
 package fi.metatavu.metamind.server.rest.model;
 
+import java.util.UUID;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -11,10 +12,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Script   {
   
+  private @Valid UUID id = null;
   private @Valid String name = null;
   private @Valid String version = null;
   private @Valid String language = null;
   private @Valid String content = null;
+
+  /**
+   * Script id
+   **/
+  public Script id(UUID id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Script id")
+  @JsonProperty("id")
+  public UUID getId() {
+    return id;
+  }
+  public void setId(UUID id) {
+    this.id = id;
+  }
 
   /**
    * Script name
@@ -102,7 +122,8 @@ public class Script   {
       return false;
     }
     Script script = (Script) o;
-    return Objects.equals(name, script.name) &&
+    return Objects.equals(id, script.id) &&
+        Objects.equals(name, script.name) &&
         Objects.equals(version, script.version) &&
         Objects.equals(language, script.language) &&
         Objects.equals(content, script.content);
@@ -110,7 +131,7 @@ public class Script   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, version, language, content);
+    return Objects.hash(id, name, version, language, content);
   }
 
   @Override
@@ -118,6 +139,7 @@ public class Script   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Script {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");

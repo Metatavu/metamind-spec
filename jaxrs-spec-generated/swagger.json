@@ -223,6 +223,11 @@
       "type" : "object",
       "required" : [ "content", "language", "name", "version" ],
       "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid",
+          "description" : "Script id"
+        },
         "name" : {
           "type" : "string",
           "description" : "Script name"

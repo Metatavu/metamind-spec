@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @Api(description = "the sessions API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-11-07T00:05:29.271+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-11-07T07:38:46.249+02:00")
 public interface SessionsApi {
 
     @POST
