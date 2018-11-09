@@ -230,6 +230,44 @@ export interface NotImplemented {
 /**
  * 
  * @export
+ * @interface Script
+ */
+export interface Script {
+    /**
+     * Script id
+     * @type {string}
+     * @memberof Script
+     */
+    id?: string;
+    /**
+     * Script name
+     * @type {string}
+     * @memberof Script
+     */
+    name: string;
+    /**
+     * Script version
+     * @type {string}
+     * @memberof Script
+     */
+    version: string;
+    /**
+     * Script language
+     * @type {string}
+     * @memberof Script
+     */
+    language: string;
+    /**
+     * Script content
+     * @type {string}
+     * @memberof Script
+     */
+    content: string;
+}
+
+/**
+ * 
+ * @export
  * @interface Session
  */
 export interface Session {
@@ -382,6 +420,120 @@ export class MessagesApi extends BaseAPI {
      */
     public createMessage(body: Message, options?: any) {
         return MessagesApiFp(this.configuration).createMessage(body, options)(this.fetch, this.basePath);
+    }
+
+}
+
+/**
+ * ScriptsApi - fetch parameter creator
+ * @export
+ */
+export const ScriptsApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Posts new script
+         * @summary Posts new script
+         * @param {Script} body Payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createScript(body: Script, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createScript.');
+            }
+            const path = `/scripts`;
+            const urlObj = url.parse(path, true);
+            const requestOptions = Object.assign({ method: 'POST' }, options);
+            const headerParameter = {} as any;
+            const queryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
+            headerParameter['Content-Type'] = 'application/json';
+
+            urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete urlObj.search;
+            requestOptions.headers = Object.assign({}, headerParameter, options.headers);
+            requestOptions.body = JSON.stringify(body || {});
+
+            return {
+                url: url.format(urlObj),
+                options: requestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ScriptsApi - functional programming interface
+ * @export
+ */
+export const ScriptsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * Posts new script
+         * @summary Posts new script
+         * @param {Script} body Payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createScript(body: Script, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Script> {
+            const fetchArgs = ScriptsApiFetchParamCreator(configuration).createScript(body, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+    }
+};
+
+/**
+ * ScriptsApi - factory interface
+ * @export
+ */
+export const ScriptsApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
+    return {
+        /**
+         * Posts new script
+         * @summary Posts new script
+         * @param {Script} body Payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createScript(body: Script, options?: any) {
+            return ScriptsApiFp(configuration).createScript(body, options)(fetch, basePath);
+        },
+    };
+};
+
+/**
+ * ScriptsApi - object-oriented interface
+ * @export
+ * @class ScriptsApi
+ * @extends {BaseAPI}
+ */
+export class ScriptsApi extends BaseAPI {
+    /**
+     * Posts new script
+     * @summary Posts new script
+     * @param {} body Payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScriptsApi
+     */
+    public createScript(body: Script, options?: any) {
+        return ScriptsApiFp(this.configuration).createScript(body, options)(this.fetch, this.basePath);
     }
 
 }
