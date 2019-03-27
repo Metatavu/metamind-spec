@@ -1,228 +1,522 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
   title: Metamind API
   description: Brain spec for Metamind.
-  version: "0.0.1"
-schemes:
-  - https
-basePath: /v1
-securityDefinitions:
-  basicAuth:
-    type: basic
+  version: 2.0.0
 security:
-- basicAuth: []
-consumes:
-  - application/json;charset=utf-8
-produces:
-  - application/json;charset=utf-8
+  - basicAuth:
+      []
 paths:
+  /stories:
+    get:
+      operationId: listStories
+      summary: List stories
+      description: List stories
+      tags:
+        - Stories
+      responses:
+        "200":
+          description: Stories
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Story"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createStory
+      summary: Create a story
+      description: Create story
+      tags:
+        - Stories
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Story"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created story
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Story"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /stories/{storyId}:
+    get:
+      operationId: findStory
+      summary: Finds a story
+      description: Finds a story
+      tags:
+        - Stories
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Found story
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Story"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateStory
+      summary: Updates story
+      description: Updates a story
+      tags:
+        - Stories
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Story"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated story
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Story"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteStory
+      summary: Delete story
+      description: Delete a story
+      tags:
+        - Stories
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Successful removal
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
   /sessions:
     post:
       operationId: createSession
       summary: Creates new session
       description: Creates new chat session
-      parameters:
-        - name: body
-          in: body
-          description: Payload
-          required: true
-          schema:
-            $ref: '#/definitions/Session'
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Session"
+        description: Payload
+        required: true
       tags:
         - Sessions
       responses:
-        200:
+        "200":
           description: Created session
-          schema:
-            $ref: '#/definitions/Session'
-        400:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Session"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        403:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        500:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /messages:
     post:
       operationId: createMessage
       summary: Posts new message
       description: Posts new message
-      parameters:
-        - name: body
-          in: body
-          description: Payload
-          required: true
-          schema:
-            $ref: '#/definitions/Message'
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Message"
+        description: Payload
+        required: true
       tags:
         - Messages
       responses:
-        200:
+        "200":
           description: Returns message with bot's response details
-          schema:
-            $ref: '#/definitions/Message'
-        400:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Message"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        403:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        500:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
   /scripts:
     post:
       operationId: createScript
       summary: Posts new script
       description: Posts new script
-      parameters:
-        - name: body
-          in: body
-          description: Payload
-          required: true
-          schema:
-            $ref: '#/definitions/Script'
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Script"
+        description: Payload
+        required: true
       tags:
         - Scripts
       responses:
-        200:
+        "200":
           description: Returns created a script
-          schema:
-            $ref: '#/definitions/Script'
-        400:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Script"
+        "400":
           description: Invalid request was sent to the server
-          schema:
-            $ref: '#/definitions/BadRequest'
-        403:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
           description: Attempted to make a call with unauthorized client
-          schema:
-            $ref: '#/definitions/Forbidden'
-        500:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
           description: Internal server error
-          schema:
-            $ref: '#/definitions/InternalServerError'
-definitions:
-  Session:
-    type: object
-    properties:
-      id:
-        description: Session id.
-        type: string
-        format: uuid
-      locale:
-        description: Session locale
-        type: string
-      timeZone:
-        description: Session time zone
-        type: string
-      visitor:
-        description: Visitor details
-        type: string
-      story:
-        description: Story name
-        type: string
-      created:
-        description: Time the session was initiated
-        type: string
-        format: date-time
-  Message:
-    type: object
-    properties:
-      id:
-        description: Message id
-        type: string
-        format: uuid
-      sessionId:
-        description: Session id the message belongs to 
-        type: string
-        format: uuid
-      content:
-        description: Message content
-        type: string
-      response:
-        description: Response text. Used only when responding
-        type: string
-      hint:
-        description: Hint text. Used only when responding
-        type: string
-      quickResponses:
-        description: List of quick responses. Used only when responding
-        type: array 
-        items:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+servers:
+  - url: /v1
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    Story:
+      type: object
+      properties:
+        id:
+          description: Story id.
           type: string
-      created:
-        description: Time the session was initiated
-        type: string
-        format: date-time
-  Script:
-    type: object
-    required:
-      - name
-      - version
-      - language
-      - content
-    properties:
-      id:
-        description: Script id
-        type: string
-        format: uuid
-      name:
-        description: Script name
-        type: string
-      version:
-        description: Script version
-        type: string
-      language:
-        description: Script language
-        type: string
-      content:
-        description: Script content
-        type: string
-  InternalServerError:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  Forbidden:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  BadRequest:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  NotImplemented:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-  NotFound:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
+          format: uuid
+        name:
+          description: Story name.
+          type: string
+        created:
+          description: Creation time
+          type: string
+          format: date-time
+        modified:
+          description: Modification time
+          type: string
+          format: date-time
+  
+    Session:
+      type: object
+      properties:
+        id:
+          description: Session id.
+          type: string
+          format: uuid
+        locale:
+          description: Session locale
+          type: string
+        timeZone:
+          description: Session time zone
+          type: string
+        visitor:
+          description: Visitor details
+          type: string
+        storyId:
+          description: Story id
+          type: string
+          format: uuid
+        created:
+          description: Time the session was initiated
+          type: string
+          format: date-time
+          
+    Knot:
+      type: object
+      properties:
+        id:
+          description: knot id.
+          type: string
+          format: uuid
+        type: 
+          $ref: "#/components/schemas/KnotType"
+        name:
+          type: string
+        content:
+          type: string
+        storyId:
+          description: Story id
+          type: string
+          format: uuid
+        
+    KnotType:
+      type: string
+      enum:
+        - TEXT
+        - SCRIPT
+        - IMAGE
+        - EMAIL
+          
+    Intent:
+      type: object
+      properties:
+        id:
+          description: intent id.
+          type: string
+          format: uuid
+        type: 
+          $ref: "#/components/schemas/IntentType"
+        sourceKnotId:
+          description: source knot id id.
+          type: string
+          format: uuid
+        targetKnotId:
+          description: target knot id id.
+          type: string
+          format: uuid
+        global:
+          type: boolean
+        
+    IntentType:
+      type: string
+      enum:
+        - OPENNLP
+        - TEMPLATE
+
+    Message:
+      type: object
+      properties:
+        id:
+          description: Message id
+          type: string
+          format: uuid
+        sessionId:
+          description: Session id the message belongs to
+          type: string
+          format: uuid
+        content:
+          description: Message content
+          type: string
+        response:
+          description: Response text. Used only when responding
+          type: 
+            array
+          items:
+            type: string
+        hint:
+          description: Hint text. Used only when responding
+          type: string
+        quickResponses:
+          description: List of quick responses. Used only when responding
+          type: array
+          items:
+            type: string
+        created:
+          description: Time the session was initiated
+          type: string
+          format: date-time
+          
+    Script:
+      type: object
+      required:
+        - name
+        - version
+        - language
+        - content
+      properties:
+        id:
+          description: Script id
+          type: string
+          format: uuid
+        name:
+          description: Script name
+          type: string
+        version:
+          description: Script version
+          type: string
+        language:
+          description: Script language
+          type: string
+        content:
+          description: Script content
+          type: string
+          
+    InternalServerError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    Forbidden:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    BadRequest:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    NotImplemented:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    NotFound:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
