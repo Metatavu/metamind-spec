@@ -759,11 +759,47 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+
   /scripts:
+    get:
+      operationId: listScripts
+      summary: List scripts
+      description: List scripts
+      tags:
+        - Scripts
+      responses:
+        "200":
+          description: Scripts
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Script"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
     post:
       operationId: createScript
-      summary: Posts new script
-      description: Posts new script
+      summary: Create a script
+      description: Create script
+      tags:
+        - Scripts
       requestBody:
         content:
           application/json;charset=utf-8:
@@ -771,11 +807,9 @@ paths:
               $ref: "#/components/schemas/Script"
         description: Payload
         required: true
-      tags:
-        - Scripts
       responses:
         "200":
-          description: Returns created a script
+          description: Created script
           content:
             application/json;charset=utf-8:
               schema:
@@ -798,6 +832,128 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+  /scripts/{scriptId}:
+    get:
+      operationId: findScript
+      summary: Finds a script
+      description: Finds a script
+      tags:
+        - Scripts
+      parameters:
+        - name: scriptId
+          required: true
+          in: path
+          description: script id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Found script
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Script"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateScript
+      summary: Updates script
+      description: Updates a script
+      tags:
+        - Scripts
+      parameters:
+        - name: scriptId
+          required: true
+          in: path
+          description: script id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Script"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated script
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Script"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteScript
+      summary: Delete script
+      description: Delete a script
+      tags:
+        - Scripts
+      parameters:
+        - name: scriptId
+          required: true
+          in: path
+          description: script id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Successful removal
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+                
 servers:
   - url: /v1
 components:
