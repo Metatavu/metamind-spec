@@ -953,9 +953,9 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-                
+
 servers:
-  - url: /v1
+  - url: /v2
 components:
   securitySchemes:
     basicAuth:
