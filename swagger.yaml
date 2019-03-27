@@ -431,7 +431,238 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
-                
+
+  /stories/{storyId}/intents:
+    get:
+      operationId: listIntents
+      summary: List story intents
+      description: List story intents
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      tags:
+        - Intents
+      responses:
+        "200":
+          description: Story intents
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Intent"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createIntent
+      summary: Create a story intent
+      description: Create story intent
+      tags:
+        - Intents
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Intent"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created story intent
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Intent"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /stories/{storyId}/intents/{intentId}:
+    get:
+      operationId: findIntent
+      summary: Finds a story intent
+      description: Finds a story intent
+      tags:
+        - Intents
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+        - name: intentId
+          required: true
+          in: path
+          description: intent id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Found story intent
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Intent"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateIntent
+      summary: Updates intent
+      description: Updates a intent
+      tags:
+        - Intents
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+        - name: intentId
+          required: true
+          in: path
+          description: intent id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Intent"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated story intent
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Story"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteIntent
+      summary: Delete intent
+      description: Delete a intent
+      tags:
+        - Intents
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+        - name: intentId
+          required: true
+          in: path
+          description: intent id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Successful removal
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+
   /stories/{storyId}/sessions:
     post:
       operationId: createSession
