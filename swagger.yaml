@@ -953,6 +953,237 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: "#/components/schemas/InternalServerError"
+  
+  /stories/{storyId}/variables:
+    get:
+      operationId: listVariables
+      summary: List story variables
+      description: List story variables
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      tags:
+        - Variables
+      responses:
+        "200":
+          description: Story variables
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Variable"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    post:
+      operationId: createVariable
+      summary: Create a story variable
+      description: Create story variable
+      tags:
+        - Variables
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Variable"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created story variable
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Variable"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+  /stories/{storyId}/variables/{variableId}:
+    get:
+      operationId: findVariable
+      summary: Finds a story variable
+      description: Finds a story variable
+      tags:
+        - Variables
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+        - name: variableId
+          required: true
+          in: path
+          description: variable id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Found story variable
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Variable"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    put:
+      operationId: updateVariable
+      summary: Updates variable
+      description: Updates a variable
+      tags:
+        - Variables
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+        - name: variableId
+          required: true
+          in: path
+          description: variable id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Variable"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated story variable
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Story"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+    delete:
+      operationId: deleteVariable
+      summary: Delete variable
+      description: Delete a variable
+      tags:
+        - Variables
+      parameters:
+        - name: storyId
+          required: true
+          in: path
+          description: story id
+          schema:
+            type: string
+            format: uuid
+        - name: variableId
+          required: true
+          in: path
+          description: variable id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Successful removal
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
 
 servers:
   - url: /v2
@@ -1086,10 +1317,45 @@ components:
           type: array
           items:
             type: string
+        confidence:
+          description: Value how confident the bot was about the intent
+          type: number
+          format: double
+        sourceKnotId:
+          description: source knot id id.
+          type: string
+          format: uuid
+        matchedIntentId:
+          description: matched intent id. Null if intent not found
+          type: string
+          format: uuid
         created:
           description: Time the session was initiated
           type: string
           format: date-time
+          
+    Variable:
+      type: object
+      properties:
+        id:
+          description: variable id.
+          type: string
+          format: uuid
+        type: 
+          $ref: "#/components/schemas/VariableType"
+        storyId:
+          description: Story id
+          type: string
+          format: uuid
+        validationScript:
+          type: string
+          description: Validation script
+
+    VariableType:
+      type: string
+      enum:
+        - STRING
+        - NUMBER
           
     Script:
       type: object
@@ -1124,6 +1390,7 @@ components:
           format: int32
         message:
           type: string
+          
     Forbidden:
       type: object
       properties:
@@ -1132,6 +1399,7 @@ components:
           format: int32
         message:
           type: string
+          
     BadRequest:
       type: object
       properties:
@@ -1140,6 +1408,7 @@ components:
           format: int32
         message:
           type: string
+          
     NotImplemented:
       type: object
       properties:
@@ -1148,6 +1417,7 @@ components:
           format: int32
         message:
           type: string
+          
     NotFound:
       type: object
       properties:
