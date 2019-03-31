@@ -1,309 +1,2116 @@
 {
-  "swagger" : "2.0",
+  "openapi" : "3.0.7",
   "info" : {
+    "title" : "Metamind API",
     "description" : "Brain spec for Metamind.",
-    "version" : "0.0.1",
-    "title" : "Metamind API"
+    "version" : "2.0.0"
   },
-  "basePath" : "/v1",
-  "schemes" : [ "https" ],
-  "consumes" : [ "application/json;charset=utf-8" ],
-  "produces" : [ "application/json;charset=utf-8" ],
+  "servers" : [ {
+    "url" : "/v2"
+  } ],
   "security" : [ {
     "basicAuth" : [ ]
   } ],
   "paths" : {
-    "/sessions" : {
+    "/stories" : {
+      "get" : {
+        "tags" : [ "Stories" ],
+        "summary" : "List stories",
+        "description" : "List stories",
+        "operationId" : "listStories",
+        "responses" : {
+          "200" : {
+            "description" : "Stories",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Story"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Stories" ],
+        "summary" : "Create a story",
+        "description" : "Create story",
+        "operationId" : "createStory",
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Story"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created story",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Story"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}" : {
+      "get" : {
+        "tags" : [ "Stories" ],
+        "summary" : "Finds a story",
+        "description" : "Finds a story",
+        "operationId" : "findStory",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found story",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Story"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Stories" ],
+        "summary" : "Updates story",
+        "description" : "Updates a story",
+        "operationId" : "updateStory",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Story"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated story",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Story"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Stories" ],
+        "summary" : "Delete story",
+        "description" : "Delete a story",
+        "operationId" : "deleteStory",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful removal"
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}/knots" : {
+      "get" : {
+        "tags" : [ "Knots" ],
+        "summary" : "List story knots",
+        "description" : "List story knots",
+        "operationId" : "listKnots",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Story knots",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Knot"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Knots" ],
+        "summary" : "Create a story knot",
+        "description" : "Create story knot",
+        "operationId" : "createKnot",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Knot"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created story knot",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Knot"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}/knots/{knotId}" : {
+      "get" : {
+        "tags" : [ "Knots" ],
+        "summary" : "Finds a story knot",
+        "description" : "Finds a story knot",
+        "operationId" : "findKnot",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "knotId",
+          "in" : "path",
+          "description" : "knot id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found story knot",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Knot"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Knots" ],
+        "summary" : "Updates knot",
+        "description" : "Updates a knot",
+        "operationId" : "updateKnot",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "knotId",
+          "in" : "path",
+          "description" : "knot id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Knot"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated story knot",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Story"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Knots" ],
+        "summary" : "Delete knot",
+        "description" : "Delete a knot",
+        "operationId" : "deleteKnot",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "knotId",
+          "in" : "path",
+          "description" : "knot id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful removal"
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}/intents" : {
+      "get" : {
+        "tags" : [ "Intents" ],
+        "summary" : "List story intents",
+        "description" : "List story intents",
+        "operationId" : "listIntents",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Story intents",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Intent"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Intents" ],
+        "summary" : "Create a story intent",
+        "description" : "Create story intent",
+        "operationId" : "createIntent",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Intent"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created story intent",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Intent"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}/intents/{intentId}" : {
+      "get" : {
+        "tags" : [ "Intents" ],
+        "summary" : "Finds a story intent",
+        "description" : "Finds a story intent",
+        "operationId" : "findIntent",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "intentId",
+          "in" : "path",
+          "description" : "intent id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found story intent",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Intent"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Intents" ],
+        "summary" : "Updates intent",
+        "description" : "Updates a intent",
+        "operationId" : "updateIntent",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "intentId",
+          "in" : "path",
+          "description" : "intent id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Intent"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated story intent",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Story"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Intents" ],
+        "summary" : "Delete intent",
+        "description" : "Delete a intent",
+        "operationId" : "deleteIntent",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "intentId",
+          "in" : "path",
+          "description" : "intent id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful removal"
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}/sessions" : {
       "post" : {
         "tags" : [ "Sessions" ],
         "summary" : "Creates new session",
         "description" : "Creates new chat session",
         "operationId" : "createSession",
         "parameters" : [ {
-          "in" : "body",
-          "name" : "body",
-          "description" : "Payload",
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
           "required" : true,
+          "style" : "simple",
+          "explode" : false,
           "schema" : {
-            "$ref" : "#/definitions/Session"
+            "type" : "string",
+            "format" : "uuid"
           }
         } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Session"
+              }
+            }
+          },
+          "required" : true
+        },
         "responses" : {
           "200" : {
             "description" : "Created session",
-            "schema" : {
-              "$ref" : "#/definitions/Session"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Session"
+                }
+              }
             }
           },
           "400" : {
             "description" : "Invalid request was sent to the server",
-            "schema" : {
-              "$ref" : "#/definitions/BadRequest"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
             }
           },
           "403" : {
             "description" : "Attempted to make a call with unauthorized client",
-            "schema" : {
-              "$ref" : "#/definitions/Forbidden"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
             }
           },
           "500" : {
             "description" : "Internal server error",
-            "schema" : {
-              "$ref" : "#/definitions/InternalServerError"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
             }
           }
         }
       }
     },
-    "/messages" : {
+    "/stories/{storyId}/messages" : {
       "post" : {
         "tags" : [ "Messages" ],
         "summary" : "Posts new message",
         "description" : "Posts new message",
         "operationId" : "createMessage",
         "parameters" : [ {
-          "in" : "body",
-          "name" : "body",
-          "description" : "Payload",
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
           "required" : true,
+          "style" : "simple",
+          "explode" : false,
           "schema" : {
-            "$ref" : "#/definitions/Message"
+            "type" : "string",
+            "format" : "uuid"
           }
         } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Message"
+              }
+            }
+          },
+          "required" : true
+        },
         "responses" : {
           "200" : {
             "description" : "Returns message with bot's response details",
-            "schema" : {
-              "$ref" : "#/definitions/Message"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Message"
+                }
+              }
             }
           },
           "400" : {
             "description" : "Invalid request was sent to the server",
-            "schema" : {
-              "$ref" : "#/definitions/BadRequest"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
             }
           },
           "403" : {
             "description" : "Attempted to make a call with unauthorized client",
-            "schema" : {
-              "$ref" : "#/definitions/Forbidden"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
             }
           },
           "500" : {
             "description" : "Internal server error",
-            "schema" : {
-              "$ref" : "#/definitions/InternalServerError"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
             }
           }
         }
       }
     },
     "/scripts" : {
-      "post" : {
+      "get" : {
         "tags" : [ "Scripts" ],
-        "summary" : "Posts new script",
-        "description" : "Posts new script",
-        "operationId" : "createScript",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "body",
-          "description" : "Payload",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/Script"
-          }
-        } ],
+        "summary" : "List scripts",
+        "description" : "List scripts",
+        "operationId" : "listScripts",
         "responses" : {
           "200" : {
-            "description" : "Returns created a script",
-            "schema" : {
-              "$ref" : "#/definitions/Script"
+            "description" : "Scripts",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Script"
+                  }
+                }
+              }
             }
           },
           "400" : {
             "description" : "Invalid request was sent to the server",
-            "schema" : {
-              "$ref" : "#/definitions/BadRequest"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
             }
           },
           "403" : {
             "description" : "Attempted to make a call with unauthorized client",
-            "schema" : {
-              "$ref" : "#/definitions/Forbidden"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
             }
           },
           "500" : {
             "description" : "Internal server error",
-            "schema" : {
-              "$ref" : "#/definitions/InternalServerError"
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Scripts" ],
+        "summary" : "Create a script",
+        "description" : "Create script",
+        "operationId" : "createScript",
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Script"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created script",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Script"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scripts/{scriptId}" : {
+      "get" : {
+        "tags" : [ "Scripts" ],
+        "summary" : "Finds a script",
+        "description" : "Finds a script",
+        "operationId" : "findScript",
+        "parameters" : [ {
+          "name" : "scriptId",
+          "in" : "path",
+          "description" : "script id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found script",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Script"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Scripts" ],
+        "summary" : "Updates script",
+        "description" : "Updates a script",
+        "operationId" : "updateScript",
+        "parameters" : [ {
+          "name" : "scriptId",
+          "in" : "path",
+          "description" : "script id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Script"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated script",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Script"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Scripts" ],
+        "summary" : "Delete script",
+        "description" : "Delete a script",
+        "operationId" : "deleteScript",
+        "parameters" : [ {
+          "name" : "scriptId",
+          "in" : "path",
+          "description" : "script id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful removal"
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}/variables" : {
+      "get" : {
+        "tags" : [ "Variables" ],
+        "summary" : "List story variables",
+        "description" : "List story variables",
+        "operationId" : "listVariables",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Story variables",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Variable"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Variables" ],
+        "summary" : "Create a story variable",
+        "description" : "Create story variable",
+        "operationId" : "createVariable",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Variable"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created story variable",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Variable"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stories/{storyId}/variables/{variableId}" : {
+      "get" : {
+        "tags" : [ "Variables" ],
+        "summary" : "Finds a story variable",
+        "description" : "Finds a story variable",
+        "operationId" : "findVariable",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "variableId",
+          "in" : "path",
+          "description" : "variable id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found story variable",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Variable"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Variables" ],
+        "summary" : "Updates variable",
+        "description" : "Updates a variable",
+        "operationId" : "updateVariable",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "variableId",
+          "in" : "path",
+          "description" : "variable id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Variable"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated story variable",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Story"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Variables" ],
+        "summary" : "Delete variable",
+        "description" : "Delete a variable",
+        "operationId" : "deleteVariable",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "story id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "variableId",
+          "in" : "path",
+          "description" : "variable id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful removal"
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
             }
           }
         }
       }
     }
   },
-  "securityDefinitions" : {
-    "basicAuth" : {
-      "type" : "basic"
-    }
-  },
-  "definitions" : {
-    "Session" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "format" : "uuid",
-          "description" : "Session id."
-        },
-        "locale" : {
-          "type" : "string",
-          "description" : "Session locale"
-        },
-        "timeZone" : {
-          "type" : "string",
-          "description" : "Session time zone"
-        },
-        "visitor" : {
-          "type" : "string",
-          "description" : "Visitor details"
-        },
-        "story" : {
-          "type" : "string",
-          "description" : "Story name"
-        },
-        "created" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "Time the session was initiated"
+  "components" : {
+    "schemas" : {
+      "Story" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Story id.",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Story name."
+          },
+          "created" : {
+            "type" : "string",
+            "description" : "Creation time",
+            "format" : "date-time"
+          },
+          "modified" : {
+            "type" : "string",
+            "description" : "Modification time",
+            "format" : "date-time"
+          }
         }
-      }
-    },
-    "Message" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "format" : "uuid",
-          "description" : "Message id"
-        },
-        "sessionId" : {
-          "type" : "string",
-          "format" : "uuid",
-          "description" : "Session id the message belongs to"
-        },
-        "content" : {
-          "type" : "string",
-          "description" : "Message content"
-        },
-        "response" : {
-          "type" : "string",
-          "description" : "Response text. Used only when responding"
-        },
-        "hint" : {
-          "type" : "string",
-          "description" : "Hint text. Used only when responding"
-        },
-        "quickResponses" : {
-          "type" : "array",
-          "description" : "List of quick responses. Used only when responding",
-          "items" : {
+      },
+      "Session" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Session id.",
+            "format" : "uuid"
+          },
+          "locale" : {
+            "type" : "string",
+            "description" : "Session locale"
+          },
+          "timeZone" : {
+            "type" : "string",
+            "description" : "Session time zone"
+          },
+          "visitor" : {
+            "type" : "string",
+            "description" : "Visitor details"
+          },
+          "storyId" : {
+            "type" : "string",
+            "description" : "Story id",
+            "format" : "uuid"
+          },
+          "created" : {
+            "type" : "string",
+            "description" : "Time the session was initiated",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Knot" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "knot id.",
+            "format" : "uuid"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/KnotType"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "content" : {
+            "type" : "string"
+          },
+          "storyId" : {
+            "type" : "string",
+            "description" : "Story id",
+            "format" : "uuid"
+          }
+        }
+      },
+      "KnotType" : {
+        "type" : "string",
+        "enum" : [ "TEXT", "SCRIPT", "IMAGE", "EMAIL" ]
+      },
+      "Intent" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "intent id.",
+            "format" : "uuid"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/IntentType"
+          },
+          "sourceKnotId" : {
+            "type" : "string",
+            "description" : "source knot id id.",
+            "format" : "uuid"
+          },
+          "targetKnotId" : {
+            "type" : "string",
+            "description" : "target knot id id.",
+            "format" : "uuid"
+          },
+          "global" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "IntentType" : {
+        "type" : "string",
+        "enum" : [ "OPENNLP", "TEMPLATE" ]
+      },
+      "Message" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Message id",
+            "format" : "uuid"
+          },
+          "sessionId" : {
+            "type" : "string",
+            "description" : "Session id the message belongs to",
+            "format" : "uuid"
+          },
+          "content" : {
+            "type" : "string",
+            "description" : "Message content"
+          },
+          "response" : {
+            "type" : "array",
+            "description" : "Response text. Used only when responding",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "hint" : {
+            "type" : "string",
+            "description" : "Hint text. Used only when responding"
+          },
+          "quickResponses" : {
+            "type" : "array",
+            "description" : "List of quick responses. Used only when responding",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "confidence" : {
+            "type" : "number",
+            "description" : "Value how confident the bot was about the intent",
+            "format" : "double"
+          },
+          "sourceKnotId" : {
+            "type" : "string",
+            "description" : "source knot id id.",
+            "format" : "uuid"
+          },
+          "matchedIntentId" : {
+            "type" : "string",
+            "description" : "matched intent id. Null if intent not found",
+            "format" : "uuid"
+          },
+          "created" : {
+            "type" : "string",
+            "description" : "Time the session was initiated",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Variable" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "variable id.",
+            "format" : "uuid"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/VariableType"
+          },
+          "storyId" : {
+            "type" : "string",
+            "description" : "Story id",
+            "format" : "uuid"
+          },
+          "validationScript" : {
+            "type" : "string",
+            "description" : "Validation script"
+          }
+        }
+      },
+      "VariableType" : {
+        "type" : "string",
+        "enum" : [ "STRING", "NUMBER" ]
+      },
+      "Script" : {
+        "required" : [ "content", "language", "name", "version" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Script id",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Script name"
+          },
+          "version" : {
+            "type" : "string",
+            "description" : "Script version"
+          },
+          "language" : {
+            "type" : "string",
+            "description" : "Script language"
+          },
+          "content" : {
+            "type" : "string",
+            "description" : "Script content"
+          }
+        }
+      },
+      "InternalServerError" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "message" : {
             "type" : "string"
           }
-        },
-        "created" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "Time the session was initiated"
+        }
+      },
+      "Forbidden" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "BadRequest" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "NotImplemented" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "NotFound" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string"
+          }
         }
       }
     },
-    "Script" : {
-      "type" : "object",
-      "required" : [ "content", "language", "name", "version" ],
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "format" : "uuid",
-          "description" : "Script id"
-        },
-        "name" : {
-          "type" : "string",
-          "description" : "Script name"
-        },
-        "version" : {
-          "type" : "string",
-          "description" : "Script version"
-        },
-        "language" : {
-          "type" : "string",
-          "description" : "Script language"
-        },
-        "content" : {
-          "type" : "string",
-          "description" : "Script content"
-        }
-      }
-    },
-    "InternalServerError" : {
-      "type" : "object",
-      "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "message" : {
-          "type" : "string"
-        }
-      }
-    },
-    "Forbidden" : {
-      "type" : "object",
-      "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "message" : {
-          "type" : "string"
-        }
-      }
-    },
-    "BadRequest" : {
-      "type" : "object",
-      "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "message" : {
-          "type" : "string"
-        }
-      }
-    },
-    "NotImplemented" : {
-      "type" : "object",
-      "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "message" : {
-          "type" : "string"
-        }
-      }
-    },
-    "NotFound" : {
-      "type" : "object",
-      "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "message" : {
-          "type" : "string"
-        }
+    "securitySchemes" : {
+      "basicAuth" : {
+        "type" : "http",
+        "scheme" : "basic"
       }
     }
   }

@@ -1,18 +1,19 @@
 {
-  "name": "metamind-spec",
+  "name": "metamind-api-spec",
   "version": "0.0.1",
   "engines": {
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "grunt": "1.0.1",
-    "grunt-contrib-clean": "^1.0.0",
+    "grunt": "1.0.4",
+    "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-curl": "^2.2.0",
+    "grunt-curl": "^2.5.1",
     "grunt-if-missing": "^1.0.1",
     "grunt-publish": "^1.0.0",
-    "grunt-shell": "^2.1.0",
-    "load-grunt-tasks": "^3.5.0",
-    "grunt-metaform-swagger-scaffold": "0.0.2"
+    "grunt-shell": "^3.0.1",
+    "load-grunt-tasks": "^4.0.0",
+    "lodash": "^4.17.11",
+    "rimraf": "^2.6.3"
   }
 }
