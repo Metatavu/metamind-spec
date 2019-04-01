@@ -28,19 +28,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       operationId: createStory
       summary: Create a story
@@ -66,19 +66,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
   /stories/{storyId}:
     get:
       operationId: findStory
@@ -106,19 +106,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       operationId: updateStory
       summary: Updates story
@@ -152,19 +152,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       operationId: deleteStory
       summary: Delete story
@@ -187,19 +187,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
                 
   /stories/{storyId}/knots:
     get:
@@ -230,19 +230,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       operationId: createKnot
       summary: Create a story knot
@@ -276,19 +276,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
   /stories/{storyId}/knots/{knotId}:
     get:
       operationId: findKnot
@@ -323,19 +323,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       operationId: updateKnot
       summary: Updates knot
@@ -376,19 +376,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       operationId: deleteKnot
       summary: Delete knot
@@ -418,19 +418,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
 
   /stories/{storyId}/intents:
     get:
@@ -461,19 +461,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       operationId: createIntent
       summary: Create a story intent
@@ -507,19 +507,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
   /stories/{storyId}/intents/{intentId}:
     get:
       operationId: findIntent
@@ -554,19 +554,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       operationId: updateIntent
       summary: Updates intent
@@ -607,19 +607,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       operationId: deleteIntent
       summary: Delete intent
@@ -649,19 +649,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
 
   /stories/{storyId}/sessions:
     post:
@@ -697,19 +697,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
                 
                 
   /stories/{storyId}/messages:
@@ -746,19 +746,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
 
   /scripts:
     get:
@@ -781,19 +781,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       operationId: createScript
       summary: Create a script
@@ -819,19 +819,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
   /scripts/{scriptId}:
     get:
       operationId: findScript
@@ -859,19 +859,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       operationId: updateScript
       summary: Updates script
@@ -905,19 +905,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       operationId: deleteScript
       summary: Delete script
@@ -940,19 +940,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
   
   /stories/{storyId}/variables:
     get:
@@ -983,19 +983,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       operationId: createVariable
       summary: Create a story variable
@@ -1029,19 +1029,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
   /stories/{storyId}/variables/{variableId}:
     get:
       operationId: findVariable
@@ -1076,19 +1076,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       operationId: updateVariable
       summary: Updates variable
@@ -1129,19 +1129,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       operationId: deleteVariable
       summary: Delete variable
@@ -1171,19 +1171,19 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BadRequest"
+                $ref: "#/components/schemas/ErrorResponse"
         "403":
           description: Attempted to make a call with unauthorized client
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Forbidden"
+                $ref: "#/components/schemas/ErrorResponse"
         "500":
           description: Internal server error
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/InternalServerError"
+                $ref: "#/components/schemas/ErrorResponse"
 
 servers:
   - url: /v2
@@ -1193,32 +1193,45 @@ components:
       type: http
       scheme: basic
   schemas:
+
     Story:
       type: object
+      required:
+        - name
       properties:
         id:
           description: Story id.
           type: string
           format: uuid
+          readOnly: true
         name:
           description: Story name.
           type: string
-        created:
+        createdAt:
           description: Creation time
           type: string
           format: date-time
-        modified:
-          description: Modification time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
           type: string
           format: date-time
+          readOnly: true
   
     Session:
       type: object
+      required:
+        - type
+        - locale
+        - timeZone
+        - visitor
+        - storyId
       properties:
         id:
           description: Session id.
           type: string
           format: uuid
+          readOnly: true
         locale:
           description: Session locale
           type: string
@@ -1232,18 +1245,30 @@ components:
           description: Story id
           type: string
           format: uuid
-        created:
-          description: Time the session was initiated
+        createdAt:
+          description: Creation time
           type: string
           format: date-time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
+          type: string
+          format: date-time
+          readOnly: true
           
     Knot:
       type: object
+      required:
+        - type
+        - name
+        - content
+        - storyId
       properties:
         id:
           description: knot id.
           type: string
           format: uuid
+          readOnly: true
         type: 
           $ref: "#/components/schemas/KnotType"
         name:
@@ -1254,6 +1279,16 @@ components:
           description: Story id
           type: string
           format: uuid
+        createdAt:
+          description: Creation time
+          type: string
+          format: date-time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
+          type: string
+          format: date-time
+          readOnly: true
         
     KnotType:
       type: string
@@ -1265,11 +1300,16 @@ components:
           
     Intent:
       type: object
+      required:
+        - type
+        - targetKnotId
+        - global
       properties:
         id:
           description: intent id.
           type: string
           format: uuid
+          readOnly: true
         type: 
           $ref: "#/components/schemas/IntentType"
         sourceKnotId:
@@ -1282,6 +1322,16 @@ components:
           format: uuid
         global:
           type: boolean
+        createdAt:
+          description: Creation time
+          type: string
+          format: date-time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
+          type: string
+          format: date-time
+          readOnly: true
         
     IntentType:
       type: string
@@ -1291,11 +1341,16 @@ components:
 
     Message:
       type: object
+      required:
+        - sessionId
+        - content
+        - sourceKnotId
       properties:
         id:
           description: Message id
           type: string
           format: uuid
+          readOnly: true
         sessionId:
           description: Session id the message belongs to
           type: string
@@ -1309,18 +1364,22 @@ components:
             array
           items:
             type: string
+          readOnly: true
         hint:
           description: Hint text. Used only when responding
           type: string
+          readOnly: true
         quickResponses:
           description: List of quick responses. Used only when responding
           type: array
           items:
             type: string
+          readOnly: true
         confidence:
           description: Value how confident the bot was about the intent
           type: number
           format: double
+          readOnly: true
         sourceKnotId:
           description: source knot id id.
           type: string
@@ -1329,18 +1388,32 @@ components:
           description: matched intent id. Null if intent not found
           type: string
           format: uuid
-        created:
-          description: Time the session was initiated
+          readOnly: true
+        createdAt:
+          description: Creation time
           type: string
           format: date-time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
+          type: string
+          format: date-time
+          readOnly: true
           
     Variable:
       type: object
+      required:
+        - name
+        - type
+        - storyId
       properties:
         id:
           description: variable id.
           type: string
           format: uuid
+          readOnly: true
+        name: 
+          type: string
         type: 
           $ref: "#/components/schemas/VariableType"
         storyId:
@@ -1350,6 +1423,16 @@ components:
         validationScript:
           type: string
           description: Validation script
+        createdAt:
+          description: Creation time
+          type: string
+          format: date-time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
+          type: string
+          format: date-time
+          readOnly: true
 
     VariableType:
       type: string
@@ -1369,6 +1452,7 @@ components:
           description: Script id
           type: string
           format: uuid
+          readOnly: true
         name:
           description: Script name
           type: string
@@ -1381,48 +1465,21 @@ components:
         content:
           description: Script content
           type: string
-          
-    InternalServerError:
+        createdAt:
+          description: Creation time
+          type: string
+          format: date-time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
+          type: string
+          format: date-time
+          readOnly: true
+
+    ErrorResponse:
       type: object
       properties:
-        code:
-          type: integer
-          format: int32
         message:
+          description: The error message
           type: string
-          
-    Forbidden:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-          
-    BadRequest:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-          
-    NotImplemented:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-          
-    NotFound:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
+          readOnly: true
