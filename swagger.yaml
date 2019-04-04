@@ -601,7 +601,7 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Story"
+                $ref: "#/components/schemas/Intent"
         "400":
           description: Invalid request was sent to the server
           content:
@@ -953,7 +953,209 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  
+
+  /trainingMaterials:
+    get:
+      operationId: listTrainingMaterials
+      summary: List trainingMaterials
+      description: List training materials
+      tags:
+        - TrainingMaterials
+      parameters:
+        - name: storyId
+          required: false
+          in: query
+          description: story id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: TrainingMaterials
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TrainingMaterial"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      operationId: createTrainingMaterial
+      summary: Create a trainingMaterial
+      description: Create training material
+      tags:
+        - TrainingMaterials
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/TrainingMaterial"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Created trainingMaterial
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/TrainingMaterial"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /trainingMaterials/{trainingMaterialId}:
+    get:
+      operationId: findTrainingMaterial
+      summary: Finds a trainingMaterial
+      description: Finds a training material
+      tags:
+        - TrainingMaterials
+      parameters:
+        - name: trainingMaterialId
+          required: true
+          in: path
+          description: trainingMaterial id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Found trainingMaterial
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/TrainingMaterial"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      operationId: updateTrainingMaterial
+      summary: Updates trainingMaterial
+      description: Updates a training material
+      tags:
+        - TrainingMaterials
+      parameters:
+        - name: trainingMaterialId
+          required: true
+          in: path
+          description: trainingMaterial id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/TrainingMaterial"
+        description: Payload
+        required: true
+      responses:
+        "200":
+          description: Updated trainingMaterial
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/TrainingMaterial"
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      operationId: deleteTrainingMaterial
+      summary: Delete trainingMaterial
+      description: Delete a training material
+      tags:
+        - TrainingMaterials
+      parameters:
+        - name: trainingMaterialId
+          required: true
+          in: path
+          description: trainingMaterial id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Successful removal
+        "400":
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
   /stories/{storyId}/variables:
     get:
       operationId: listVariables
@@ -1198,6 +1400,7 @@ components:
       type: object
       required:
         - name
+        - locale
       properties:
         id:
           description: Story id.
@@ -1206,6 +1409,9 @@ components:
           readOnly: true
         name:
           description: Story name.
+          type: string
+        locale:
+          description: Story locale.
           type: string
         createdAt:
           description: Creation time
@@ -1262,7 +1468,6 @@ components:
         - type
         - name
         - content
-        - storyId
       properties:
         id:
           description: knot id.
@@ -1279,6 +1484,7 @@ components:
           description: Story id
           type: string
           format: uuid
+          readOnly: true
         createdAt:
           description: Creation time
           type: string
@@ -1310,6 +1516,8 @@ components:
           type: string
           format: uuid
           readOnly: true
+        name:
+          type: string
         type: 
           $ref: "#/components/schemas/IntentType"
         sourceKnotId:
@@ -1322,6 +1530,10 @@ components:
           format: uuid
         global:
           type: boolean
+        trainingMaterialId:
+          description: training material id
+          type: string
+          format: uuid
         createdAt:
           description: Creation time
           type: string
@@ -1338,6 +1550,34 @@ components:
       enum:
         - OPENNLP
         - TEMPLATE
+    
+    TrainingMaterial:
+      required:
+        - name
+        - text
+      properties:
+        id:
+          description: intent id.
+          type: string
+          format: uuid
+          readOnly: true
+        storyId:
+          type: string
+          format: uuid
+        text:
+          type: string
+        name:
+          type: string
+        createdAt:
+          description: Creation time
+          type: string
+          format: date-time
+          readOnly: true
+        modifiedAt:
+          description: Last modification time
+          type: string
+          format: date-time
+          readOnly: true
 
     Message:
       type: object
