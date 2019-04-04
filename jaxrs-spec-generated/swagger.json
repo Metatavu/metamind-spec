@@ -37,7 +37,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -47,7 +47,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -57,7 +57,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -96,7 +96,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -106,7 +106,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -116,7 +116,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -158,7 +158,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -168,7 +168,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -178,7 +178,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -229,7 +229,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -239,7 +239,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -249,7 +249,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -282,7 +282,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -292,7 +292,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -302,7 +302,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -347,7 +347,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -357,7 +357,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -367,7 +367,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -418,7 +418,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -428,7 +428,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -438,7 +438,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -491,7 +491,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -501,7 +501,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -511,7 +511,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -573,7 +573,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -583,7 +583,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -593,7 +593,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -637,7 +637,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -647,7 +647,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -657,7 +657,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -702,7 +702,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -712,7 +712,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -722,7 +722,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -773,7 +773,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -783,7 +783,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -793,7 +793,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -846,7 +846,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -856,7 +856,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -866,7 +866,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -928,7 +928,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -938,7 +938,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -948,7 +948,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -992,7 +992,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1002,7 +1002,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1012,7 +1012,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1065,7 +1065,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1075,7 +1075,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1085,7 +1085,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1138,7 +1138,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1148,7 +1148,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1158,7 +1158,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1191,7 +1191,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1201,7 +1201,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1211,7 +1211,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1250,7 +1250,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1260,7 +1260,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1270,7 +1270,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1312,7 +1312,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1322,7 +1322,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1332,7 +1332,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1383,7 +1383,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1393,7 +1393,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1403,7 +1403,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1436,7 +1436,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1446,7 +1446,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1456,7 +1456,305 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trainingMaterials" : {
+      "get" : {
+        "tags" : [ "TrainingMaterials" ],
+        "summary" : "List trainingMaterials",
+        "description" : "List training materials",
+        "operationId" : "listTrainingMaterials",
+        "responses" : {
+          "200" : {
+            "description" : "TrainingMaterials",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TrainingMaterial"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "TrainingMaterials" ],
+        "summary" : "Create a trainingMaterial",
+        "description" : "Create training material",
+        "operationId" : "createTrainingMaterial",
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TrainingMaterial"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created trainingMaterial",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TrainingMaterial"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trainingMaterials/{trainingMaterialId}" : {
+      "get" : {
+        "tags" : [ "TrainingMaterials" ],
+        "summary" : "Finds a trainingMaterial",
+        "description" : "Finds a training material",
+        "operationId" : "findTrainingMaterial",
+        "parameters" : [ {
+          "name" : "trainingMaterialId",
+          "in" : "path",
+          "description" : "trainingMaterial id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found trainingMaterial",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TrainingMaterial"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "TrainingMaterials" ],
+        "summary" : "Updates trainingMaterial",
+        "description" : "Updates a training material",
+        "operationId" : "updateTrainingMaterial",
+        "parameters" : [ {
+          "name" : "trainingMaterialId",
+          "in" : "path",
+          "description" : "trainingMaterial id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TrainingMaterial"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated trainingMaterial",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TrainingMaterial"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "TrainingMaterials" ],
+        "summary" : "Delete trainingMaterial",
+        "description" : "Delete a training material",
+        "operationId" : "deleteTrainingMaterial",
+        "parameters" : [ {
+          "name" : "trainingMaterialId",
+          "in" : "path",
+          "description" : "trainingMaterial id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful removal"
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1501,7 +1799,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1511,7 +1809,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1521,7 +1819,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1572,7 +1870,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1582,7 +1880,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1592,7 +1890,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1645,7 +1943,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1655,7 +1953,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1665,7 +1963,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1727,7 +2025,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1737,7 +2035,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1747,7 +2045,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1791,7 +2089,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/BadRequest"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1801,7 +2099,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forbidden"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1811,7 +2109,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1823,36 +2121,46 @@
   "components" : {
     "schemas" : {
       "Story" : {
+        "required" : [ "locale", "name" ],
         "type" : "object",
         "properties" : {
           "id" : {
             "type" : "string",
             "description" : "Story id.",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "name" : {
             "type" : "string",
             "description" : "Story name."
           },
-          "created" : {
+          "locale" : {
+            "type" : "string",
+            "description" : "Story locale."
+          },
+          "createdAt" : {
             "type" : "string",
             "description" : "Creation time",
-            "format" : "date-time"
+            "format" : "date-time",
+            "readOnly" : true
           },
-          "modified" : {
+          "modifiedAt" : {
             "type" : "string",
-            "description" : "Modification time",
-            "format" : "date-time"
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
           }
         }
       },
       "Session" : {
+        "required" : [ "locale", "storyId", "timeZone", "type", "visitor" ],
         "type" : "object",
         "properties" : {
           "id" : {
             "type" : "string",
             "description" : "Session id.",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "locale" : {
             "type" : "string",
@@ -1871,20 +2179,29 @@
             "description" : "Story id",
             "format" : "uuid"
           },
-          "created" : {
+          "createdAt" : {
             "type" : "string",
-            "description" : "Time the session was initiated",
-            "format" : "date-time"
+            "description" : "Creation time",
+            "format" : "date-time",
+            "readOnly" : true
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
           }
         }
       },
       "Knot" : {
+        "required" : [ "content", "name", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
             "type" : "string",
             "description" : "knot id.",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "type" : {
             "$ref" : "#/components/schemas/KnotType"
@@ -1898,7 +2215,20 @@
           "storyId" : {
             "type" : "string",
             "description" : "Story id",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Creation time",
+            "format" : "date-time",
+            "readOnly" : true
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
           }
         }
       },
@@ -1907,12 +2237,14 @@
         "enum" : [ "TEXT", "SCRIPT", "IMAGE", "EMAIL" ]
       },
       "Intent" : {
+        "required" : [ "global", "targetKnotId", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
             "type" : "string",
             "description" : "intent id.",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "type" : {
             "$ref" : "#/components/schemas/IntentType"
@@ -1929,6 +2261,23 @@
           },
           "global" : {
             "type" : "boolean"
+          },
+          "trainingMaterialId" : {
+            "type" : "string",
+            "description" : "training material id",
+            "format" : "uuid"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Creation time",
+            "format" : "date-time",
+            "readOnly" : true
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
           }
         }
       },
@@ -1936,13 +2285,41 @@
         "type" : "string",
         "enum" : [ "OPENNLP", "TEMPLATE" ]
       },
+      "TrainingMaterial" : {
+        "required" : [ "text" ],
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "intent id.",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "text" : {
+            "type" : "string"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Creation time",
+            "format" : "date-time",
+            "readOnly" : true
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
+          }
+        }
+      },
       "Message" : {
+        "required" : [ "content", "sessionId", "sourceKnotId" ],
         "type" : "object",
         "properties" : {
           "id" : {
             "type" : "string",
             "description" : "Message id",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "sessionId" : {
             "type" : "string",
@@ -1956,17 +2333,20 @@
           "response" : {
             "type" : "array",
             "description" : "Response text. Used only when responding",
+            "readOnly" : true,
             "items" : {
               "type" : "string"
             }
           },
           "hint" : {
             "type" : "string",
-            "description" : "Hint text. Used only when responding"
+            "description" : "Hint text. Used only when responding",
+            "readOnly" : true
           },
           "quickResponses" : {
             "type" : "array",
             "description" : "List of quick responses. Used only when responding",
+            "readOnly" : true,
             "items" : {
               "type" : "string"
             }
@@ -1974,7 +2354,8 @@
           "confidence" : {
             "type" : "number",
             "description" : "Value how confident the bot was about the intent",
-            "format" : "double"
+            "format" : "double",
+            "readOnly" : true
           },
           "sourceKnotId" : {
             "type" : "string",
@@ -1984,22 +2365,35 @@
           "matchedIntentId" : {
             "type" : "string",
             "description" : "matched intent id. Null if intent not found",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
-          "created" : {
+          "createdAt" : {
             "type" : "string",
-            "description" : "Time the session was initiated",
-            "format" : "date-time"
+            "description" : "Creation time",
+            "format" : "date-time",
+            "readOnly" : true
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
           }
         }
       },
       "Variable" : {
+        "required" : [ "name", "storyId", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
             "type" : "string",
             "description" : "variable id.",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "name" : {
+            "type" : "string"
           },
           "type" : {
             "$ref" : "#/components/schemas/VariableType"
@@ -2012,6 +2406,18 @@
           "validationScript" : {
             "type" : "string",
             "description" : "Validation script"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Creation time",
+            "format" : "date-time",
+            "readOnly" : true
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
           }
         }
       },
@@ -2026,7 +2432,8 @@
           "id" : {
             "type" : "string",
             "description" : "Script id",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "name" : {
             "type" : "string",
@@ -2043,66 +2450,28 @@
           "content" : {
             "type" : "string",
             "description" : "Script content"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Creation time",
+            "format" : "date-time",
+            "readOnly" : true
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "description" : "Last modification time",
+            "format" : "date-time",
+            "readOnly" : true
           }
         }
       },
-      "InternalServerError" : {
+      "ErrorResponse" : {
         "type" : "object",
         "properties" : {
-          "code" : {
-            "type" : "integer",
-            "format" : "int32"
-          },
           "message" : {
-            "type" : "string"
-          }
-        }
-      },
-      "Forbidden" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "integer",
-            "format" : "int32"
-          },
-          "message" : {
-            "type" : "string"
-          }
-        }
-      },
-      "BadRequest" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "integer",
-            "format" : "int32"
-          },
-          "message" : {
-            "type" : "string"
-          }
-        }
-      },
-      "NotImplemented" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "integer",
-            "format" : "int32"
-          },
-          "message" : {
-            "type" : "string"
-          }
-        }
-      },
-      "NotFound" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "integer",
-            "format" : "int32"
-          },
-          "message" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The error message",
+            "readOnly" : true
           }
         }
       }
