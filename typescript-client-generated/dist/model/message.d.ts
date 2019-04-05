@@ -41,7 +41,7 @@ export interface Message {
     /**
      * source knot id id.
      */
-    sourceKnotId: string;
+    readonly sourceKnotId: string;
     /**
      * matched intent id. Null if intent not found
      */
@@ -87,7 +87,7 @@ export interface MessageOpt {
     /**
      * source knot id id.
      */
-    sourceKnotId?: string;
+    readonly sourceKnotId?: string;
     /**
      * matched intent id. Null if intent not found
      */

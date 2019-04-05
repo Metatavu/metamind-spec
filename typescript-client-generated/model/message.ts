@@ -43,7 +43,7 @@ export interface Message {
     /**
      * source knot id id.
      */
-    readonly sourceKnotId: string;
+    readonly sourceKnotId?: string;
     /**
      * matched intent id. Null if intent not found
      */

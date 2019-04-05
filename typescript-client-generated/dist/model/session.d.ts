@@ -29,7 +29,7 @@ export interface Session {
     /**
      * Story id
      */
-    storyId: string;
+    readonly storyId?: string;
     /**
      * Creation time
      */
@@ -59,7 +59,7 @@ export interface SessionOpt {
     /**
      * Story id
      */
-    storyId?: string;
+    readonly storyId?: string;
     /**
      * Creation time
      */
