@@ -1431,7 +1431,6 @@ components:
         - locale
         - timeZone
         - visitor
-        - storyId
       properties:
         id:
           description: Session id.
@@ -1451,6 +1450,7 @@ components:
           description: Story id
           type: string
           format: uuid
+          readOnly: true
         createdAt:
           description: Creation time
           type: string
@@ -1626,6 +1626,7 @@ components:
           description: source knot id id.
           type: string
           format: uuid
+          readOnly: true
         matchedIntentId:
           description: matched intent id. Null if intent not found
           type: string
