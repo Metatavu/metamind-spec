@@ -1,5 +1,4 @@
 import { Knot } from '../model/knot';
-import { Story } from '../model/story';
 export declare class KnotsService {
     private token;
     private basePath;
@@ -38,5 +37,5 @@ export declare class KnotsService {
      * @param storyId story id
      * @param knotId knot id
     */
-    updateKnot(body: Knot, storyId: string, knotId: string): Promise<Story>;
+    updateKnot(body: Knot, storyId: string, knotId: string): Promise<Knot>;
 }
