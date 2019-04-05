@@ -1586,7 +1586,6 @@ components:
       required:
         - sessionId
         - content
-        - sourceKnotId
       properties:
         id:
           description: Message id
