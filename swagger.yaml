@@ -1552,6 +1552,7 @@ components:
       enum:
         - OPENNLP
         - TEMPLATE
+        - CONFUSED
     
     TrainingMaterial:
       required:
