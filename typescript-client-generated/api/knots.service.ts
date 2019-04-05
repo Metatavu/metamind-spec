@@ -1,6 +1,5 @@
 import { ErrorResponse } from '../model/errorResponse';
 import { Knot } from '../model/knot';
-import { Story } from '../model/story';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
@@ -110,7 +109,7 @@ export class KnotsService {
    * @param storyId story id
    * @param knotId knot id
   */
-  public updateKnot(body: Knot, storyId: string, knotId: string, ):Promise<Story> {
+  public updateKnot(body: Knot, storyId: string, knotId: string, ):Promise<Knot> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/knots/${encodeURIComponent(String(knotId))}`);
     const options = {
       method: "put",
