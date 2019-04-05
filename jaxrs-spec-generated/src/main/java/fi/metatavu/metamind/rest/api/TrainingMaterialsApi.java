@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/trainingMaterials")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-04T10:48:37.341+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-04T17:05:59.089+03:00[Europe/Helsinki]")
 public interface TrainingMaterialsApi {
 
     @POST
@@ -74,7 +74,10 @@ public interface TrainingMaterialsApi {
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
         @ApiResponse(responseCode = "403", description = "Attempted to make a call with unauthorized client", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response listTrainingMaterials();
+    Response listTrainingMaterials(  @QueryParam("storyId") 
+
+ @Parameter(description = "story id")  UUID storyId
+);
     @PUT
     @Path("/{trainingMaterialId}")
     @Consumes({ "application/json;charset=utf-8" })

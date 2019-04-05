@@ -24,8 +24,9 @@ export declare class TrainingMaterialsService {
     /**
      * List training materials
      * @summary List trainingMaterials
+     * @param storyId story id
     */
-    listTrainingMaterials(): Promise<Array<TrainingMaterial>>;
+    listTrainingMaterials(storyId?: string): Promise<Array<TrainingMaterial>>;
     /**
      * Updates a training material
      * @summary Updates trainingMaterial

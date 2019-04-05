@@ -15,6 +15,7 @@ export interface Intent {
      * intent id.
      */
     readonly id?: string;
+    name?: string;
     type: IntentType;
     /**
      * source knot id id.
@@ -43,6 +44,7 @@ export interface IntentOpt {
      * intent id.
      */
     readonly id?: string;
+    name?: string;
     type?: IntentType;
     /**
      * source knot id id.

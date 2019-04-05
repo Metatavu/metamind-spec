@@ -918,7 +918,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Story"
+                  "$ref" : "#/components/schemas/Intent"
                 }
               }
             }
@@ -1470,6 +1470,18 @@
         "summary" : "List trainingMaterials",
         "description" : "List training materials",
         "operationId" : "listTrainingMaterials",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "query",
+          "description" : "story id",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "TrainingMaterials",
@@ -2246,6 +2258,9 @@
             "format" : "uuid",
             "readOnly" : true
           },
+          "name" : {
+            "type" : "string"
+          },
           "type" : {
             "$ref" : "#/components/schemas/IntentType"
           },
@@ -2286,7 +2301,7 @@
         "enum" : [ "OPENNLP", "TEMPLATE" ]
       },
       "TrainingMaterial" : {
-        "required" : [ "text" ],
+        "required" : [ "name", "text" ],
         "properties" : {
           "id" : {
             "type" : "string",
@@ -2294,7 +2309,14 @@
             "format" : "uuid",
             "readOnly" : true
           },
+          "storyId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
           "text" : {
+            "type" : "string"
+          },
+          "name" : {
             "type" : "string"
           },
           "createdAt" : {

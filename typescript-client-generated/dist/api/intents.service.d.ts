@@ -1,5 +1,4 @@
 import { Intent } from '../model/intent';
-import { Story } from '../model/story';
 export declare class IntentsService {
     private token;
     private basePath;
@@ -38,5 +37,5 @@ export declare class IntentsService {
      * @param storyId story id
      * @param intentId intent id
     */
-    updateIntent(body: Intent, storyId: string, intentId: string): Promise<Story>;
+    updateIntent(body: Intent, storyId: string, intentId: string): Promise<Intent>;
 }

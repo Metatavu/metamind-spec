@@ -65,9 +65,13 @@ var TrainingMaterialsService = /** @class */ (function () {
     /**
      * List training materials
      * @summary List trainingMaterials
+     * @param storyId story id
     */
-    TrainingMaterialsService.prototype.listTrainingMaterials = function () {
+    TrainingMaterialsService.prototype.listTrainingMaterials = function (storyId) {
         var uri = new URI(this.basePath + "/trainingMaterials");
+        if (storyId !== undefined && storyId !== null) {
+            uri.addQuery('storyId', storyId);
+        }
         var options = {
             method: "get",
             headers: {

@@ -14,7 +14,9 @@ export interface TrainingMaterial {
      * intent id.
      */
     readonly id?: string;
+    storyId?: string;
     text: string;
+    name: string;
     /**
      * Creation time
      */
@@ -29,7 +31,9 @@ export interface TrainingMaterialOpt {
      * intent id.
      */
     readonly id?: string;
+    storyId?: string;
     text?: string;
+    name?: string;
     /**
      * Creation time
      */

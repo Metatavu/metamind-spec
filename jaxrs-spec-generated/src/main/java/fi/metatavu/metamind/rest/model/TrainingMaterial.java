@@ -19,7 +19,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class TrainingMaterial   {
   private @Valid UUID id = null;
+  private @Valid UUID storyId = null;
   private @Valid String text = null;
+  private @Valid String name = null;
   private @Valid OffsetDateTime createdAt = null;
   private @Valid OffsetDateTime modifiedAt = null;
 
@@ -44,6 +46,24 @@ public class TrainingMaterial   {
 
   /**
    **/
+  public TrainingMaterial storyId(UUID storyId) {
+    this.storyId = storyId;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("storyId")
+
+  public UUID getStoryId() {
+    return storyId;
+  }
+  public void setStoryId(UUID storyId) {
+    this.storyId = storyId;
+  }
+
+  /**
+   **/
   public TrainingMaterial text(String text) {
     this.text = text;
     return this;
@@ -59,6 +79,25 @@ public class TrainingMaterial   {
   }
   public void setText(String text) {
     this.text = text;
+  }
+
+  /**
+   **/
+  public TrainingMaterial name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("name")
+  @NotNull
+
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -110,14 +149,16 @@ public class TrainingMaterial   {
     }
     TrainingMaterial trainingMaterial = (TrainingMaterial) o;
     return Objects.equals(id, trainingMaterial.id) &&
+        Objects.equals(storyId, trainingMaterial.storyId) &&
         Objects.equals(text, trainingMaterial.text) &&
+        Objects.equals(name, trainingMaterial.name) &&
         Objects.equals(createdAt, trainingMaterial.createdAt) &&
         Objects.equals(modifiedAt, trainingMaterial.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, text, createdAt, modifiedAt);
+    return Objects.hash(id, storyId, text, name, createdAt, modifiedAt);
   }
 
   @Override
@@ -126,7 +167,9 @@ public class TrainingMaterial   {
     sb.append("class TrainingMaterial {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");

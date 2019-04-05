@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Intent   {
   private @Valid UUID id = null;
+  private @Valid String name = null;
   private @Valid IntentType type = null;
   private @Valid UUID sourceKnotId = null;
   private @Valid UUID targetKnotId = null;
@@ -44,6 +45,24 @@ public class Intent   {
   }
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  /**
+   **/
+  public Intent name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("name")
+
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -191,6 +210,7 @@ public class Intent   {
     }
     Intent intent = (Intent) o;
     return Objects.equals(id, intent.id) &&
+        Objects.equals(name, intent.name) &&
         Objects.equals(type, intent.type) &&
         Objects.equals(sourceKnotId, intent.sourceKnotId) &&
         Objects.equals(targetKnotId, intent.targetKnotId) &&
@@ -202,7 +222,7 @@ public class Intent   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, sourceKnotId, targetKnotId, global, trainingMaterialId, createdAt, modifiedAt);
+    return Objects.hash(id, name, type, sourceKnotId, targetKnotId, global, trainingMaterialId, createdAt, modifiedAt);
   }
 
   @Override
@@ -211,6 +231,7 @@ public class Intent   {
     sb.append("class Intent {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    sourceKnotId: ").append(toIndentedString(sourceKnotId)).append("\n");
     sb.append("    targetKnotId: ").append(toIndentedString(targetKnotId)).append("\n");
