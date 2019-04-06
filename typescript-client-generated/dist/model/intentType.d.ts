@@ -9,8 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export declare type IntentType = 'OPENNLP' | 'TEMPLATE';
+export declare type IntentType = 'OPENNLP' | 'TEMPLATE' | 'CONFUSED';
 export declare const IntentType: {
     OPENNLP: IntentType;
     TEMPLATE: IntentType;
+    CONFUSED: IntentType;
 };

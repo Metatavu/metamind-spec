@@ -22,7 +22,7 @@ export interface Variable {
     /**
      * Story id
      */
-    storyId: string;
+    readonly storyId?: string;
     /**
      * Validation script
      */
@@ -46,7 +46,7 @@ export interface VariableOpt {
     /**
      * Story id
      */
-    storyId?: string;
+    readonly storyId?: string;
     /**
      * Validation script
      */

@@ -13,5 +13,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IntentType = {
     OPENNLP: 'OPENNLP',
-    TEMPLATE: 'TEMPLATE'
+    TEMPLATE: 'TEMPLATE',
+    CONFUSED: 'CONFUSED'
 };
