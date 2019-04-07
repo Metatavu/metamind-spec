@@ -1,5 +1,6 @@
 import { ErrorResponse } from '../model/errorResponse';
 import { TrainingMaterial } from '../model/trainingMaterial';
+import { TrainingMaterialType } from '../model/trainingMaterialType';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
@@ -82,11 +83,15 @@ export class TrainingMaterialsService {
    * List training materials
    * @summary List trainingMaterials
    * @param storyId story id
+   * @param type training material type
   */
-  public listTrainingMaterials(storyId?: string, ):Promise<Array<TrainingMaterial>> {
+  public listTrainingMaterials(storyId?: string, type?: TrainingMaterialType, ):Promise<Array<TrainingMaterial>> {
     const uri = new URI(`${this.basePath}/trainingMaterials`);
     if (storyId !== undefined && storyId !== null) {
         uri.addQuery('storyId', <any>storyId);
+    }
+    if (type !== undefined && type !== null) {
+        uri.addQuery('type', <any>type);
     }
     const options = {
       method: "get",

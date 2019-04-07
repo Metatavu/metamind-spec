@@ -1,4 +1,4 @@
-## metamind-client@2.0.10
+## metamind-client@2.0.11
 
 ### Building
 
@@ -19,7 +19,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```
-npm install metamind-client@2.0.10 --save
+npm install metamind-client@2.0.11 --save
 ```
 
 _without publishing (not recommended):_

@@ -28,7 +28,7 @@ export interface Intent {
      */
     targetKnotId: string;
     global: boolean;
-    trainingMaterials?: IntentTrainingMaterials;
+    trainingMaterials: IntentTrainingMaterials;
     /**
      * Creation time
      */
