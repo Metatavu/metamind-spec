@@ -1,5 +1,6 @@
 export * from './errorResponse';
 export * from './intent';
+export * from './intentTrainingMaterials';
 export * from './intentType';
 export * from './knot';
 export * from './knotType';
@@ -8,5 +9,6 @@ export * from './script';
 export * from './session';
 export * from './story';
 export * from './trainingMaterial';
+export * from './trainingMaterialType';
 export * from './variable';
 export * from './variableType';

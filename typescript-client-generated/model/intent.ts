@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { IntentTrainingMaterials } from './intentTrainingMaterials';
 import { IntentType } from './intentType';
 
 
@@ -29,10 +30,7 @@ export interface Intent {
      */
     targetKnotId: string;
     global: boolean;
-    /**
-     * training material id
-     */
-    trainingMaterialId?: string;
+    trainingMaterials?: IntentTrainingMaterials;
     /**
      * Creation time
      */
@@ -59,10 +57,7 @@ export interface IntentOpt {
      */
     targetKnotId?: string;
     global?: boolean;
-    /**
-     * training material id
-     */
-    trainingMaterialId?: string;
+    trainingMaterials?: IntentTrainingMaterials;
     /**
      * Creation time
      */

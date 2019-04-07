@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { TrainingMaterialType } from './trainingMaterialType';
 
 
 export interface TrainingMaterial { 
@@ -16,6 +17,7 @@ export interface TrainingMaterial {
      * intent id.
      */
     readonly id?: string;
+    type?: TrainingMaterialType;
     storyId?: string;
     text: string;
     name: string;
@@ -33,6 +35,7 @@ export interface TrainingMaterialOpt {
      * intent id.
      */
     readonly id?: string;
+    type?: TrainingMaterialType;
     storyId?: string;
     text?: string;
     name?: string;
