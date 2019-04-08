@@ -563,7 +563,7 @@
             "content" : {
               "application/json;charset=utf-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Story"
+                  "$ref" : "#/components/schemas/Knot"
                 }
               }
             }
@@ -1481,6 +1481,16 @@
             "type" : "string",
             "format" : "uuid"
           }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "training material type",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/TrainingMaterialType"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -2165,7 +2175,7 @@
         }
       },
       "Session" : {
-        "required" : [ "locale", "storyId", "timeZone", "type", "visitor" ],
+        "required" : [ "locale", "timeZone", "type", "visitor" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2189,7 +2199,8 @@
           "storyId" : {
             "type" : "string",
             "description" : "Story id",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "createdAt" : {
             "type" : "string",
@@ -2224,6 +2235,9 @@
           "content" : {
             "type" : "string"
           },
+          "hint" : {
+            "type" : "string"
+          },
           "storyId" : {
             "type" : "string",
             "description" : "Story id",
@@ -2249,7 +2263,7 @@
         "enum" : [ "TEXT", "SCRIPT", "IMAGE", "EMAIL" ]
       },
       "Intent" : {
-        "required" : [ "global", "targetKnotId", "type" ],
+        "required" : [ "global", "targetKnotId", "trainingMaterials", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2259,6 +2273,9 @@
             "readOnly" : true
           },
           "name" : {
+            "type" : "string"
+          },
+          "quickResponse" : {
             "type" : "string"
           },
           "type" : {
@@ -2277,10 +2294,8 @@
           "global" : {
             "type" : "boolean"
           },
-          "trainingMaterialId" : {
-            "type" : "string",
-            "description" : "training material id",
-            "format" : "uuid"
+          "trainingMaterials" : {
+            "$ref" : "#/components/schemas/Intent_trainingMaterials"
           },
           "createdAt" : {
             "type" : "string",
@@ -2298,7 +2313,7 @@
       },
       "IntentType" : {
         "type" : "string",
-        "enum" : [ "OPENNLP", "TEMPLATE" ]
+        "enum" : [ "OPENNLP", "TEMPLATE", "CONFUSED" ]
       },
       "TrainingMaterial" : {
         "required" : [ "name", "text" ],
@@ -2308,6 +2323,9 @@
             "description" : "intent id.",
             "format" : "uuid",
             "readOnly" : true
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/TrainingMaterialType"
           },
           "storyId" : {
             "type" : "string",
@@ -2333,8 +2351,12 @@
           }
         }
       },
+      "TrainingMaterialType" : {
+        "type" : "string",
+        "enum" : [ "OPENNLPNER", "OPENNLPDOCCAT" ]
+      },
       "Message" : {
-        "required" : [ "content", "sessionId", "sourceKnotId" ],
+        "required" : [ "content", "sessionId" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2382,7 +2404,8 @@
           "sourceKnotId" : {
             "type" : "string",
             "description" : "source knot id id.",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "matchedIntentId" : {
             "type" : "string",
@@ -2405,7 +2428,7 @@
         }
       },
       "Variable" : {
-        "required" : [ "name", "storyId", "type" ],
+        "required" : [ "name", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2423,7 +2446,8 @@
           "storyId" : {
             "type" : "string",
             "description" : "Story id",
-            "format" : "uuid"
+            "format" : "uuid",
+            "readOnly" : true
           },
           "validationScript" : {
             "type" : "string",
@@ -2494,6 +2518,21 @@
             "type" : "string",
             "description" : "The error message",
             "readOnly" : true
+          }
+        }
+      },
+      "Intent_trainingMaterials" : {
+        "type" : "object",
+        "properties" : {
+          "openNlpNerId" : {
+            "type" : "string",
+            "description" : "OpenNLP NER training material id",
+            "format" : "uuid"
+          },
+          "openNlpDoccatId" : {
+            "type" : "string",
+            "description" : "OpenNLP Doccat training material id",
+            "format" : "uuid"
           }
         }
       }

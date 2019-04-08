@@ -969,6 +969,12 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: type
+          required: false
+          in: query
+          description: training material type
+          schema:
+            $ref: "#/components/schemas/TrainingMaterialType"
       responses:
         "200":
           description: TrainingMaterials
@@ -1480,6 +1486,8 @@ components:
           type: string
         content:
           type: string
+        hint:
+          type: string
         storyId:
           description: Story id
           type: string
@@ -1510,6 +1518,7 @@ components:
         - type
         - targetKnotId
         - global
+        - trainingMaterials
       properties:
         id:
           description: intent id.
@@ -1532,10 +1541,17 @@ components:
           format: uuid
         global:
           type: boolean
-        trainingMaterialId:
-          description: training material id
-          type: string
-          format: uuid
+        trainingMaterials:
+          type: object
+          properties:
+            openNlpNerId:
+              description: OpenNLP NER training material id
+              type: string
+              format: uuid
+            openNlpDoccatId:
+              description: OpenNLP Doccat training material id
+              type: string
+              format: uuid
         createdAt:
           description: Creation time
           type: string
@@ -1564,6 +1580,8 @@ components:
           type: string
           format: uuid
           readOnly: true
+        type: 
+          $ref: "#/components/schemas/TrainingMaterialType"
         storyId:
           type: string
           format: uuid
@@ -1581,6 +1599,12 @@ components:
           type: string
           format: date-time
           readOnly: true
+          
+    TrainingMaterialType:
+      type: string
+      enum:
+        - OPENNLPNER
+        - OPENNLPDOCCAT
 
     Message:
       type: object
@@ -1648,7 +1672,6 @@ components:
       required:
         - name
         - type
-        - storyId
       properties:
         id:
           description: variable id.
@@ -1663,6 +1686,7 @@ components:
           description: Story id
           type: string
           format: uuid
+          readOnly: true
         validationScript:
           type: string
           description: Validation script

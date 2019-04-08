@@ -20,11 +20,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class Intent   {
   private @Valid UUID id = null;
   private @Valid String name = null;
+  private @Valid String quickResponse = null;
   private @Valid IntentType type = null;
   private @Valid UUID sourceKnotId = null;
   private @Valid UUID targetKnotId = null;
   private @Valid Boolean global = null;
-  private @Valid UUID trainingMaterialId = null;
+  private @Valid IntentTrainingMaterials trainingMaterials = null;
   private @Valid OffsetDateTime createdAt = null;
   private @Valid OffsetDateTime modifiedAt = null;
 
@@ -63,6 +64,24 @@ public class Intent   {
   }
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   **/
+  public Intent quickResponse(String quickResponse) {
+    this.quickResponse = quickResponse;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("quickResponse")
+
+  public String getQuickResponse() {
+    return quickResponse;
+  }
+  public void setQuickResponse(String quickResponse) {
+    this.quickResponse = quickResponse;
   }
 
   /**
@@ -143,22 +162,22 @@ public class Intent   {
   }
 
   /**
-   * training material id
    **/
-  public Intent trainingMaterialId(UUID trainingMaterialId) {
-    this.trainingMaterialId = trainingMaterialId;
+  public Intent trainingMaterials(IntentTrainingMaterials trainingMaterials) {
+    this.trainingMaterials = trainingMaterials;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "training material id")
-  @JsonProperty("trainingMaterialId")
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("trainingMaterials")
+  @NotNull
 
-  public UUID getTrainingMaterialId() {
-    return trainingMaterialId;
+  public IntentTrainingMaterials getTrainingMaterials() {
+    return trainingMaterials;
   }
-  public void setTrainingMaterialId(UUID trainingMaterialId) {
-    this.trainingMaterialId = trainingMaterialId;
+  public void setTrainingMaterials(IntentTrainingMaterials trainingMaterials) {
+    this.trainingMaterials = trainingMaterials;
   }
 
   /**
@@ -211,18 +230,19 @@ public class Intent   {
     Intent intent = (Intent) o;
     return Objects.equals(id, intent.id) &&
         Objects.equals(name, intent.name) &&
+        Objects.equals(quickResponse, intent.quickResponse) &&
         Objects.equals(type, intent.type) &&
         Objects.equals(sourceKnotId, intent.sourceKnotId) &&
         Objects.equals(targetKnotId, intent.targetKnotId) &&
         Objects.equals(global, intent.global) &&
-        Objects.equals(trainingMaterialId, intent.trainingMaterialId) &&
+        Objects.equals(trainingMaterials, intent.trainingMaterials) &&
         Objects.equals(createdAt, intent.createdAt) &&
         Objects.equals(modifiedAt, intent.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, type, sourceKnotId, targetKnotId, global, trainingMaterialId, createdAt, modifiedAt);
+    return Objects.hash(id, name, quickResponse, type, sourceKnotId, targetKnotId, global, trainingMaterials, createdAt, modifiedAt);
   }
 
   @Override
@@ -232,11 +252,12 @@ public class Intent   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    quickResponse: ").append(toIndentedString(quickResponse)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    sourceKnotId: ").append(toIndentedString(sourceKnotId)).append("\n");
     sb.append("    targetKnotId: ").append(toIndentedString(targetKnotId)).append("\n");
     sb.append("    global: ").append(toIndentedString(global)).append("\n");
-    sb.append("    trainingMaterialId: ").append(toIndentedString(trainingMaterialId)).append("\n");
+    sb.append("    trainingMaterials: ").append(toIndentedString(trainingMaterials)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");

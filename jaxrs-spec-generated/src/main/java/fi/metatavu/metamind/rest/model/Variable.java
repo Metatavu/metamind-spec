@@ -92,9 +92,8 @@ public class Variable   {
   }
 
   
-  //@ApiModelProperty(required = true, value = "Story id")
+  //@ApiModelProperty(value = "Story id")
   @JsonProperty("storyId")
-  @NotNull
 
   public UUID getStoryId() {
     return storyId;

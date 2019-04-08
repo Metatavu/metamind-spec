@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/trainingMaterials")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-04T17:05:59.089+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-08T07:21:57.983+03:00[Europe/Helsinki]")
 public interface TrainingMaterialsApi {
 
     @POST
@@ -77,6 +77,9 @@ public interface TrainingMaterialsApi {
     Response listTrainingMaterials(  @QueryParam("storyId") 
 
  @Parameter(description = "story id")  UUID storyId
+,  @QueryParam("type") 
+
+ @Parameter(description = "training material type")  TrainingMaterialType type
 );
     @PUT
     @Path("/{trainingMaterialId}")

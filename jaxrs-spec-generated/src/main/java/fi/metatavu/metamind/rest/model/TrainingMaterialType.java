@@ -13,16 +13,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets IntentType
+ * Gets or Sets TrainingMaterialType
  */
-public enum IntentType {
-  OPENNLP("OPENNLP"),
-    TEMPLATE("TEMPLATE"),
-    CONFUSED("CONFUSED");
+public enum TrainingMaterialType {
+  OPENNLPNER("OPENNLPNER"),
+    OPENNLPDOCCAT("OPENNLPDOCCAT");
 
   private String value;
 
-  IntentType(String value) {
+  TrainingMaterialType(String value) {
     this.value = value;
   }
 
@@ -33,8 +32,8 @@ public enum IntentType {
   }
 
   @JsonCreator
-  public static IntentType fromValue(String text) {
-    for (IntentType b : IntentType.values()) {
+  public static TrainingMaterialType fromValue(String text) {
+    for (TrainingMaterialType b : TrainingMaterialType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

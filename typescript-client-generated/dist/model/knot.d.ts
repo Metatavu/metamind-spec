@@ -18,6 +18,7 @@ export interface Knot {
     type: KnotType;
     name: string;
     content: string;
+    hint?: string;
     /**
      * Story id
      */
@@ -39,6 +40,7 @@ export interface KnotOpt {
     type?: KnotType;
     name?: string;
     content?: string;
+    hint?: string;
     /**
      * Story id
      */

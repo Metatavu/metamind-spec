@@ -174,9 +174,8 @@ public class Message   {
   }
 
   
-  //@ApiModelProperty(required = true, value = "source knot id id.")
+  //@ApiModelProperty(value = "source knot id id.")
   @JsonProperty("sourceKnotId")
-  @NotNull
 
   public UUID getSourceKnotId() {
     return sourceKnotId;

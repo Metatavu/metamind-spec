@@ -22,6 +22,7 @@ public class Knot   {
   private @Valid KnotType type = null;
   private @Valid String name = null;
   private @Valid String content = null;
+  private @Valid String hint = null;
   private @Valid UUID storyId = null;
   private @Valid OffsetDateTime createdAt = null;
   private @Valid OffsetDateTime modifiedAt = null;
@@ -103,6 +104,24 @@ public class Knot   {
   }
 
   /**
+   **/
+  public Knot hint(String hint) {
+    this.hint = hint;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("hint")
+
+  public String getHint() {
+    return hint;
+  }
+  public void setHint(String hint) {
+    this.hint = hint;
+  }
+
+  /**
    * Story id
    **/
   public Knot storyId(UUID storyId) {
@@ -173,6 +192,7 @@ public class Knot   {
         Objects.equals(type, knot.type) &&
         Objects.equals(name, knot.name) &&
         Objects.equals(content, knot.content) &&
+        Objects.equals(hint, knot.hint) &&
         Objects.equals(storyId, knot.storyId) &&
         Objects.equals(createdAt, knot.createdAt) &&
         Objects.equals(modifiedAt, knot.modifiedAt);
@@ -180,7 +200,7 @@ public class Knot   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, name, content, storyId, createdAt, modifiedAt);
+    return Objects.hash(id, type, name, content, hint, storyId, createdAt, modifiedAt);
   }
 
   @Override
@@ -192,6 +212,7 @@ public class Knot   {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
+    sb.append("    hint: ").append(toIndentedString(hint)).append("\n");
     sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
