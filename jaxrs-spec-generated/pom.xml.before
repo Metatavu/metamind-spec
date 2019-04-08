@@ -4,9 +4,9 @@
   <artifactId>metamind-api-spec</artifactId>
   <packaging>jar</packaging>
   <name>metamind-api-spec</name>
-  <version>2.0.0</version>
+  <version>2.0.1-SNAPSHOT</version>
   <description>Specifications for Metamind API</description>
-  <url>https://github.com/Metatavu/metamind-api-spec</url>
+  <url>https://github.com/Metatavu/metamind-spec</url>
 
   <licenses>
     <license>
@@ -26,14 +26,14 @@
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/Metatavu/metamind-api-spec/issues</url>
+    <url>https://github.com/Metatavu/metamind-spec/issues</url>
   </issueManagement>
 
   <scm>
-    <developerConnection>scm:git:git@github.com:Metatavu/metamind-api-spec.git</developerConnection>
-    <url>git@github.com:Metatavu/metamind-api-spec.git</url>
-    <connection>scm:git:git@github.com:Metatavu/metamind-api-spec.git</connection>
-    <tag>2.0.0</tag>
+    <developerConnection>scm:git:git@github.com:Metatavu/metamind-spec.git</developerConnection>
+    <url>git@github.com:Metatavu/metamind-spec.git</url>
+    <connection>scm:git:git@github.com:Metatavu/metamind-spec.git</connection>
+    <tag>HEAD</tag>
   </scm>
 
   <organization>

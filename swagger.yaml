@@ -1544,12 +1544,16 @@ components:
         trainingMaterials:
           type: object
           properties:
-            openNlpNerId:
-              description: OpenNLP NER training material id
+            intentOpenNlpDoccatId:
+              description: Intent OpenNLP Doccat training material id
               type: string
               format: uuid
-            openNlpDoccatId:
-              description: OpenNLP Doccat training material id
+            intentRegexId:
+              description: Intent regex training material id
+              type: string
+              format: uuid
+            variableOpenNlpNerId:
+              description: Variable OpenNLP NER training material id
               type: string
               format: uuid
         createdAt:
@@ -1603,9 +1607,9 @@ components:
     TrainingMaterialType:
       type: string
       enum:
-        - OPENNLPNER
-        - OPENNLPREGEX
-        - OPENNLPDOCCAT
+        - INTENTREGEX
+        - VARIABLEOPENNLPNER
+        - INTENTOPENNLPDOCCAT
 
     Message:
       type: object
