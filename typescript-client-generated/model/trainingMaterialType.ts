@@ -11,9 +11,10 @@
  */
 
 
-export type TrainingMaterialType = 'OPENNLPNER' | 'OPENNLPDOCCAT';
+export type TrainingMaterialType = 'INTENTREGEX' | 'VARIABLEOPENNLPNER' | 'INTENTOPENNLPDOCCAT';
 
 export const TrainingMaterialType = {
-    OPENNLPNER: 'OPENNLPNER' as TrainingMaterialType,
-    OPENNLPDOCCAT: 'OPENNLPDOCCAT' as TrainingMaterialType
+    INTENTREGEX: 'INTENTREGEX' as TrainingMaterialType,
+    VARIABLEOPENNLPNER: 'VARIABLEOPENNLPNER' as TrainingMaterialType,
+    INTENTOPENNLPDOCCAT: 'INTENTOPENNLPDOCCAT' as TrainingMaterialType
 };

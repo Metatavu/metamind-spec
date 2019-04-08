@@ -13,21 +13,29 @@
 
 export interface IntentTrainingMaterials { 
     /**
-     * OpenNLP NER training material id
+     * Intent OpenNLP Doccat training material id
      */
-    openNlpNerId?: string;
+    intentOpenNlpDoccatId?: string;
     /**
-     * OpenNLP Doccat training material id
+     * Intent regex training material id
      */
-    openNlpDoccatId?: string;
+    intentRegexId?: string;
+    /**
+     * Variable OpenNLP NER training material id
+     */
+    variableOpenNlpNerId?: string;
 }
 export interface IntentTrainingMaterialsOpt { 
     /**
-     * OpenNLP NER training material id
+     * Intent OpenNLP Doccat training material id
      */
-    openNlpNerId?: string;
+    intentOpenNlpDoccatId?: string;
     /**
-     * OpenNLP Doccat training material id
+     * Intent regex training material id
      */
-    openNlpDoccatId?: string;
+    intentRegexId?: string;
+    /**
+     * Variable OpenNLP NER training material id
+     */
+    variableOpenNlpNerId?: string;
 }
