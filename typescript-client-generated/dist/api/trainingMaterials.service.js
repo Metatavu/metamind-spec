@@ -66,11 +66,15 @@ var TrainingMaterialsService = /** @class */ (function () {
      * List training materials
      * @summary List trainingMaterials
      * @param storyId story id
+     * @param type training material type
     */
-    TrainingMaterialsService.prototype.listTrainingMaterials = function (storyId) {
+    TrainingMaterialsService.prototype.listTrainingMaterials = function (storyId, type) {
         var uri = new URI(this.basePath + "/trainingMaterials");
         if (storyId !== undefined && storyId !== null) {
             uri.addQuery('storyId', storyId);
+        }
+        if (type !== undefined && type !== null) {
+            uri.addQuery('type', type);
         }
         var options = {
             method: "get",

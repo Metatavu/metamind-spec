@@ -1,4 +1,5 @@
 import { TrainingMaterial } from '../model/trainingMaterial';
+import { TrainingMaterialType } from '../model/trainingMaterialType';
 export declare class TrainingMaterialsService {
     private token;
     private basePath;
@@ -25,8 +26,9 @@ export declare class TrainingMaterialsService {
      * List training materials
      * @summary List trainingMaterials
      * @param storyId story id
+     * @param type training material type
     */
-    listTrainingMaterials(storyId?: string): Promise<Array<TrainingMaterial>>;
+    listTrainingMaterials(storyId?: string, type?: TrainingMaterialType): Promise<Array<TrainingMaterial>>;
     /**
      * Updates a training material
      * @summary Updates trainingMaterial
