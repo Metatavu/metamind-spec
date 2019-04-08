@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/scripts")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-08T07:21:57.983+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-08T07:36:38.440+03:00[Europe/Helsinki]")
 public interface ScriptsApi {
 
     @POST
