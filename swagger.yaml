@@ -1556,6 +1556,10 @@ components:
               description: Variable OpenNLP NER training material id
               type: string
               format: uuid
+            variableOpenNlpRegex:
+              description: Variable OpenNLP Regex training material id
+              type: string
+              format: uuid
         createdAt:
           description: Creation time
           type: string
@@ -1608,8 +1612,9 @@ components:
       type: string
       enum:
         - INTENTREGEX
-        - VARIABLEOPENNLPNER
         - INTENTOPENNLPDOCCAT
+        - VARIABLEOPENNLPNER
+        - VARIABLEOPENNLPREGEX
 
     Message:
       type: object

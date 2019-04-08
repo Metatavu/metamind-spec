@@ -2353,7 +2353,7 @@
       },
       "TrainingMaterialType" : {
         "type" : "string",
-        "enum" : [ "REGEX", "OPENNLPNER", "OPENNLPREGEX", "OPENNLPDOCCAT" ]
+        "enum" : [ "INTENTREGEX", "INTENTOPENNLPDOCCAT", "VARIABLEOPENNLPNER", "VARIABLEOPENNLPREGEX" ]
       },
       "Message" : {
         "required" : [ "content", "sessionId" ],
@@ -2524,14 +2524,24 @@
       "Intent_trainingMaterials" : {
         "type" : "object",
         "properties" : {
-          "openNlpNerId" : {
+          "intentOpenNlpDoccatId" : {
             "type" : "string",
-            "description" : "OpenNLP NER training material id",
+            "description" : "Intent OpenNLP Doccat training material id",
             "format" : "uuid"
           },
-          "openNlpDoccatId" : {
+          "intentRegexId" : {
             "type" : "string",
-            "description" : "OpenNLP Doccat training material id",
+            "description" : "Intent regex training material id",
+            "format" : "uuid"
+          },
+          "variableOpenNlpNerId" : {
+            "type" : "string",
+            "description" : "Variable OpenNLP NER training material id",
+            "format" : "uuid"
+          },
+          "variableOpenNlpRegex" : {
+            "type" : "string",
+            "description" : "Variable OpenNLP Regex training material id",
             "format" : "uuid"
           }
         }

@@ -16,10 +16,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets TrainingMaterialType
  */
 public enum TrainingMaterialType {
-  REGEX("REGEX"),
-    OPENNLPNER("OPENNLPNER"),
-    OPENNLPREGEX("OPENNLPREGEX"),
-    OPENNLPDOCCAT("OPENNLPDOCCAT");
+  INTENTREGEX("INTENTREGEX"),
+    INTENTOPENNLPDOCCAT("INTENTOPENNLPDOCCAT"),
+    VARIABLEOPENNLPNER("VARIABLEOPENNLPNER"),
+    VARIABLEOPENNLPREGEX("VARIABLEOPENNLPREGEX");
 
   private String value;
 

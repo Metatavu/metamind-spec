@@ -18,45 +18,85 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 public class IntentTrainingMaterials   {
-  private @Valid UUID openNlpNerId = null;
-  private @Valid UUID openNlpDoccatId = null;
+  private @Valid UUID intentOpenNlpDoccatId = null;
+  private @Valid UUID intentRegexId = null;
+  private @Valid UUID variableOpenNlpNerId = null;
+  private @Valid UUID variableOpenNlpRegex = null;
 
   /**
-   * OpenNLP NER training material id
+   * Intent OpenNLP Doccat training material id
    **/
-  public IntentTrainingMaterials openNlpNerId(UUID openNlpNerId) {
-    this.openNlpNerId = openNlpNerId;
+  public IntentTrainingMaterials intentOpenNlpDoccatId(UUID intentOpenNlpDoccatId) {
+    this.intentOpenNlpDoccatId = intentOpenNlpDoccatId;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "OpenNLP NER training material id")
-  @JsonProperty("openNlpNerId")
+  //@ApiModelProperty(value = "Intent OpenNLP Doccat training material id")
+  @JsonProperty("intentOpenNlpDoccatId")
 
-  public UUID getOpenNlpNerId() {
-    return openNlpNerId;
+  public UUID getIntentOpenNlpDoccatId() {
+    return intentOpenNlpDoccatId;
   }
-  public void setOpenNlpNerId(UUID openNlpNerId) {
-    this.openNlpNerId = openNlpNerId;
+  public void setIntentOpenNlpDoccatId(UUID intentOpenNlpDoccatId) {
+    this.intentOpenNlpDoccatId = intentOpenNlpDoccatId;
   }
 
   /**
-   * OpenNLP Doccat training material id
+   * Intent regex training material id
    **/
-  public IntentTrainingMaterials openNlpDoccatId(UUID openNlpDoccatId) {
-    this.openNlpDoccatId = openNlpDoccatId;
+  public IntentTrainingMaterials intentRegexId(UUID intentRegexId) {
+    this.intentRegexId = intentRegexId;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "OpenNLP Doccat training material id")
-  @JsonProperty("openNlpDoccatId")
+  //@ApiModelProperty(value = "Intent regex training material id")
+  @JsonProperty("intentRegexId")
 
-  public UUID getOpenNlpDoccatId() {
-    return openNlpDoccatId;
+  public UUID getIntentRegexId() {
+    return intentRegexId;
   }
-  public void setOpenNlpDoccatId(UUID openNlpDoccatId) {
-    this.openNlpDoccatId = openNlpDoccatId;
+  public void setIntentRegexId(UUID intentRegexId) {
+    this.intentRegexId = intentRegexId;
+  }
+
+  /**
+   * Variable OpenNLP NER training material id
+   **/
+  public IntentTrainingMaterials variableOpenNlpNerId(UUID variableOpenNlpNerId) {
+    this.variableOpenNlpNerId = variableOpenNlpNerId;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "Variable OpenNLP NER training material id")
+  @JsonProperty("variableOpenNlpNerId")
+
+  public UUID getVariableOpenNlpNerId() {
+    return variableOpenNlpNerId;
+  }
+  public void setVariableOpenNlpNerId(UUID variableOpenNlpNerId) {
+    this.variableOpenNlpNerId = variableOpenNlpNerId;
+  }
+
+  /**
+   * Variable OpenNLP Regex training material id
+   **/
+  public IntentTrainingMaterials variableOpenNlpRegex(UUID variableOpenNlpRegex) {
+    this.variableOpenNlpRegex = variableOpenNlpRegex;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "Variable OpenNLP Regex training material id")
+  @JsonProperty("variableOpenNlpRegex")
+
+  public UUID getVariableOpenNlpRegex() {
+    return variableOpenNlpRegex;
+  }
+  public void setVariableOpenNlpRegex(UUID variableOpenNlpRegex) {
+    this.variableOpenNlpRegex = variableOpenNlpRegex;
   }
 
 
@@ -69,13 +109,15 @@ public class IntentTrainingMaterials   {
       return false;
     }
     IntentTrainingMaterials intentTrainingMaterials = (IntentTrainingMaterials) o;
-    return Objects.equals(openNlpNerId, intentTrainingMaterials.openNlpNerId) &&
-        Objects.equals(openNlpDoccatId, intentTrainingMaterials.openNlpDoccatId);
+    return Objects.equals(intentOpenNlpDoccatId, intentTrainingMaterials.intentOpenNlpDoccatId) &&
+        Objects.equals(intentRegexId, intentTrainingMaterials.intentRegexId) &&
+        Objects.equals(variableOpenNlpNerId, intentTrainingMaterials.variableOpenNlpNerId) &&
+        Objects.equals(variableOpenNlpRegex, intentTrainingMaterials.variableOpenNlpRegex);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(openNlpNerId, openNlpDoccatId);
+    return Objects.hash(intentOpenNlpDoccatId, intentRegexId, variableOpenNlpNerId, variableOpenNlpRegex);
   }
 
   @Override
@@ -83,8 +125,10 @@ public class IntentTrainingMaterials   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntentTrainingMaterials {\n");
     
-    sb.append("    openNlpNerId: ").append(toIndentedString(openNlpNerId)).append("\n");
-    sb.append("    openNlpDoccatId: ").append(toIndentedString(openNlpDoccatId)).append("\n");
+    sb.append("    intentOpenNlpDoccatId: ").append(toIndentedString(intentOpenNlpDoccatId)).append("\n");
+    sb.append("    intentRegexId: ").append(toIndentedString(intentRegexId)).append("\n");
+    sb.append("    variableOpenNlpNerId: ").append(toIndentedString(variableOpenNlpNerId)).append("\n");
+    sb.append("    variableOpenNlpRegex: ").append(toIndentedString(variableOpenNlpRegex)).append("\n");
     sb.append("}");
     return sb.toString();
   }

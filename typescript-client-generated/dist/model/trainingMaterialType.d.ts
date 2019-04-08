@@ -9,9 +9,10 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export declare type TrainingMaterialType = 'INTENTREGEX' | 'VARIABLEOPENNLPNER' | 'INTENTOPENNLPDOCCAT';
+export declare type TrainingMaterialType = 'INTENTREGEX' | 'INTENTOPENNLPDOCCAT' | 'VARIABLEOPENNLPNER' | 'VARIABLEOPENNLPREGEX';
 export declare const TrainingMaterialType: {
     INTENTREGEX: TrainingMaterialType;
-    VARIABLEOPENNLPNER: TrainingMaterialType;
     INTENTOPENNLPDOCCAT: TrainingMaterialType;
+    VARIABLEOPENNLPNER: TrainingMaterialType;
+    VARIABLEOPENNLPREGEX: TrainingMaterialType;
 };
