@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum TrainingMaterialType {
   OPENNLPNER("OPENNLPNER"),
+    OPENNLPREGEX("OPENNLPREGEX"),
     OPENNLPDOCCAT("OPENNLPDOCCAT");
 
   private String value;

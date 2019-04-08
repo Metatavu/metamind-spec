@@ -2353,7 +2353,7 @@
       },
       "TrainingMaterialType" : {
         "type" : "string",
-        "enum" : [ "OPENNLPNER", "OPENNLPDOCCAT" ]
+        "enum" : [ "OPENNLPNER", "OPENNLPREGEX", "OPENNLPDOCCAT" ]
       },
       "Message" : {
         "required" : [ "content", "sessionId" ],
