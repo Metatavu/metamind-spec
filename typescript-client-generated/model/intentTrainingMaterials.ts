@@ -24,6 +24,10 @@ export interface IntentTrainingMaterials {
      * Variable OpenNLP NER training material id
      */
     variableOpenNlpNerId?: string;
+    /**
+     * Variable OpenNLP Regex training material id
+     */
+    variableOpenNlpRegex?: string;
 }
 export interface IntentTrainingMaterialsOpt { 
     /**
@@ -38,4 +42,8 @@ export interface IntentTrainingMaterialsOpt {
      * Variable OpenNLP NER training material id
      */
     variableOpenNlpNerId?: string;
+    /**
+     * Variable OpenNLP Regex training material id
+     */
+    variableOpenNlpRegex?: string;
 }

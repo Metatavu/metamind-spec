@@ -12,6 +12,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrainingMaterialType = {
-    OPENNLPNER: 'OPENNLPNER',
-    OPENNLPDOCCAT: 'OPENNLPDOCCAT'
+    INTENTREGEX: 'INTENTREGEX',
+    VARIABLEOPENNLPNER: 'VARIABLEOPENNLPNER',
+    INTENTOPENNLPDOCCAT: 'INTENTOPENNLPDOCCAT'
 };
