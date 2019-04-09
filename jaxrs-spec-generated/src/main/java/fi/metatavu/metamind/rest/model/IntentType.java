@@ -18,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum IntentType {
   OPENNLP("OPENNLP"),
     TEMPLATE("TEMPLATE"),
-    CONFUSED("CONFUSED");
+    CONFUSED("CONFUSED"),
+    REDIRECT("REDIRECT");
 
   private String value;
 

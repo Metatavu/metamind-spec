@@ -2313,7 +2313,7 @@
       },
       "IntentType" : {
         "type" : "string",
-        "enum" : [ "OPENNLP", "TEMPLATE", "CONFUSED" ]
+        "enum" : [ "OPENNLP", "TEMPLATE", "CONFUSED", "REDIRECT" ]
       },
       "TrainingMaterial" : {
         "required" : [ "name", "text" ],
