@@ -11,10 +11,11 @@
  */
 
 
-export type IntentType = 'OPENNLP' | 'TEMPLATE' | 'CONFUSED';
+export type IntentType = 'OPENNLP' | 'TEMPLATE' | 'CONFUSED' | 'REDIRECT';
 
 export const IntentType = {
     OPENNLP: 'OPENNLP' as IntentType,
     TEMPLATE: 'TEMPLATE' as IntentType,
-    CONFUSED: 'CONFUSED' as IntentType
+    CONFUSED: 'CONFUSED' as IntentType,
+    REDIRECT: 'REDIRECT' as IntentType
 };
