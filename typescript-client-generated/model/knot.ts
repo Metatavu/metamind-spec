@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { KnotType } from './knotType';
+import { TokenizerType } from './tokenizerType';
 
 
 export interface Knot { 
@@ -18,6 +19,7 @@ export interface Knot {
      */
     readonly id?: string;
     type: KnotType;
+    tokenizer: TokenizerType;
     name: string;
     content: string;
     hint?: string;
@@ -40,6 +42,7 @@ export interface KnotOpt {
      */
     readonly id?: string;
     type?: KnotType;
+    tokenizer?: TokenizerType;
     name?: string;
     content?: string;
     hint?: string;

@@ -11,6 +11,7 @@
  */
 import { IntentTrainingMaterials } from './intentTrainingMaterials';
 import { IntentType } from './intentType';
+import { Tokenizer } from './tokenizer';
 export interface Intent {
     /**
      * intent id.
@@ -19,6 +20,7 @@ export interface Intent {
     name?: string;
     quickResponse?: string;
     type: IntentType;
+    tokenizer?: Tokenizer;
     /**
      * source knot id id.
      */
@@ -46,6 +48,7 @@ export interface IntentOpt {
     name?: string;
     quickResponse?: string;
     type?: IntentType;
+    tokenizer?: Tokenizer;
     /**
      * source knot id id.
      */
