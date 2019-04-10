@@ -2217,7 +2217,7 @@
         }
       },
       "Knot" : {
-        "required" : [ "content", "name", "type" ],
+        "required" : [ "content", "name", "tokenizer", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2228,6 +2228,9 @@
           },
           "type" : {
             "$ref" : "#/components/schemas/KnotType"
+          },
+          "tokenizer" : {
+            "$ref" : "#/components/schemas/TokenizerType"
           },
           "name" : {
             "type" : "string"
@@ -2313,7 +2316,11 @@
       },
       "IntentType" : {
         "type" : "string",
-        "enum" : [ "OPENNLP", "TEMPLATE", "CONFUSED", "REDIRECT" ]
+        "enum" : [ "NORMAL", "CONFUSED", "REDIRECT", "DEFAULT" ]
+      },
+      "TokenizerType" : {
+        "type" : "string",
+        "enum" : [ "WHITESPACE", "UNTOKENIZED" ]
       },
       "TrainingMaterial" : {
         "required" : [ "name", "text" ],

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class Knot   {
   private @Valid UUID id = null;
   private @Valid KnotType type = null;
+  private @Valid TokenizerType tokenizer = null;
   private @Valid String name = null;
   private @Valid String content = null;
   private @Valid String hint = null;
@@ -63,6 +64,25 @@ public class Knot   {
   }
   public void setType(KnotType type) {
     this.type = type;
+  }
+
+  /**
+   **/
+  public Knot tokenizer(TokenizerType tokenizer) {
+    this.tokenizer = tokenizer;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("tokenizer")
+  @NotNull
+
+  public TokenizerType getTokenizer() {
+    return tokenizer;
+  }
+  public void setTokenizer(TokenizerType tokenizer) {
+    this.tokenizer = tokenizer;
   }
 
   /**
@@ -190,6 +210,7 @@ public class Knot   {
     Knot knot = (Knot) o;
     return Objects.equals(id, knot.id) &&
         Objects.equals(type, knot.type) &&
+        Objects.equals(tokenizer, knot.tokenizer) &&
         Objects.equals(name, knot.name) &&
         Objects.equals(content, knot.content) &&
         Objects.equals(hint, knot.hint) &&
@@ -200,7 +221,7 @@ public class Knot   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, name, content, hint, storyId, createdAt, modifiedAt);
+    return Objects.hash(id, type, tokenizer, name, content, hint, storyId, createdAt, modifiedAt);
   }
 
   @Override
@@ -210,6 +231,7 @@ public class Knot   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    tokenizer: ").append(toIndentedString(tokenizer)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    hint: ").append(toIndentedString(hint)).append("\n");

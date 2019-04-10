@@ -13,17 +13,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets IntentType
+ * Gets or Sets TokenizerType
  */
-public enum IntentType {
-  NORMAL("NORMAL"),
-    CONFUSED("CONFUSED"),
-    REDIRECT("REDIRECT"),
-    DEFAULT("DEFAULT");
+public enum TokenizerType {
+  WHITESPACE("WHITESPACE"),
+    UNTOKENIZED("UNTOKENIZED");
 
   private String value;
 
-  IntentType(String value) {
+  TokenizerType(String value) {
     this.value = value;
   }
 
@@ -34,8 +32,8 @@ public enum IntentType {
   }
 
   @JsonCreator
-  public static IntentType fromValue(String text) {
-    for (IntentType b : IntentType.values()) {
+  public static TokenizerType fromValue(String text) {
+    for (TokenizerType b : TokenizerType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
