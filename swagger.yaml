@@ -1574,10 +1574,10 @@ components:
     IntentType:
       type: string
       enum:
-        - OPENNLP
-        - TEMPLATE
+        - NORMAL
         - CONFUSED
         - REDIRECT
+        - DEFAULT
     
     TrainingMaterial:
       required:
