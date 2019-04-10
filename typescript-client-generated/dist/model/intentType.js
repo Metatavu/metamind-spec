@@ -12,8 +12,8 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IntentType = {
-    OPENNLP: 'OPENNLP',
-    TEMPLATE: 'TEMPLATE',
+    NORMAL: 'NORMAL',
     CONFUSED: 'CONFUSED',
-    REDIRECT: 'REDIRECT'
+    REDIRECT: 'REDIRECT',
+    DEFAULT: 'DEFAULT'
 };

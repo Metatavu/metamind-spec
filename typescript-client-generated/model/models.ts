@@ -8,6 +8,7 @@ export * from './message';
 export * from './script';
 export * from './session';
 export * from './story';
+export * from './tokenizer';
 export * from './trainingMaterial';
 export * from './trainingMaterialType';
 export * from './variable';
