@@ -1474,6 +1474,7 @@ components:
         - type
         - name
         - content
+        - tokenizer
       properties:
         id:
           description: knot id.
@@ -1482,6 +1483,8 @@ components:
           readOnly: true
         type: 
           $ref: "#/components/schemas/KnotType"
+        tokenizer:
+          $ref: "#/components/schemas/TokenizerType"          
         name:
           type: string
         content:
@@ -1578,7 +1581,13 @@ components:
         - CONFUSED
         - REDIRECT
         - DEFAULT
-    
+
+    TokenizerType:
+      type: string
+      enum:
+        - WHITESPACE
+        - UNTOKENIZED
+
     TrainingMaterial:
       required:
         - name
