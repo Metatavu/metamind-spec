@@ -21,6 +21,7 @@ public class Intent   {
   private @Valid UUID id = null;
   private @Valid String name = null;
   private @Valid String quickResponse = null;
+  private @Valid Integer quickResponseOrder = null;
   private @Valid IntentType type = null;
   private @Valid UUID sourceKnotId = null;
   private @Valid UUID targetKnotId = null;
@@ -82,6 +83,25 @@ public class Intent   {
   }
   public void setQuickResponse(String quickResponse) {
     this.quickResponse = quickResponse;
+  }
+
+  /**
+   **/
+  public Intent quickResponseOrder(Integer quickResponseOrder) {
+    this.quickResponseOrder = quickResponseOrder;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("quickResponseOrder")
+  @NotNull
+
+  public Integer getQuickResponseOrder() {
+    return quickResponseOrder;
+  }
+  public void setQuickResponseOrder(Integer quickResponseOrder) {
+    this.quickResponseOrder = quickResponseOrder;
   }
 
   /**
@@ -231,6 +251,7 @@ public class Intent   {
     return Objects.equals(id, intent.id) &&
         Objects.equals(name, intent.name) &&
         Objects.equals(quickResponse, intent.quickResponse) &&
+        Objects.equals(quickResponseOrder, intent.quickResponseOrder) &&
         Objects.equals(type, intent.type) &&
         Objects.equals(sourceKnotId, intent.sourceKnotId) &&
         Objects.equals(targetKnotId, intent.targetKnotId) &&
@@ -242,7 +263,7 @@ public class Intent   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, quickResponse, type, sourceKnotId, targetKnotId, global, trainingMaterials, createdAt, modifiedAt);
+    return Objects.hash(id, name, quickResponse, quickResponseOrder, type, sourceKnotId, targetKnotId, global, trainingMaterials, createdAt, modifiedAt);
   }
 
   @Override
@@ -253,6 +274,7 @@ public class Intent   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quickResponse: ").append(toIndentedString(quickResponse)).append("\n");
+    sb.append("    quickResponseOrder: ").append(toIndentedString(quickResponseOrder)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    sourceKnotId: ").append(toIndentedString(sourceKnotId)).append("\n");
     sb.append("    targetKnotId: ").append(toIndentedString(targetKnotId)).append("\n");

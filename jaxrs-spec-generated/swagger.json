@@ -2274,7 +2274,7 @@
         "enum" : [ "TEXT", "SCRIPT", "IMAGE", "EMAIL" ]
       },
       "Intent" : {
-        "required" : [ "global", "targetKnotId", "trainingMaterials", "type" ],
+        "required" : [ "global", "quickResponseOrder", "targetKnotId", "trainingMaterials", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2288,6 +2288,10 @@
           },
           "quickResponse" : {
             "type" : "string"
+          },
+          "quickResponseOrder" : {
+            "type" : "integer",
+            "format" : "int32"
           },
           "type" : {
             "$ref" : "#/components/schemas/IntentType"
