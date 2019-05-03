@@ -25,6 +25,10 @@ export interface Story {
      */
     locale: string;
     /**
+     * List of story global quick responses.
+     */
+    readonly quickResponses?: Array<string>;
+    /**
      * Creation time
      */
     readonly createdAt?: Date;
@@ -46,6 +50,10 @@ export interface StoryOpt {
      * Story locale.
      */
     locale?: string;
+    /**
+     * List of story global quick responses.
+     */
+    readonly quickResponses?: Array<string>;
     /**
      * Creation time
      */
