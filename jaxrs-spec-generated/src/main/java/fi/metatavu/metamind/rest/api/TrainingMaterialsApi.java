@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/trainingMaterials")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-10T16:13:20.589+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-03T10:17:51.616+03:00[Europe/Helsinki]")
 public interface TrainingMaterialsApi {
 
     @POST

@@ -2160,6 +2160,14 @@
             "type" : "string",
             "description" : "Story locale."
           },
+          "quickResponses" : {
+            "type" : "array",
+            "description" : "List of story global quick responses.",
+            "readOnly" : true,
+            "items" : {
+              "type" : "string"
+            }
+          },
           "createdAt" : {
             "type" : "string",
             "description" : "Creation time",

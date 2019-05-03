@@ -21,6 +21,7 @@ public class Story   {
   private @Valid UUID id = null;
   private @Valid String name = null;
   private @Valid String locale = null;
+  private @Valid List<String> quickResponses = new ArrayList<>();
   private @Valid OffsetDateTime createdAt = null;
   private @Valid OffsetDateTime modifiedAt = null;
 
@@ -84,6 +85,25 @@ public class Story   {
   }
 
   /**
+   * List of story global quick responses.
+   **/
+  public Story quickResponses(List<String> quickResponses) {
+    this.quickResponses = quickResponses;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "List of story global quick responses.")
+  @JsonProperty("quickResponses")
+
+  public List<String> getQuickResponses() {
+    return quickResponses;
+  }
+  public void setQuickResponses(List<String> quickResponses) {
+    this.quickResponses = quickResponses;
+  }
+
+  /**
    * Creation time
    **/
   public Story createdAt(OffsetDateTime createdAt) {
@@ -134,13 +154,14 @@ public class Story   {
     return Objects.equals(id, story.id) &&
         Objects.equals(name, story.name) &&
         Objects.equals(locale, story.locale) &&
+        Objects.equals(quickResponses, story.quickResponses) &&
         Objects.equals(createdAt, story.createdAt) &&
         Objects.equals(modifiedAt, story.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, locale, createdAt, modifiedAt);
+    return Objects.hash(id, name, locale, quickResponses, createdAt, modifiedAt);
   }
 
   @Override
@@ -151,6 +172,7 @@ public class Story   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    quickResponses: ").append(toIndentedString(quickResponses)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
