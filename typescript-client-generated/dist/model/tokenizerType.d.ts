@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export declare type Tokenizer = 'WHITESPACE' | 'UNTOKENIZED';
-export declare const Tokenizer: {
-    WHITESPACE: import("./tokenizerType").TokenizerType;
-    UNTOKENIZED: import("./tokenizerType").TokenizerType;
+export declare type TokenizerType = 'WHITESPACE' | 'UNTOKENIZED';
+export declare const TokenizerType: {
+    WHITESPACE: TokenizerType;
+    UNTOKENIZED: TokenizerType;
 };

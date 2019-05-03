@@ -10,12 +10,14 @@
  * Do not edit the class manually.
  */
 import { KnotType } from './knotType';
+import { TokenizerType } from './tokenizerType';
 export interface Knot {
     /**
      * knot id.
      */
     readonly id?: string;
     type: KnotType;
+    tokenizer: TokenizerType;
     name: string;
     content: string;
     hint?: string;
@@ -38,6 +40,7 @@ export interface KnotOpt {
      */
     readonly id?: string;
     type?: KnotType;
+    tokenizer?: TokenizerType;
     name?: string;
     content?: string;
     hint?: string;

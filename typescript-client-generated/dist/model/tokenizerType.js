@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Metamind API
  * Brain spec for Metamind.
@@ -9,8 +10,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export declare type Tokenizer = 'WHITESPACE' | 'UNTOKENIZED';
-export declare const Tokenizer: {
-    WHITESPACE: import("./tokenizerType").TokenizerType;
-    UNTOKENIZED: import("./tokenizerType").TokenizerType;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TokenizerType = {
+    WHITESPACE: 'WHITESPACE',
+    UNTOKENIZED: 'UNTOKENIZED'
 };
