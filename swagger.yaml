@@ -1528,6 +1528,7 @@ components:
         - targetKnotId
         - global
         - trainingMaterials
+        - quickResponseOrder
       properties:
         id:
           description: intent id.
@@ -1538,6 +1539,8 @@ components:
           type: string
         quickResponse:
           type: string
+        quickResponseOrder:
+          type: number
         type: 
           $ref: "#/components/schemas/IntentType"
         sourceKnotId:
