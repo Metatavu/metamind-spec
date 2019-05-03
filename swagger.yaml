@@ -1419,6 +1419,12 @@ components:
         locale:
           description: Story locale.
           type: string
+        quickResponses:
+          description: List of story global quick responses.
+          type: array
+          items:
+            type: string
+          readOnly: true
         createdAt:
           description: Creation time
           type: string
