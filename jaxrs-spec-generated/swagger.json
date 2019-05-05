@@ -2446,12 +2446,15 @@
           }
         }
       },
+      "MessageResponseType" : {
+        "type" : "string",
+        "enum" : [ "TEXT", "IMAGE" ]
+      },
       "MessageResponse" : {
         "type" : "object",
         "properties" : {
           "type" : {
-            "type" : "string",
-            "enum" : [ "TEXT", "IMAGE" ]
+            "$ref" : "#/components/schemas/MessageResponseType"
           },
           "content" : {
             "type" : "string"

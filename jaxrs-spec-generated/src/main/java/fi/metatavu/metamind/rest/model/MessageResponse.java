@@ -18,43 +18,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 public class MessageResponse   {
-public enum TypeEnum {
-
-    TEXT(String.valueOf("TEXT")), IMAGE(String.valueOf("IMAGE"));
-
-
-    private String value;
-
-    TypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String v) {
-        for (TypeEnum b : TypeEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-  private @Valid TypeEnum type = null;
+  private @Valid MessageResponseType type = null;
   private @Valid String content = null;
 
   /**
    **/
-  public MessageResponse type(TypeEnum type) {
+  public MessageResponse type(MessageResponseType type) {
     this.type = type;
     return this;
   }
@@ -63,10 +32,10 @@ public enum TypeEnum {
   //@ApiModelProperty(value = "")
   @JsonProperty("type")
 
-  public TypeEnum getType() {
+  public MessageResponseType getType() {
     return type;
   }
-  public void setType(TypeEnum type) {
+  public void setType(MessageResponseType type) {
     this.type = type;
   }
 
