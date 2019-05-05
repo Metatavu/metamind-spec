@@ -18,6 +18,7 @@ export interface Intent {
     readonly id?: string;
     name?: string;
     quickResponse?: string;
+    quickResponseOrder: number;
     type: IntentType;
     /**
      * source knot id id.
@@ -45,6 +46,7 @@ export interface IntentOpt {
     readonly id?: string;
     name?: string;
     quickResponse?: string;
+    quickResponseOrder?: number;
     type?: IntentType;
     /**
      * source knot id id.

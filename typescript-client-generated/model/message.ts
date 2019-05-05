@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { MessageResponse } from './messageResponse';
 
 
 export interface Message { 
@@ -27,7 +28,7 @@ export interface Message {
     /**
      * Response text. Used only when responding
      */
-    readonly response?: Array<string>;
+    readonly responses?: Array<MessageResponse>;
     /**
      * Hint text. Used only when responding
      */
@@ -73,7 +74,7 @@ export interface MessageOpt {
     /**
      * Response text. Used only when responding
      */
-    readonly response?: Array<string>;
+    readonly responses?: Array<MessageResponse>;
     /**
      * Hint text. Used only when responding
      */
