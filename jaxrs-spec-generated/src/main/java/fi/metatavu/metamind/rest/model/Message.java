@@ -21,7 +21,7 @@ public class Message   {
   private @Valid UUID id = null;
   private @Valid UUID sessionId = null;
   private @Valid String content = null;
-  private @Valid List<String> response = new ArrayList<>();
+  private @Valid List<MessageResponse> responses = new ArrayList<>();
   private @Valid String hint = null;
   private @Valid List<String> quickResponses = new ArrayList<>();
   private @Valid Double confidence = null;
@@ -92,20 +92,20 @@ public class Message   {
   /**
    * Response text. Used only when responding
    **/
-  public Message response(List<String> response) {
-    this.response = response;
+  public Message responses(List<MessageResponse> responses) {
+    this.responses = responses;
     return this;
   }
 
   
   //@ApiModelProperty(value = "Response text. Used only when responding")
-  @JsonProperty("response")
+  @JsonProperty("responses")
 
-  public List<String> getResponse() {
-    return response;
+  public List<MessageResponse> getResponses() {
+    return responses;
   }
-  public void setResponse(List<String> response) {
-    this.response = response;
+  public void setResponses(List<MessageResponse> responses) {
+    this.responses = responses;
   }
 
   /**
@@ -254,7 +254,7 @@ public class Message   {
     return Objects.equals(id, message.id) &&
         Objects.equals(sessionId, message.sessionId) &&
         Objects.equals(content, message.content) &&
-        Objects.equals(response, message.response) &&
+        Objects.equals(responses, message.responses) &&
         Objects.equals(hint, message.hint) &&
         Objects.equals(quickResponses, message.quickResponses) &&
         Objects.equals(confidence, message.confidence) &&
@@ -266,7 +266,7 @@ public class Message   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, sessionId, content, response, hint, quickResponses, confidence, sourceKnotId, matchedIntentId, createdAt, modifiedAt);
+    return Objects.hash(id, sessionId, content, responses, hint, quickResponses, confidence, sourceKnotId, matchedIntentId, createdAt, modifiedAt);
   }
 
   @Override
@@ -277,7 +277,7 @@ public class Message   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
-    sb.append("    response: ").append(toIndentedString(response)).append("\n");
+    sb.append("    responses: ").append(toIndentedString(responses)).append("\n");
     sb.append("    hint: ").append(toIndentedString(hint)).append("\n");
     sb.append("    quickResponses: ").append(toIndentedString(quickResponses)).append("\n");
     sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");

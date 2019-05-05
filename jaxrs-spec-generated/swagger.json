@@ -2393,12 +2393,12 @@
             "type" : "string",
             "description" : "Message content"
           },
-          "response" : {
+          "responses" : {
             "type" : "array",
             "description" : "Response text. Used only when responding",
             "readOnly" : true,
             "items" : {
-              "type" : "string"
+              "$ref" : "#/components/schemas/MessageResponse"
             }
           },
           "hint" : {
@@ -2443,6 +2443,18 @@
             "description" : "Last modification time",
             "format" : "date-time",
             "readOnly" : true
+          }
+        }
+      },
+      "MessageResponse" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "enum" : [ "TEXT", "IMAGE" ]
+          },
+          "content" : {
+            "type" : "string"
           }
         }
       },
