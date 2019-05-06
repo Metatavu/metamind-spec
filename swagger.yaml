@@ -4,8 +4,7 @@ info:
   description: Brain spec for Metamind.
   version: 2.0.0
 security:
-  - basicAuth:
-      []
+  - BearerAuth: []
 paths:
   /stories:
     get:
@@ -1396,10 +1395,12 @@ paths:
 servers:
   - url: /v2
 components:
+
   securitySchemes:
-    basicAuth:
+    BearerAuth:
       type: http
-      scheme: basic
+      scheme: bearer
+
   schemas:
 
     Story:
