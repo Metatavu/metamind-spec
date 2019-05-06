@@ -10,6 +10,9 @@ module.exports = function(grunt) {
   const JAXRS_GROUP = "fi.metatavu.metamind";
   const TYPESCRIPT_MODEL_PACKAGE = "metamind-client";
   const TYPESCRIPT_MODEL_VERSION = require("./typescript-client-generated/package.json").version;
+  const JAVA_ARTIFACT = "metamind-api-client";
+  const JAVA_PACKAGE = "fi.metatavu.metamind.client";
+  const JAVA_GROUP = "fi.metatavu.metamind.client";
 
   grunt.initConfig({
     "curl": {
@@ -23,6 +26,7 @@ module.exports = function(grunt) {
         "jaxrs-spec-generated/src/main/java/fi/metatavu/metamind/server/RestApplication.java"
       ],
       "jaxrs-spec-sources": ["jaxrs-spec-generated/src"],
+      'java-sources': ['java-generated/src'],
       "typescript-client": [
         "typescript-client-generated/typings.json",
         "typescript-client-generated/api.module.ts",
@@ -67,6 +71,37 @@ module.exports = function(grunt) {
           }
         }
       },
+      'java-generate': {
+        command : 'mv java-generated/pom.xml java-generated/pom.xml.before && ' +
+          `java -jar ${SWAGGER_JAR} generate ` +
+          '-i ./swagger.yaml ' +
+          '-l java ' +
+          `--api-package ${JAVA_PACKAGE} ` +
+          `--model-package ${JAVA_PACKAGE}.model ` +
+          `--group-id ${JAVA_GROUP} ` +
+          `--artifact-id ${JAVA_ARTIFACT} ` +
+          '--artifact-version `cat java-generated/pom.xml.before|grep version -m 1|sed -e \'s/.*<version>//\'|sed -e \'s/<.*//\'` ' +
+          "--template-engine handlebars " +
+          '--template-dir java-templates ' +
+          '--additional-properties library=feign,dateLibrary=java8,sourceFolder=src/main/java,supportingFiles=true ' +
+          '-o java-generated/'
+      },
+      'java-install': {
+        command : 'mvn install',
+        options: {
+          execOptions: {
+            cwd: 'java-generated'
+          }
+        }
+      },
+      'java-release': {
+        command : 'git add src pom.xml && git commit -m "Generated source" && git push && mvn -B release:clean release:prepare release:perform',
+        options: {
+          execOptions: {
+            cwd: 'java-generated'
+          }
+        }
+      },
       "typescript-client-generate": {
         command : `java -jar ${SWAGGER_JAR} generate ` +
           "-i ./swagger.yaml " +
@@ -106,8 +141,10 @@ module.exports = function(grunt) {
   grunt.registerTask("download-dependencies", "if-missing:curl:swagger-codegen");
   grunt.registerTask("jaxrs-gen", [ "download-dependencies", "clean:jaxrs-spec-sources", "shell:jaxrs-spec-generate", "clean:jaxrs-spec-cruft", "shell:jaxrs-fix-folders", "shell:jaxrs-spec-install" ]);
   grunt.registerTask("jaxrs-spec", [ "jaxrs-gen", "shell:jaxrs-spec-release" ]);
+  grunt.registerTask('java-gen', [ 'download-dependencies', 'clean:java-sources', 'shell:java-generate', 'shell:java-install' ]);
+  grunt.registerTask('java', [ 'java-gen', 'shell:java-release' ]);
   grunt.registerTask('typescript-client-gen', [ 'shell:typescript-client-generate', 'clean:typescript-client']);
   grunt.registerTask('typescript-client', [ 'typescript-client-gen', "shell:typescript-client-bump-version", "shell:typescript-client-push", "shell:typescript-client-publish" ]);
 
-  grunt.registerTask("default", [ "jaxrs-spec" ]);
+  grunt.registerTask("default", [ "jaxrs-spec", "java", "typescript-client" ]);
 };
