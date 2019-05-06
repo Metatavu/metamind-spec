@@ -1540,7 +1540,8 @@ components:
         quickResponse:
           type: string
         quickResponseOrder:
-          type: number
+          type: integer
+          format: int32
         type: 
           $ref: "#/components/schemas/IntentType"
         sourceKnotId:
@@ -1695,7 +1696,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-          
+
     Variable:
       type: object
       required:
