@@ -25,7 +25,7 @@ import java.util.UUID;
  * TrainingMaterial
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-06T11:54:34.480+03:00[Europe/Helsinki]")public class TrainingMaterial {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-06T12:04:51.852+03:00[Europe/Helsinki]")public class TrainingMaterial {
 
   @JsonProperty("id")
 
