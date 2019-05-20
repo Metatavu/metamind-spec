@@ -23,14 +23,14 @@ import javax.validation.Valid;
 
 @Path("/trainingMaterials")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-05T15:00:06.039+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-20T15:20:08.722+03:00[Europe/Helsinki]")
 public interface TrainingMaterialsApi {
 
     @POST
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Create a trainingMaterial", description = "Create training material", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "TrainingMaterials" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "TrainingMaterials" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Created trainingMaterial", content = @Content(schema = @Schema(implementation = TrainingMaterial.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -41,7 +41,7 @@ public interface TrainingMaterialsApi {
     @Path("/{trainingMaterialId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Delete trainingMaterial", description = "Delete a training material", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "TrainingMaterials" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "TrainingMaterials" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "Successful removal"),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -55,7 +55,7 @@ public interface TrainingMaterialsApi {
     @Path("/{trainingMaterialId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Finds a trainingMaterial", description = "Finds a training material", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "TrainingMaterials" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "TrainingMaterials" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Found trainingMaterial", content = @Content(schema = @Schema(implementation = TrainingMaterial.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -68,7 +68,7 @@ public interface TrainingMaterialsApi {
     @GET
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "List trainingMaterials", description = "List training materials", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "TrainingMaterials" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "TrainingMaterials" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "TrainingMaterials", content = @Content(array = @ArraySchema(schema = @Schema(implementation = TrainingMaterial.class)))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -86,7 +86,7 @@ public interface TrainingMaterialsApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Updates trainingMaterial", description = "Updates a training material", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "TrainingMaterials" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "TrainingMaterials" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Updated trainingMaterial", content = @Content(schema = @Schema(implementation = TrainingMaterial.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),

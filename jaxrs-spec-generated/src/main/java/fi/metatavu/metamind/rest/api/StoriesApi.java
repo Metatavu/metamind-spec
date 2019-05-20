@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/stories")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-05T15:00:06.039+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-20T15:20:08.722+03:00[Europe/Helsinki]")
 public interface StoriesApi {
 
     @POST
@@ -31,7 +31,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Create a story intent", description = "Create story intent", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Intents" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Intents" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Created story intent", content = @Content(schema = @Schema(implementation = Intent.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -46,7 +46,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Create a story knot", description = "Create story knot", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Knots" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Knots" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Created story knot", content = @Content(schema = @Schema(implementation = Knot.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -61,7 +61,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Posts new message", description = "Posts new message", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Messages" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Messages" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Returns message with bot's response details", content = @Content(schema = @Schema(implementation = Message.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -76,7 +76,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Creates new session", description = "Creates new chat session", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Sessions" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Sessions" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Created session", content = @Content(schema = @Schema(implementation = Session.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -90,7 +90,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Create a story", description = "Create story", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Stories" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Stories" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Created story", content = @Content(schema = @Schema(implementation = Story.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -102,7 +102,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Create a story variable", description = "Create story variable", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Variables" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Variables" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Created story variable", content = @Content(schema = @Schema(implementation = Variable.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -116,7 +116,7 @@ public interface StoriesApi {
     @Path("/{storyId}/intents/{intentId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Delete intent", description = "Delete a intent", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Intents" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Intents" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "Successful removal"),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -133,7 +133,7 @@ public interface StoriesApi {
     @Path("/{storyId}/knots/{knotId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Delete knot", description = "Delete a knot", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Knots" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Knots" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "Successful removal"),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -150,7 +150,7 @@ public interface StoriesApi {
     @Path("/{storyId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Delete story", description = "Delete a story", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Stories" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Stories" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "Successful removal"),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -164,7 +164,7 @@ public interface StoriesApi {
     @Path("/{storyId}/variables/{variableId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Delete variable", description = "Delete a variable", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Variables" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Variables" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "Successful removal"),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -181,7 +181,7 @@ public interface StoriesApi {
     @Path("/{storyId}/intents/{intentId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Finds a story intent", description = "Finds a story intent", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Intents" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Intents" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Found story intent", content = @Content(schema = @Schema(implementation = Intent.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -198,7 +198,7 @@ public interface StoriesApi {
     @Path("/{storyId}/knots/{knotId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Finds a story knot", description = "Finds a story knot", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Knots" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Knots" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Found story knot", content = @Content(schema = @Schema(implementation = Knot.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -215,7 +215,7 @@ public interface StoriesApi {
     @Path("/{storyId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Finds a story", description = "Finds a story", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Stories" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Stories" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Found story", content = @Content(schema = @Schema(implementation = Story.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -229,7 +229,7 @@ public interface StoriesApi {
     @Path("/{storyId}/variables/{variableId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Finds a story variable", description = "Finds a story variable", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Variables" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Variables" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Found story variable", content = @Content(schema = @Schema(implementation = Variable.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -246,7 +246,7 @@ public interface StoriesApi {
     @Path("/{storyId}/intents")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "List story intents", description = "List story intents", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Intents" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Intents" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Story intents", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Intent.class)))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -260,7 +260,7 @@ public interface StoriesApi {
     @Path("/{storyId}/knots")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "List story knots", description = "List story knots", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Knots" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Knots" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Story knots", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Knot.class)))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -273,7 +273,7 @@ public interface StoriesApi {
     @GET
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "List stories", description = "List stories", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Stories" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Stories" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Stories", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Story.class)))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -284,7 +284,7 @@ public interface StoriesApi {
     @Path("/{storyId}/variables")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "List story variables", description = "List story variables", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Variables" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Variables" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Story variables", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Variable.class)))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -299,7 +299,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Updates intent", description = "Updates a intent", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Intents" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Intents" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Updated story intent", content = @Content(schema = @Schema(implementation = Intent.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -317,7 +317,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Updates knot", description = "Updates a knot", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Knots" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Knots" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Updated story knot", content = @Content(schema = @Schema(implementation = Knot.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -335,7 +335,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Updates story", description = "Updates a story", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Stories" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Stories" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Updated story", content = @Content(schema = @Schema(implementation = Story.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -350,7 +350,7 @@ public interface StoriesApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Updates variable", description = "Updates a variable", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Variables" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Variables" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Updated story variable", content = @Content(schema = @Schema(implementation = Story.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),

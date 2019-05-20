@@ -9,7 +9,7 @@
     "url" : "/v2"
   } ],
   "security" : [ {
-    "basicAuth" : [ ]
+    "BearerAuth" : [ ]
   } ],
   "paths" : {
     "/stories" : {
@@ -2152,6 +2152,10 @@
             "format" : "uuid",
             "readOnly" : true
           },
+          "dafaultHint" : {
+            "type" : "string",
+            "description" : "default hint for the story"
+          },
           "name" : {
             "type" : "string",
             "description" : "Story name."
@@ -2393,12 +2397,12 @@
             "type" : "string",
             "description" : "Message content"
           },
-          "responses" : {
+          "response" : {
             "type" : "array",
             "description" : "Response text. Used only when responding",
             "readOnly" : true,
             "items" : {
-              "$ref" : "#/components/schemas/MessageResponse"
+              "type" : "string"
             }
           },
           "hint" : {
@@ -2443,21 +2447,6 @@
             "description" : "Last modification time",
             "format" : "date-time",
             "readOnly" : true
-          }
-        }
-      },
-      "MessageResponseType" : {
-        "type" : "string",
-        "enum" : [ "TEXT", "IMAGE" ]
-      },
-      "MessageResponse" : {
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "$ref" : "#/components/schemas/MessageResponseType"
-          },
-          "content" : {
-            "type" : "string"
           }
         }
       },
@@ -2582,9 +2571,9 @@
       }
     },
     "securitySchemes" : {
-      "basicAuth" : {
+      "BearerAuth" : {
         "type" : "http",
-        "scheme" : "basic"
+        "scheme" : "bearer"
       }
     }
   }

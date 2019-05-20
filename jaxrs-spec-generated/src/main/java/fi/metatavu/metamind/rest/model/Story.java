@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Story   {
   private @Valid UUID id = null;
+  private @Valid String dafaultHint = null;
   private @Valid String name = null;
   private @Valid String locale = null;
   private @Valid List<String> quickResponses = new ArrayList<>();
@@ -42,6 +43,25 @@ public class Story   {
   }
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  /**
+   * default hint for the story
+   **/
+  public Story dafaultHint(String dafaultHint) {
+    this.dafaultHint = dafaultHint;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "default hint for the story")
+  @JsonProperty("dafaultHint")
+
+  public String getDafaultHint() {
+    return dafaultHint;
+  }
+  public void setDafaultHint(String dafaultHint) {
+    this.dafaultHint = dafaultHint;
   }
 
   /**
@@ -152,6 +172,7 @@ public class Story   {
     }
     Story story = (Story) o;
     return Objects.equals(id, story.id) &&
+        Objects.equals(dafaultHint, story.dafaultHint) &&
         Objects.equals(name, story.name) &&
         Objects.equals(locale, story.locale) &&
         Objects.equals(quickResponses, story.quickResponses) &&
@@ -161,7 +182,7 @@ public class Story   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, locale, quickResponses, createdAt, modifiedAt);
+    return Objects.hash(id, dafaultHint, name, locale, quickResponses, createdAt, modifiedAt);
   }
 
   @Override
@@ -170,6 +191,7 @@ public class Story   {
     sb.append("class Story {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    dafaultHint: ").append(toIndentedString(dafaultHint)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("    quickResponses: ").append(toIndentedString(quickResponses)).append("\n");

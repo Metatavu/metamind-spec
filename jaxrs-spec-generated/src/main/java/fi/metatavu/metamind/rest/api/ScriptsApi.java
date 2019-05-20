@@ -23,14 +23,14 @@ import javax.validation.Valid;
 
 @Path("/scripts")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-05T15:00:06.039+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-20T15:20:08.722+03:00[Europe/Helsinki]")
 public interface ScriptsApi {
 
     @POST
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Create a script", description = "Create script", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Scripts" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Scripts" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Created script", content = @Content(schema = @Schema(implementation = Script.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -41,7 +41,7 @@ public interface ScriptsApi {
     @Path("/{scriptId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Delete script", description = "Delete a script", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Scripts" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Scripts" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "Successful removal"),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -55,7 +55,7 @@ public interface ScriptsApi {
     @Path("/{scriptId}")
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Finds a script", description = "Finds a script", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Scripts" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Scripts" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Found script", content = @Content(schema = @Schema(implementation = Script.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -68,7 +68,7 @@ public interface ScriptsApi {
     @GET
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "List scripts", description = "List scripts", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Scripts" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Scripts" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Scripts", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Script.class)))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
@@ -80,7 +80,7 @@ public interface ScriptsApi {
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
     @Operation(summary = "Updates script", description = "Updates a script", security = {
-        @SecurityRequirement(name = "basicAuth")    }, tags={ "Scripts" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "Scripts" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Updated script", content = @Content(schema = @Schema(implementation = Script.class))),
         @ApiResponse(responseCode = "400", description = "Invalid request was sent to the server", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
