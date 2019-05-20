@@ -5,8 +5,6 @@ export * from './intentType';
 export * from './knot';
 export * from './knotType';
 export * from './message';
-export * from './messageResponse';
-export * from './messageResponseType';
 export * from './script';
 export * from './session';
 export * from './story';
