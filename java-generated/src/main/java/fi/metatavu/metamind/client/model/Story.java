@@ -26,11 +26,15 @@ import java.util.UUID;
  * Story
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-06T12:04:51.852+03:00[Europe/Helsinki]")public class Story {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-20T15:24:44.194+03:00[Europe/Helsinki]")public class Story {
 
   @JsonProperty("id")
 
   private UUID id = null;
+
+  @JsonProperty("dafaultHint")
+
+  private String dafaultHint = null;
 
   @JsonProperty("name")
 
@@ -58,6 +62,24 @@ import java.util.UUID;
   @Schema(description = "Story id.")
   public UUID getId() {
     return id;
+  }
+  public Story dafaultHint(String dafaultHint) {
+    this.dafaultHint = dafaultHint;
+    return this;
+  }
+
+  
+
+  /**
+  * default hint for the story
+  * @return dafaultHint
+  **/
+  @Schema(description = "default hint for the story")
+  public String getDafaultHint() {
+    return dafaultHint;
+  }
+  public void setDafaultHint(String dafaultHint) {
+    this.dafaultHint = dafaultHint;
   }
   public Story name(String name) {
     this.name = name;
@@ -129,6 +151,7 @@ import java.util.UUID;
     }
     Story story = (Story) o;
     return Objects.equals(this.id, story.id) &&
+        Objects.equals(this.dafaultHint, story.dafaultHint) &&
         Objects.equals(this.name, story.name) &&
         Objects.equals(this.locale, story.locale) &&
         Objects.equals(this.quickResponses, story.quickResponses) &&
@@ -138,7 +161,7 @@ import java.util.UUID;
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, locale, quickResponses, createdAt, modifiedAt);
+    return java.util.Objects.hash(id, dafaultHint, name, locale, quickResponses, createdAt, modifiedAt);
   }
 
   @Override
@@ -147,6 +170,7 @@ import java.util.UUID;
     sb.append("class Story {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    dafaultHint: ").append(toIndentedString(dafaultHint)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("    quickResponses: ").append(toIndentedString(quickResponses)).append("\n");
