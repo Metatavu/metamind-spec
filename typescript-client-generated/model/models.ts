@@ -11,5 +11,6 @@ export * from './story';
 export * from './tokenizerType';
 export * from './trainingMaterial';
 export * from './trainingMaterialType';
+export * from './trainingMaterialVisibility';
 export * from './variable';
 export * from './variableType';

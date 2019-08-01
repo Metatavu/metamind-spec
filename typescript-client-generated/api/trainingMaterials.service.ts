@@ -1,6 +1,7 @@
 import { ErrorResponse } from '../model/errorResponse';
 import { TrainingMaterial } from '../model/trainingMaterial';
 import { TrainingMaterialType } from '../model/trainingMaterialType';
+import { TrainingMaterialVisibility } from '../model/trainingMaterialVisibility';
 import * as URI from "urijs";
 import { ApiUtils } from "./api";
 
@@ -84,14 +85,18 @@ export class TrainingMaterialsService {
    * @summary List trainingMaterials
    * @param storyId story id
    * @param type training material type
+   * @param visibility training material visibility
   */
-  public listTrainingMaterials(storyId?: string, type?: TrainingMaterialType, ):Promise<Array<TrainingMaterial>> {
+  public listTrainingMaterials(storyId?: string, type?: TrainingMaterialType, visibility?: TrainingMaterialVisibility, ):Promise<Array<TrainingMaterial>> {
     const uri = new URI(`${this.basePath}/trainingMaterials`);
     if (storyId !== undefined && storyId !== null) {
         uri.addQuery('storyId', <any>storyId);
     }
     if (type !== undefined && type !== null) {
         uri.addQuery('type', <any>type);
+    }
+    if (visibility !== undefined && visibility !== null) {
+        uri.addQuery('visibility', <any>visibility);
     }
     const options = {
       method: "get",

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { TrainingMaterialType } from './trainingMaterialType';
+import { TrainingMaterialVisibility } from './trainingMaterialVisibility';
 
 
 export interface TrainingMaterial { 
@@ -21,6 +22,7 @@ export interface TrainingMaterial {
     storyId?: string;
     text: string;
     name: string;
+    visibility?: TrainingMaterialVisibility;
     /**
      * Creation time
      */
@@ -39,6 +41,7 @@ export interface TrainingMaterialOpt {
     storyId?: string;
     text?: string;
     name?: string;
+    visibility?: TrainingMaterialVisibility;
     /**
      * Creation time
      */
