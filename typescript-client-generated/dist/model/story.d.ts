@@ -15,6 +15,10 @@ export interface Story {
      */
     readonly id?: string;
     /**
+     * default hint for the story
+     */
+    dafaultHint?: string;
+    /**
      * Story name.
      */
     name: string;
@@ -40,6 +44,10 @@ export interface StoryOpt {
      * Story id.
      */
     readonly id?: string;
+    /**
+     * default hint for the story
+     */
+    dafaultHint?: string;
     /**
      * Story name.
      */

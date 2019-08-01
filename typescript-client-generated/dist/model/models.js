@@ -5,7 +5,6 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./intentType"));
 __export(require("./knotType"));
-__export(require("./messageResponseType"));
 __export(require("./tokenizerType"));
 __export(require("./trainingMaterialType"));
 __export(require("./variableType"));

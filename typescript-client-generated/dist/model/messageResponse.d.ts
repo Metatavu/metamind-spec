@@ -11,8 +11,8 @@
  */
 import { MessageResponseType } from './messageResponseType';
 export interface MessageResponse {
-    type?: MessageResponseType;
-    content?: string;
+    type: MessageResponseType;
+    content: string;
 }
 export interface MessageResponseOpt {
     type?: MessageResponseType;
