@@ -4,6 +4,7 @@ import fi.metatavu.metamind.ApiClient;
 import fi.metatavu.metamind.client.model.ErrorResponse;
 import fi.metatavu.metamind.client.model.TrainingMaterial;
 import fi.metatavu.metamind.client.model.TrainingMaterialType;
+import fi.metatavu.metamind.client.model.TrainingMaterialVisibility;
 import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
@@ -73,7 +74,8 @@ public class TrainingMaterialsApiTest {
     public void listTrainingMaterialsTest() {
         UUID storyId = null;
         TrainingMaterialType type = null;
-        // List<TrainingMaterial> response = api.listTrainingMaterials(storyId, type);
+        TrainingMaterialVisibility visibility = null;
+        // List<TrainingMaterial> response = api.listTrainingMaterials(storyId, type, visibility);
 
         // TODO: test validations
     }
@@ -90,7 +92,8 @@ public class TrainingMaterialsApiTest {
     public void listTrainingMaterialsTestQueryMap() {
         TrainingMaterialsApi.ListTrainingMaterialsQueryParams queryParams = new TrainingMaterialsApi.ListTrainingMaterialsQueryParams()
             .storyId(null)
-            .type(null);
+            .type(null)
+            .visibility(null);
         // List<TrainingMaterial> response = api.listTrainingMaterials(queryParams);
 
     // TODO: test validations

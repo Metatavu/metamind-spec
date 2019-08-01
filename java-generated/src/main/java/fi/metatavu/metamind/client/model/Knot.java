@@ -26,7 +26,7 @@ import java.util.UUID;
  * Knot
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-20T15:24:44.194+03:00[Europe/Helsinki]")public class Knot {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-08-01T13:56:30.401+03:00[Europe/Helsinki]")public class Knot {
 
   @JsonProperty("id")
 

@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import fi.metatavu.metamind.client.model.TrainingMaterialType;
+import fi.metatavu.metamind.client.model.TrainingMaterialVisibility;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -25,7 +26,7 @@ import java.util.UUID;
  * TrainingMaterial
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-20T15:24:44.194+03:00[Europe/Helsinki]")public class TrainingMaterial {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-08-01T13:56:30.401+03:00[Europe/Helsinki]")public class TrainingMaterial {
 
   @JsonProperty("id")
 
@@ -46,6 +47,10 @@ import java.util.UUID;
   @JsonProperty("name")
 
   private String name = null;
+
+  @JsonProperty("visibility")
+
+  private TrainingMaterialVisibility visibility = null;
 
   @JsonProperty("createdAt")
 
@@ -134,6 +139,24 @@ import java.util.UUID;
   public void setName(String name) {
     this.name = name;
   }
+  public TrainingMaterial visibility(TrainingMaterialVisibility visibility) {
+    this.visibility = visibility;
+    return this;
+  }
+
+  
+
+  /**
+  * Get visibility
+  * @return visibility
+  **/
+  @Schema(description = "")
+  public TrainingMaterialVisibility getVisibility() {
+    return visibility;
+  }
+  public void setVisibility(TrainingMaterialVisibility visibility) {
+    this.visibility = visibility;
+  }
   /**
   * Creation time
   * @return createdAt
@@ -164,13 +187,14 @@ import java.util.UUID;
         Objects.equals(this.storyId, trainingMaterial.storyId) &&
         Objects.equals(this.text, trainingMaterial.text) &&
         Objects.equals(this.name, trainingMaterial.name) &&
+        Objects.equals(this.visibility, trainingMaterial.visibility) &&
         Objects.equals(this.createdAt, trainingMaterial.createdAt) &&
         Objects.equals(this.modifiedAt, trainingMaterial.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, type, storyId, text, name, createdAt, modifiedAt);
+    return java.util.Objects.hash(id, type, storyId, text, name, visibility, createdAt, modifiedAt);
   }
 
   @Override
@@ -183,6 +207,7 @@ import java.util.UUID;
     sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");

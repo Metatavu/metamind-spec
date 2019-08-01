@@ -7,6 +7,7 @@ import fi.metatavu.metamind.EncodingUtils;
 import fi.metatavu.metamind.client.model.ErrorResponse;
 import fi.metatavu.metamind.client.model.TrainingMaterial;
 import fi.metatavu.metamind.client.model.TrainingMaterialType;
+import fi.metatavu.metamind.client.model.TrainingMaterialVisibility;
 import java.util.UUID;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-20T15:24:44.194+03:00[Europe/Helsinki]")public interface TrainingMaterialsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-08-01T13:56:30.401+03:00[Europe/Helsinki]")public interface TrainingMaterialsApi extends ApiClient.Api {
 
   /**
    * Create a trainingMaterial
@@ -57,14 +58,15 @@ import feign.*;
    * List training materials
    * @param storyId story id (optional)
    * @param type training material type (optional)
+   * @param visibility training material visibility (optional)
    * @return List&lt;TrainingMaterial&gt;
    */
-  @RequestLine("GET /trainingMaterials?storyId={storyId}&type={type}")
+  @RequestLine("GET /trainingMaterials?storyId={storyId}&type={type}&visibility={visibility}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json;charset&#x3D;utf-8,application/json;charset&#x3D;utf-8,application/json;charset&#x3D;utf-8,application/json;charset&#x3D;utf-8",
   })
-  List<TrainingMaterial> listTrainingMaterials(@Param("storyId") UUID storyId, @Param("type") TrainingMaterialType type);
+  List<TrainingMaterial> listTrainingMaterials(@Param("storyId") UUID storyId, @Param("type") TrainingMaterialType type, @Param("visibility") TrainingMaterialVisibility visibility);
 
   /**
    * List trainingMaterials
@@ -79,11 +81,12 @@ import feign.*;
    *   <ul>
    *   <li>storyId - story id (optional)</li>
    *   <li>type - training material type (optional)</li>
+   *   <li>visibility - training material visibility (optional)</li>
    *   </ul>
    * @return List&lt;TrainingMaterial&gt;
 
    */
-  @RequestLine("GET /trainingMaterials?storyId={storyId}&type={type}")
+  @RequestLine("GET /trainingMaterials?storyId={storyId}&type={type}&visibility={visibility}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json;charset&#x3D;utf-8,application/json;charset&#x3D;utf-8,application/json;charset&#x3D;utf-8,application/json;charset&#x3D;utf-8",
@@ -101,6 +104,10 @@ import feign.*;
     }
     public ListTrainingMaterialsQueryParams type(final TrainingMaterialType value) {
       put("type", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListTrainingMaterialsQueryParams visibility(final TrainingMaterialVisibility value) {
+      put("visibility", EncodingUtils.encode(value));
       return this;
     }
   }
