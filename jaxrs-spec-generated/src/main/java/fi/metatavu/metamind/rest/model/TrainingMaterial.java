@@ -23,6 +23,7 @@ public class TrainingMaterial   {
   private @Valid UUID storyId = null;
   private @Valid String text = null;
   private @Valid String name = null;
+  private @Valid TrainingMaterialVisibility visibility = null;
   private @Valid OffsetDateTime createdAt = null;
   private @Valid OffsetDateTime modifiedAt = null;
 
@@ -120,6 +121,24 @@ public class TrainingMaterial   {
   }
 
   /**
+   **/
+  public TrainingMaterial visibility(TrainingMaterialVisibility visibility) {
+    this.visibility = visibility;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("visibility")
+
+  public TrainingMaterialVisibility getVisibility() {
+    return visibility;
+  }
+  public void setVisibility(TrainingMaterialVisibility visibility) {
+    this.visibility = visibility;
+  }
+
+  /**
    * Creation time
    **/
   public TrainingMaterial createdAt(OffsetDateTime createdAt) {
@@ -172,13 +191,14 @@ public class TrainingMaterial   {
         Objects.equals(storyId, trainingMaterial.storyId) &&
         Objects.equals(text, trainingMaterial.text) &&
         Objects.equals(name, trainingMaterial.name) &&
+        Objects.equals(visibility, trainingMaterial.visibility) &&
         Objects.equals(createdAt, trainingMaterial.createdAt) &&
         Objects.equals(modifiedAt, trainingMaterial.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, storyId, text, name, createdAt, modifiedAt);
+    return Objects.hash(id, type, storyId, text, name, visibility, createdAt, modifiedAt);
   }
 
   @Override
@@ -191,6 +211,7 @@ public class TrainingMaterial   {
     sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");

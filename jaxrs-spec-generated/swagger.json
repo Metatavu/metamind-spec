@@ -1491,6 +1491,16 @@
           "schema" : {
             "$ref" : "#/components/schemas/TrainingMaterialType"
           }
+        }, {
+          "name" : "visibility",
+          "in" : "query",
+          "description" : "training material visibility",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/TrainingMaterialVisibility"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -2360,6 +2370,9 @@
           "name" : {
             "type" : "string"
           },
+          "visibility" : {
+            "$ref" : "#/components/schemas/TrainingMaterialVisibility"
+          },
           "createdAt" : {
             "type" : "string",
             "description" : "Creation time",
@@ -2377,6 +2390,10 @@
       "TrainingMaterialType" : {
         "type" : "string",
         "enum" : [ "INTENTREGEX", "INTENTOPENNLPDOCCAT", "VARIABLEOPENNLPNER", "VARIABLEOPENNLPREGEX" ]
+      },
+      "TrainingMaterialVisibility" : {
+        "type" : "string",
+        "enum" : [ "STORY", "LOCAL" ]
       },
       "Message" : {
         "required" : [ "content", "sessionId" ],
