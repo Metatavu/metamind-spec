@@ -7,6 +7,7 @@ import { ApiUtils } from "./api";
 {{#operations}}
 export class {{classname}} {
 
+  private rptToken: string;
   private token: string;
   private basePath: string;
 
@@ -25,7 +26,7 @@ export class {{classname}} {
 {{#allParams}}   * @param {{paramName}} {{description}}
 {{/allParams}}
   */
-  public {{nickname}}({{#allParams}}{{^isConstEnumParam}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/isConstEnumParam}}{{/allParams}}):Promise<{{#returnType}}{{{returnType}}}{{#isResponseTypeFile}}|undefined{{/isResponseTypeFile}}{{/returnType}}{{^returnType}}any{{/returnType}}> {
+  public async {{nickname}}({{#allParams}}{{^isConstEnumParam}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/isConstEnumParam}}{{/allParams}} retrying?: boolean):Promise<{{#returnType}}{{{returnType}}}{{#isResponseTypeFile}}|undefined{{/isResponseTypeFile}}{{/returnType}}{{^returnType}}any{{/returnType}}> {
     const uri = new URI(`${this.basePath}{{{path}}}`);
 {{#hasQueryParams}}
 {{#queryParams}}
@@ -62,14 +63,24 @@ export class {{classname}} {
         {{/headerParams}}
         {{/hasHeaderParams}}
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }{{#isBodyAllowed}}{{#bodyParam}},
       body: JSON.stringify({{paramName}}){{/bodyParam}}{{/isBodyAllowed}}
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.{{nickname}}({{#allParams}}{{paramName}},{{/allParams}}true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 {{/operation}}

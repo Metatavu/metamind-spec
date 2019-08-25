@@ -5,6 +5,7 @@ import { ApiUtils } from "./api";
 
 export class StoriesService {
 
+  private rptToken: string;
   private token: string;
   private basePath: string;
 
@@ -19,20 +20,30 @@ export class StoriesService {
    * @summary Create a story
    * @param body Payload
   */
-  public createStory(body: Story, ):Promise<Story> {
+  public async createStory(body: Story,  retrying?: boolean):Promise<Story> {
     const uri = new URI(`${this.basePath}/stories`);
     const options = {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.createStory(body,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -41,19 +52,29 @@ export class StoriesService {
    * @summary Delete story
    * @param storyId story id
   */
-  public deleteStory(storyId: string, ):Promise<any> {
+  public async deleteStory(storyId: string,  retrying?: boolean):Promise<any> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}`);
     const options = {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.deleteStory(storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -62,19 +83,29 @@ export class StoriesService {
    * @summary Finds a story
    * @param storyId story id
   */
-  public findStory(storyId: string, ):Promise<Story> {
+  public async findStory(storyId: string,  retrying?: boolean):Promise<Story> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.findStory(storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -82,19 +113,29 @@ export class StoriesService {
    * List stories
    * @summary List stories
   */
-  public listStories():Promise<Array<Story>> {
+  public async listStories( retrying?: boolean):Promise<Array<Story>> {
     const uri = new URI(`${this.basePath}/stories`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.listStories(true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -104,20 +145,30 @@ export class StoriesService {
    * @param body Payload
    * @param storyId story id
   */
-  public updateStory(body: Story, storyId: string, ):Promise<Story> {
+  public async updateStory(body: Story, storyId: string,  retrying?: boolean):Promise<Story> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}`);
     const options = {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.updateStory(body,storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 }

@@ -5,6 +5,7 @@ import { ApiUtils } from "./api";
 
 export class IntentsService {
 
+  private rptToken: string;
   private token: string;
   private basePath: string;
 
@@ -20,20 +21,30 @@ export class IntentsService {
    * @param body Payload
    * @param storyId story id
   */
-  public createIntent(body: Intent, storyId: string, ):Promise<Intent> {
+  public async createIntent(body: Intent, storyId: string,  retrying?: boolean):Promise<Intent> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/intents`);
     const options = {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.createIntent(body,storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -43,19 +54,29 @@ export class IntentsService {
    * @param storyId story id
    * @param intentId intent id
   */
-  public deleteIntent(storyId: string, intentId: string, ):Promise<any> {
+  public async deleteIntent(storyId: string, intentId: string,  retrying?: boolean):Promise<any> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/intents/${encodeURIComponent(String(intentId))}`);
     const options = {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.deleteIntent(storyId,intentId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -65,19 +86,29 @@ export class IntentsService {
    * @param storyId story id
    * @param intentId intent id
   */
-  public findIntent(storyId: string, intentId: string, ):Promise<Intent> {
+  public async findIntent(storyId: string, intentId: string,  retrying?: boolean):Promise<Intent> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/intents/${encodeURIComponent(String(intentId))}`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.findIntent(storyId,intentId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -86,19 +117,29 @@ export class IntentsService {
    * @summary List story intents
    * @param storyId story id
   */
-  public listIntents(storyId: string, ):Promise<Array<Intent>> {
+  public async listIntents(storyId: string,  retrying?: boolean):Promise<Array<Intent>> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/intents`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.listIntents(storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -109,20 +150,30 @@ export class IntentsService {
    * @param storyId story id
    * @param intentId intent id
   */
-  public updateIntent(body: Intent, storyId: string, intentId: string, ):Promise<Intent> {
+  public async updateIntent(body: Intent, storyId: string, intentId: string,  retrying?: boolean):Promise<Intent> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/intents/${encodeURIComponent(String(intentId))}`);
     const options = {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.updateIntent(body,storyId,intentId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 }

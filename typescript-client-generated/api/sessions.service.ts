@@ -5,6 +5,7 @@ import { ApiUtils } from "./api";
 
 export class SessionsService {
 
+  private rptToken: string;
   private token: string;
   private basePath: string;
 
@@ -20,20 +21,30 @@ export class SessionsService {
    * @param body Payload
    * @param storyId story id
   */
-  public createSession(body: Session, storyId: string, ):Promise<Session> {
+  public async createSession(body: Session, storyId: string,  retrying?: boolean):Promise<Session> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/sessions`);
     const options = {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.createSession(body,storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 }

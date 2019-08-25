@@ -5,6 +5,7 @@ import { ApiUtils } from "./api";
 
 export class ScriptsService {
 
+  private rptToken: string;
   private token: string;
   private basePath: string;
 
@@ -19,20 +20,30 @@ export class ScriptsService {
    * @summary Create a script
    * @param body Payload
   */
-  public createScript(body: Script, ):Promise<Script> {
+  public async createScript(body: Script,  retrying?: boolean):Promise<Script> {
     const uri = new URI(`${this.basePath}/scripts`);
     const options = {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.createScript(body,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -41,19 +52,29 @@ export class ScriptsService {
    * @summary Delete script
    * @param scriptId script id
   */
-  public deleteScript(scriptId: string, ):Promise<any> {
+  public async deleteScript(scriptId: string,  retrying?: boolean):Promise<any> {
     const uri = new URI(`${this.basePath}/scripts/${encodeURIComponent(String(scriptId))}`);
     const options = {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.deleteScript(scriptId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -62,19 +83,29 @@ export class ScriptsService {
    * @summary Finds a script
    * @param scriptId script id
   */
-  public findScript(scriptId: string, ):Promise<Script> {
+  public async findScript(scriptId: string,  retrying?: boolean):Promise<Script> {
     const uri = new URI(`${this.basePath}/scripts/${encodeURIComponent(String(scriptId))}`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.findScript(scriptId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -82,19 +113,29 @@ export class ScriptsService {
    * List scripts
    * @summary List scripts
   */
-  public listScripts():Promise<Array<Script>> {
+  public async listScripts( retrying?: boolean):Promise<Array<Script>> {
     const uri = new URI(`${this.basePath}/scripts`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.listScripts(true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -104,20 +145,30 @@ export class ScriptsService {
    * @param body Payload
    * @param scriptId script id
   */
-  public updateScript(body: Script, scriptId: string, ):Promise<Script> {
+  public async updateScript(body: Script, scriptId: string,  retrying?: boolean):Promise<Script> {
     const uri = new URI(`${this.basePath}/scripts/${encodeURIComponent(String(scriptId))}`);
     const options = {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.updateScript(body,scriptId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 }

@@ -5,6 +5,7 @@ import { ApiUtils } from "./api";
 
 export class KnotsService {
 
+  private rptToken: string;
   private token: string;
   private basePath: string;
 
@@ -20,20 +21,30 @@ export class KnotsService {
    * @param body Payload
    * @param storyId story id
   */
-  public createKnot(body: Knot, storyId: string, ):Promise<Knot> {
+  public async createKnot(body: Knot, storyId: string,  retrying?: boolean):Promise<Knot> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/knots`);
     const options = {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.createKnot(body,storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -43,19 +54,29 @@ export class KnotsService {
    * @param storyId story id
    * @param knotId knot id
   */
-  public deleteKnot(storyId: string, knotId: string, ):Promise<any> {
+  public async deleteKnot(storyId: string, knotId: string,  retrying?: boolean):Promise<any> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/knots/${encodeURIComponent(String(knotId))}`);
     const options = {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.deleteKnot(storyId,knotId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -65,19 +86,29 @@ export class KnotsService {
    * @param storyId story id
    * @param knotId knot id
   */
-  public findKnot(storyId: string, knotId: string, ):Promise<Knot> {
+  public async findKnot(storyId: string, knotId: string,  retrying?: boolean):Promise<Knot> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/knots/${encodeURIComponent(String(knotId))}`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.findKnot(storyId,knotId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -86,19 +117,29 @@ export class KnotsService {
    * @summary List story knots
    * @param storyId story id
   */
-  public listKnots(storyId: string, ):Promise<Array<Knot>> {
+  public async listKnots(storyId: string,  retrying?: boolean):Promise<Array<Knot>> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/knots`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.listKnots(storyId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -109,20 +150,30 @@ export class KnotsService {
    * @param storyId story id
    * @param knotId knot id
   */
-  public updateKnot(body: Knot, storyId: string, knotId: string, ):Promise<Knot> {
+  public async updateKnot(body: Knot, storyId: string, knotId: string,  retrying?: boolean):Promise<Knot> {
     const uri = new URI(`${this.basePath}/stories/${encodeURIComponent(String(storyId))}/knots/${encodeURIComponent(String(knotId))}`);
     const options = {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.updateKnot(body,storyId,knotId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 }

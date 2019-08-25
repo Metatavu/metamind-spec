@@ -7,6 +7,7 @@ import { ApiUtils } from "./api";
 
 export class TrainingMaterialsService {
 
+  private rptToken: string;
   private token: string;
   private basePath: string;
 
@@ -21,20 +22,30 @@ export class TrainingMaterialsService {
    * @summary Create a trainingMaterial
    * @param body Payload
   */
-  public createTrainingMaterial(body: TrainingMaterial, ):Promise<TrainingMaterial> {
+  public async createTrainingMaterial(body: TrainingMaterial,  retrying?: boolean):Promise<TrainingMaterial> {
     const uri = new URI(`${this.basePath}/trainingMaterials`);
     const options = {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.createTrainingMaterial(body,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -43,19 +54,29 @@ export class TrainingMaterialsService {
    * @summary Delete trainingMaterial
    * @param trainingMaterialId trainingMaterial id
   */
-  public deleteTrainingMaterial(trainingMaterialId: string, ):Promise<any> {
+  public async deleteTrainingMaterial(trainingMaterialId: string,  retrying?: boolean):Promise<any> {
     const uri = new URI(`${this.basePath}/trainingMaterials/${encodeURIComponent(String(trainingMaterialId))}`);
     const options = {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.deleteTrainingMaterial(trainingMaterialId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -64,19 +85,29 @@ export class TrainingMaterialsService {
    * @summary Finds a trainingMaterial
    * @param trainingMaterialId trainingMaterial id
   */
-  public findTrainingMaterial(trainingMaterialId: string, ):Promise<TrainingMaterial> {
+  public async findTrainingMaterial(trainingMaterialId: string,  retrying?: boolean):Promise<TrainingMaterial> {
     const uri = new URI(`${this.basePath}/trainingMaterials/${encodeURIComponent(String(trainingMaterialId))}`);
     const options = {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.findTrainingMaterial(trainingMaterialId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -87,7 +118,7 @@ export class TrainingMaterialsService {
    * @param type training material type
    * @param visibility training material visibility
   */
-  public listTrainingMaterials(storyId?: string, type?: TrainingMaterialType, visibility?: TrainingMaterialVisibility, ):Promise<Array<TrainingMaterial>> {
+  public async listTrainingMaterials(storyId?: string, type?: TrainingMaterialType, visibility?: TrainingMaterialVisibility,  retrying?: boolean):Promise<Array<TrainingMaterial>> {
     const uri = new URI(`${this.basePath}/trainingMaterials`);
     if (storyId !== undefined && storyId !== null) {
         uri.addQuery('storyId', <any>storyId);
@@ -102,13 +133,23 @@ export class TrainingMaterialsService {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       }
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.listTrainingMaterials(storyId,type,visibility,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 
@@ -118,20 +159,30 @@ export class TrainingMaterialsService {
    * @param body Payload
    * @param trainingMaterialId trainingMaterial id
   */
-  public updateTrainingMaterial(body: TrainingMaterial, trainingMaterialId: string, ):Promise<TrainingMaterial> {
+  public async updateTrainingMaterial(body: TrainingMaterial, trainingMaterialId: string,  retrying?: boolean):Promise<TrainingMaterial> {
     const uri = new URI(`${this.basePath}/trainingMaterials/${encodeURIComponent(String(trainingMaterialId))}`);
     const options = {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.rptToken ? this.rptToken : this.token}`
       },
       body: JSON.stringify(body)
     };
 
-    return fetch(uri.toString(), options).then((response) => {
-      return ApiUtils.handleResponse(response);
-    });
+    const response = await fetch(uri.toString(), options);
+
+    if (!retrying && response.status == 401) {
+      const ticket = ApiUtils.getUMATicket(response);
+      const authorization = response.headers.get("Authorization");
+      const rptToken = await ApiUtils.getRPT(authorization, ticket);
+      this.rptToken = rptToken ? rptToken["access_token"] : null;
+      if (this.rptToken) {
+        return this.updateTrainingMaterial(body,trainingMaterialId,true);
+      }
+    }
+
+    return ApiUtils.handleResponse(response);
   }
 
 }
