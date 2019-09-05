@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import fi.metatavu.metamind.client.model.Coordinates;
 import fi.metatavu.metamind.client.model.KnotType;
 import fi.metatavu.metamind.client.model.TokenizerType;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,7 +27,7 @@ import java.util.UUID;
  * Knot
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-08-01T13:56:30.401+03:00[Europe/Helsinki]")public class Knot {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-09-05T15:23:23.571+03:00[Europe/Helsinki]")public class Knot {
 
   @JsonProperty("id")
 
@@ -55,6 +56,10 @@ import java.util.UUID;
   @JsonProperty("storyId")
 
   private UUID storyId = null;
+
+  @JsonProperty("coordinates")
+
+  private Coordinates coordinates = null;
 
   @JsonProperty("createdAt")
 
@@ -169,6 +174,24 @@ import java.util.UUID;
   public UUID getStoryId() {
     return storyId;
   }
+  public Knot coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+  
+
+  /**
+  * Get coordinates
+  * @return coordinates
+  **/
+  @Schema(description = "")
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
   /**
   * Creation time
   * @return createdAt
@@ -201,13 +224,14 @@ import java.util.UUID;
         Objects.equals(this.content, knot.content) &&
         Objects.equals(this.hint, knot.hint) &&
         Objects.equals(this.storyId, knot.storyId) &&
+        Objects.equals(this.coordinates, knot.coordinates) &&
         Objects.equals(this.createdAt, knot.createdAt) &&
         Objects.equals(this.modifiedAt, knot.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, type, tokenizer, name, content, hint, storyId, createdAt, modifiedAt);
+    return java.util.Objects.hash(id, type, tokenizer, name, content, hint, storyId, coordinates, createdAt, modifiedAt);
   }
 
   @Override
@@ -222,6 +246,7 @@ import java.util.UUID;
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    hint: ").append(toIndentedString(hint)).append("\n");
     sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");

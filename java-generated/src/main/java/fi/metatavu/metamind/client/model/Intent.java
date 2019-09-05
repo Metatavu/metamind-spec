@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import fi.metatavu.metamind.client.model.Coordinates;
 import fi.metatavu.metamind.client.model.IntentTrainingMaterials;
 import fi.metatavu.metamind.client.model.IntentType;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,7 +27,7 @@ import java.util.UUID;
  * Intent
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-08-01T13:56:30.401+03:00[Europe/Helsinki]")public class Intent {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-09-05T15:23:23.571+03:00[Europe/Helsinki]")public class Intent {
 
   @JsonProperty("id")
 
@@ -63,6 +64,10 @@ import java.util.UUID;
   @JsonProperty("trainingMaterials")
 
   private IntentTrainingMaterials trainingMaterials = null;
+
+  @JsonProperty("coordinates")
+
+  private Coordinates coordinates = null;
 
   @JsonProperty("createdAt")
 
@@ -223,6 +228,24 @@ import java.util.UUID;
   public void setTrainingMaterials(IntentTrainingMaterials trainingMaterials) {
     this.trainingMaterials = trainingMaterials;
   }
+  public Intent coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+  
+
+  /**
+  * Get coordinates
+  * @return coordinates
+  **/
+  @Schema(description = "")
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
   /**
   * Creation time
   * @return createdAt
@@ -257,13 +280,14 @@ import java.util.UUID;
         Objects.equals(this.targetKnotId, intent.targetKnotId) &&
         Objects.equals(this.global, intent.global) &&
         Objects.equals(this.trainingMaterials, intent.trainingMaterials) &&
+        Objects.equals(this.coordinates, intent.coordinates) &&
         Objects.equals(this.createdAt, intent.createdAt) &&
         Objects.equals(this.modifiedAt, intent.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, quickResponse, quickResponseOrder, type, sourceKnotId, targetKnotId, global, trainingMaterials, createdAt, modifiedAt);
+    return java.util.Objects.hash(id, name, quickResponse, quickResponseOrder, type, sourceKnotId, targetKnotId, global, trainingMaterials, coordinates, createdAt, modifiedAt);
   }
 
   @Override
@@ -280,6 +304,7 @@ import java.util.UUID;
     sb.append("    targetKnotId: ").append(toIndentedString(targetKnotId)).append("\n");
     sb.append("    global: ").append(toIndentedString(global)).append("\n");
     sb.append("    trainingMaterials: ").append(toIndentedString(trainingMaterials)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");

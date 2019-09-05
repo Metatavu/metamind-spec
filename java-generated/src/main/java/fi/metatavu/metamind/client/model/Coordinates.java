@@ -19,21 +19,53 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * ErrorResponse
+ * Coordinates
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-09-05T15:23:23.571+03:00[Europe/Helsinki]")public class ErrorResponse {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-09-05T15:23:23.571+03:00[Europe/Helsinki]")public class Coordinates {
 
-  @JsonProperty("message")
+  @JsonProperty("x")
 
-  private String message = null;
+  private Double x = null;
+
+  @JsonProperty("y")
+
+  private Double y = null;
+  public Coordinates x(Double x) {
+    this.x = x;
+    return this;
+  }
+
+  
+
   /**
-  * The error message
-  * @return message
+  * Get x
+  * @return x
   **/
-  @Schema(description = "The error message")
-  public String getMessage() {
-    return message;
+  @Schema(description = "")
+  public Double getX() {
+    return x;
+  }
+  public void setX(Double x) {
+    this.x = x;
+  }
+  public Coordinates y(Double y) {
+    this.y = y;
+    return this;
+  }
+
+  
+
+  /**
+  * Get y
+  * @return y
+  **/
+  @Schema(description = "")
+  public Double getY() {
+    return y;
+  }
+  public void setY(Double y) {
+    this.y = y;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -43,21 +75,23 @@ import io.swagger.v3.oas.annotations.media.Schema;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.message, errorResponse.message);
+    Coordinates coordinates = (Coordinates) o;
+    return Objects.equals(this.x, coordinates.x) &&
+        Objects.equals(this.y, coordinates.y);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(message);
+    return java.util.Objects.hash(x, y);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
+    sb.append("class Coordinates {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    x: ").append(toIndentedString(x)).append("\n");
+    sb.append("    y: ").append(toIndentedString(y)).append("\n");
     sb.append("}");
     return sb.toString();
   }
