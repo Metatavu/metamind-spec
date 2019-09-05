@@ -25,6 +25,7 @@ public class Knot   {
   private @Valid String content = null;
   private @Valid String hint = null;
   private @Valid UUID storyId = null;
+  private @Valid Coordinates coordinates = null;
   private @Valid OffsetDateTime createdAt = null;
   private @Valid OffsetDateTime modifiedAt = null;
 
@@ -161,6 +162,24 @@ public class Knot   {
   }
 
   /**
+   **/
+  public Knot coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("coordinates")
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
+  /**
    * Creation time
    **/
   public Knot createdAt(OffsetDateTime createdAt) {
@@ -215,13 +234,14 @@ public class Knot   {
         Objects.equals(content, knot.content) &&
         Objects.equals(hint, knot.hint) &&
         Objects.equals(storyId, knot.storyId) &&
+        Objects.equals(coordinates, knot.coordinates) &&
         Objects.equals(createdAt, knot.createdAt) &&
         Objects.equals(modifiedAt, knot.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, tokenizer, name, content, hint, storyId, createdAt, modifiedAt);
+    return Objects.hash(id, type, tokenizer, name, content, hint, storyId, coordinates, createdAt, modifiedAt);
   }
 
   @Override
@@ -236,6 +256,7 @@ public class Knot   {
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    hint: ").append(toIndentedString(hint)).append("\n");
     sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");

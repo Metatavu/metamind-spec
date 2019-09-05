@@ -2269,6 +2269,9 @@
             "format" : "uuid",
             "readOnly" : true
           },
+          "coordinates" : {
+            "$ref" : "#/components/schemas/Coordinates"
+          },
           "createdAt" : {
             "type" : "string",
             "description" : "Creation time",
@@ -2280,6 +2283,19 @@
             "description" : "Last modification time",
             "format" : "date-time",
             "readOnly" : true
+          }
+        }
+      },
+      "Coordinates" : {
+        "type" : "object",
+        "properties" : {
+          "x" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "y" : {
+            "type" : "number",
+            "format" : "double"
           }
         }
       },
@@ -2325,6 +2341,9 @@
           },
           "trainingMaterials" : {
             "$ref" : "#/components/schemas/Intent_trainingMaterials"
+          },
+          "coordinates" : {
+            "$ref" : "#/components/schemas/Coordinates"
           },
           "createdAt" : {
             "type" : "string",
