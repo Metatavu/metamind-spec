@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Coordinates } from './coordinates';
 import { IntentTrainingMaterials } from './intentTrainingMaterials';
 import { IntentType } from './intentType';
 export interface Intent {
@@ -30,6 +31,7 @@ export interface Intent {
     targetKnotId: string;
     global: boolean;
     trainingMaterials: IntentTrainingMaterials;
+    coordinates?: Coordinates;
     /**
      * Creation time
      */
@@ -58,6 +60,7 @@ export interface IntentOpt {
     targetKnotId?: string;
     global?: boolean;
     trainingMaterials?: IntentTrainingMaterials;
+    coordinates?: Coordinates;
     /**
      * Creation time
      */

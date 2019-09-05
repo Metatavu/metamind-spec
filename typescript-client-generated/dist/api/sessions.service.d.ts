@@ -1,5 +1,6 @@
 import { Session } from '../model/session';
 export declare class SessionsService {
+    private rptToken;
     private token;
     private basePath;
     constructor(basePath: string, token: string);
@@ -9,5 +10,5 @@ export declare class SessionsService {
      * @param body Payload
      * @param storyId story id
     */
-    createSession(body: Session, storyId: string): Promise<Session>;
+    createSession(body: Session, storyId: string, retrying?: boolean): Promise<Session>;
 }

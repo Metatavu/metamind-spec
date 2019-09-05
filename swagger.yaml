@@ -1580,8 +1580,6 @@ components:
               description: Variable OpenNLP Regex training material id
               type: string
               format: uuid
-        coordinates:
-          $ref: '#/components/schemas/Coordinates'
         createdAt:
           description: Creation time
           type: string

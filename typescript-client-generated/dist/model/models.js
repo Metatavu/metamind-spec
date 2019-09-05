@@ -7,4 +7,5 @@ __export(require("./intentType"));
 __export(require("./knotType"));
 __export(require("./tokenizerType"));
 __export(require("./trainingMaterialType"));
+__export(require("./trainingMaterialVisibility"));
 __export(require("./variableType"));

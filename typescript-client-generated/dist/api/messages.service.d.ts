@@ -1,5 +1,6 @@
 import { Message } from '../model/message';
 export declare class MessagesService {
+    private rptToken;
     private token;
     private basePath;
     constructor(basePath: string, token: string);
@@ -9,5 +10,5 @@ export declare class MessagesService {
      * @param body Payload
      * @param storyId story id
     */
-    createMessage(body: Message, storyId: string): Promise<Message>;
+    createMessage(body: Message, storyId: string, retrying?: boolean): Promise<Message>;
 }
