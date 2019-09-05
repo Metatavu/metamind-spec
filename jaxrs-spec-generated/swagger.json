@@ -2342,9 +2342,6 @@
           "trainingMaterials" : {
             "$ref" : "#/components/schemas/Intent_trainingMaterials"
           },
-          "coordinates" : {
-            "$ref" : "#/components/schemas/Coordinates"
-          },
           "createdAt" : {
             "type" : "string",
             "description" : "Creation time",

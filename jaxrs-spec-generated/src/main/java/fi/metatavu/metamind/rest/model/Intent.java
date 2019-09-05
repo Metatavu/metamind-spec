@@ -27,7 +27,6 @@ public class Intent   {
   private @Valid UUID targetKnotId = null;
   private @Valid Boolean global = null;
   private @Valid IntentTrainingMaterials trainingMaterials = null;
-  private @Valid Coordinates coordinates = null;
   private @Valid OffsetDateTime createdAt = null;
   private @Valid OffsetDateTime modifiedAt = null;
 
@@ -202,24 +201,6 @@ public class Intent   {
   }
 
   /**
-   **/
-  public Intent coordinates(Coordinates coordinates) {
-    this.coordinates = coordinates;
-    return this;
-  }
-
-  
-  //@ApiModelProperty(value = "")
-  @JsonProperty("coordinates")
-
-  public Coordinates getCoordinates() {
-    return coordinates;
-  }
-  public void setCoordinates(Coordinates coordinates) {
-    this.coordinates = coordinates;
-  }
-
-  /**
    * Creation time
    **/
   public Intent createdAt(OffsetDateTime createdAt) {
@@ -276,14 +257,13 @@ public class Intent   {
         Objects.equals(targetKnotId, intent.targetKnotId) &&
         Objects.equals(global, intent.global) &&
         Objects.equals(trainingMaterials, intent.trainingMaterials) &&
-        Objects.equals(coordinates, intent.coordinates) &&
         Objects.equals(createdAt, intent.createdAt) &&
         Objects.equals(modifiedAt, intent.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, quickResponse, quickResponseOrder, type, sourceKnotId, targetKnotId, global, trainingMaterials, coordinates, createdAt, modifiedAt);
+    return Objects.hash(id, name, quickResponse, quickResponseOrder, type, sourceKnotId, targetKnotId, global, trainingMaterials, createdAt, modifiedAt);
   }
 
   @Override
@@ -300,7 +280,6 @@ public class Intent   {
     sb.append("    targetKnotId: ").append(toIndentedString(targetKnotId)).append("\n");
     sb.append("    global: ").append(toIndentedString(global)).append("\n");
     sb.append("    trainingMaterials: ").append(toIndentedString(trainingMaterials)).append("\n");
-    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
