@@ -1,3 +1,4 @@
+export * from './coordinates';
 export * from './errorResponse';
 export * from './intent';
 export * from './intentTrainingMaterials';

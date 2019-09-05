@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Coordinates } from './coordinates';
 import { KnotType } from './knotType';
 import { TokenizerType } from './tokenizerType';
 
@@ -27,6 +28,7 @@ export interface Knot {
      * Story id
      */
     readonly storyId?: string;
+    coordinates?: Coordinates;
     /**
      * Creation time
      */
@@ -50,6 +52,7 @@ export interface KnotOpt {
      * Story id
      */
     readonly storyId?: string;
+    coordinates?: Coordinates;
     /**
      * Creation time
      */
