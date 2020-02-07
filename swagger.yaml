@@ -7,6 +7,13 @@ security:
   - BearerAuth: []
 paths:
   /storyExport/{storyId}:
+    parameters:
+        - in: path
+          name: storyId
+          schema:
+            type: integer
+          required: true
+          description: "Id of the story to be imported or exported"
     get:
       operationId: exportStory
       summary: Export a story
@@ -40,7 +47,8 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      post:
+  /storyImport/:
+    post:
         operationId: importStory
         summary: Import a story
         description: Import story
@@ -1517,10 +1525,80 @@ components:
           description: Story name.
           type: string
           readOnly: true
+        defaultHint:
+          description: Default hint.
+          type: string
+          readOnly: true
         locale:
           description: Story locale.
           type: string
           readOnly: true
+        knots:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: knot id.
+                type: string
+                format: uuid
+                readOnly: true
+              type:
+                $ref: '#/components/schemas/KnotType'
+              tokenizer:
+                $ref: '#/components/schemas/TokenizerType'
+              name:
+                type: string
+              content:
+                type: string
+              hint:
+                type: string
+              coordinates:
+                $ref: '#/components/schemas/Coordinates'
+        variables:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: variable id.
+                type: string
+                format: uuid
+                readOnly: true
+              name:
+                type: string
+              type:
+                $ref: '#/components/schemas/VariableType'
+              storyId:
+                description: Story id
+                type: string
+                format: uuid
+                readOnly: true
+              validationScript:
+                type: string
+                description: Validation script
+        scripts:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: Script id
+                type: string
+                format: uuid
+                readOnly: true
+              name:
+                description: Script name
+                type: string
+              version:
+                description: Script version
+                type: string
+              language:
+                description: Script language
+                type: string
+              content:
+                description: Script content
+                type: string               
         intents:
           type: array
           items:
@@ -1550,6 +1628,24 @@ components:
                 format: uuid
               global:
                 type: boolean
+              trainingMaterials:
+                type: array
+                items:
+                  type:  object
+                  properties:
+                    id:
+                      description: intent id.
+                      type: string
+                      format: uuid
+                      readOnly: true
+                    type:
+                      $ref: '#/components/schemas/TrainingMaterialType'
+                    text:
+                      type: string
+                    name:
+                      type: string
+                    visibility:
+                      type: string
     Session:
       type: object
       required:
