@@ -6,6 +6,78 @@ info:
 security:
   - BearerAuth: []
 paths:
+  /storyExport/{storyId}:
+    get:
+      operationId: exportStory
+      summary: Export a story
+      description: export story
+      tags:
+        - StoryJson
+      responses:
+        '200':
+          description: Story JSON representation
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoryJson'
+        '400':
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      post:
+        operationId: importStory
+        summary: Import a story
+        description: Import story
+        tags:
+          - StoryJson
+        requestBody:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/StoryJson'
+          description: Payload
+          required: true
+        responses:
+          '200':
+            description: Import a story
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/StoryJson'
+          '400':
+            description: Invalid request was sent to the server
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          '403':
+            description: Attempted to make a call with unauthorized client
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          '500':
+            description: Internal server error
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
   /stories:
     get:
       operationId: listStories
@@ -1433,6 +1505,51 @@ components:
           type: string
           format: date-time
           readOnly: true
+    StoryJson:
+      type: object
+      properties:
+        id:
+          description: Story id.
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          description: Story name.
+          type: string
+          readOnly: true
+        locale:
+          description: Story locale.
+          type: string
+          readOnly: true
+        intents:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: intent id.
+                type: string
+                format: uuid
+                readOnly: true
+              name:
+                type: string
+              quickResponse:
+                type: string
+              quickResponseOrder:
+                type: integer
+                format: int32
+              type:
+                $ref: '#/components/schemas/IntentType'
+              sourceKnotId:
+                description: source knot id id.
+                type: string
+                format: uuid
+              targetKnotId:
+                description: target knot id id.
+                type: string
+                format: uuid
+              global:
+                type: boolean
     Session:
       type: object
       required:
