@@ -6,86 +6,7 @@ info:
 security:
   - BearerAuth: []
 paths:
-  /storyExport/{storyId}:
-    parameters:
-        - in: path
-          name: storyId
-          schema:
-            type: integer
-          required: true
-          description: "Id of the story to be imported or exported"
-    get:
-      operationId: exportStory
-      summary: Export a story
-      description: export story
-      tags:
-        - StoryJson
-      responses:
-        '200':
-          description: Story JSON representation
-          content:
-            application/json;charset=utf-8:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/StoryJson'
-        '400':
-          description: Invalid request was sent to the server
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '403':
-          description: Attempted to make a call with unauthorized client
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Internal server error
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-  /storyImport/:
-    post:
-        operationId: importStory
-        summary: Import a story
-        description: Import story
-        tags:
-          - StoryJson
-        requestBody:
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/StoryJson'
-          description: Payload
-          required: true
-        responses:
-          '200':
-            description: Import a story
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/StoryJson'
-          '400':
-            description: Invalid request was sent to the server
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-          '403':
-            description: Attempted to make a call with unauthorized client
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-          '500':
-            description: Internal server error
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
+
   /stories:
     get:
       operationId: listStories
@@ -1469,6 +1390,87 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /storyImport/:
+    post:
+        operationId: importStory
+        summary: Import a story
+        description: Import story
+        tags:
+          - ExporttedStory
+        requestBody:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ExporttedStory'
+          description: Payload
+          required: true
+        responses:
+          '200':
+            description: Importted story
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/Story'
+          '400':
+            description: Invalid request was sent to the server
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          '403':
+            description: Attempted to make a call with unauthorized client
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          '500':
+            description: Internal server error
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                  
+  /storyExport/{storyId}:
+    get:
+      operationId: exportStory
+      summary: Export a story
+      description: export story
+      parameters:
+        - in: path
+          name: storyId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: "Id of the story to be exported"
+      tags:
+        - Exportted Story
+      responses:
+        '200':
+          description: Exportted story
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ExporttedStory'
+        '400':
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
 servers:
   - url: /v2
 components:
@@ -1513,7 +1515,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-    StoryJson:
+    ExporttedStory:
       type: object
       properties:
         id:
