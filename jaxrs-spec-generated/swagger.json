@@ -2148,6 +2148,129 @@
           }
         }
       }
+    },
+    "/storyImport/" : {
+      "post" : {
+        "tags" : [ "StoryExport" ],
+        "summary" : "Import a story",
+        "description" : "Import story",
+        "operationId" : "importStory",
+        "requestBody" : {
+          "description" : "Payload",
+          "content" : {
+            "application/json;charset=utf-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExportedStory"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Imported story",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Story"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/storyExport/{storyId}" : {
+      "get" : {
+        "tags" : [ "StoryExport" ],
+        "summary" : "Export a story",
+        "description" : "export story",
+        "operationId" : "exportStory",
+        "parameters" : [ {
+          "name" : "storyId",
+          "in" : "path",
+          "description" : "Id of the story to be exported",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Exported story",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExportedStory"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json;charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -2193,6 +2316,188 @@
             "description" : "Last modification time",
             "format" : "date-time",
             "readOnly" : true
+          }
+        }
+      },
+      "ExportedStory" : {
+        "required" : [ "intents", "knots", "locale", "name", "scripts", "trainingMaterials", "variables" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "Story name."
+          },
+          "defaultHint" : {
+            "type" : "string",
+            "description" : "Default hint."
+          },
+          "locale" : {
+            "type" : "string",
+            "description" : "Story locale."
+          },
+          "knots" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ExportedStoryKnot"
+            }
+          },
+          "variables" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ExportedStoryVariable"
+            }
+          },
+          "scripts" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ExportedStoryScript"
+            }
+          },
+          "intents" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ExportedStoryIntent"
+            }
+          },
+          "trainingMaterials" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ExportedStoryTrainingMaterial"
+            }
+          }
+        }
+      },
+      "ExportedStoryVariable" : {
+        "required" : [ "name", "type" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/VariableType"
+          },
+          "validationScript" : {
+            "type" : "string",
+            "description" : "Validation script"
+          }
+        }
+      },
+      "ExportedStoryScript" : {
+        "required" : [ "content", "language", "name", "version" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "Script name"
+          },
+          "version" : {
+            "type" : "string",
+            "description" : "Script version"
+          },
+          "language" : {
+            "type" : "string",
+            "description" : "Script language"
+          },
+          "content" : {
+            "type" : "string",
+            "description" : "Script content"
+          }
+        }
+      },
+      "ExportedStoryKnot" : {
+        "required" : [ "content", "name", "tokenizer", "type" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "knot id.",
+            "format" : "uuid"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/KnotType"
+          },
+          "tokenizer" : {
+            "$ref" : "#/components/schemas/TokenizerType"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "content" : {
+            "type" : "string"
+          },
+          "hint" : {
+            "type" : "string"
+          },
+          "coordinates" : {
+            "$ref" : "#/components/schemas/Coordinates"
+          }
+        }
+      },
+      "ExportedStoryIntent" : {
+        "required" : [ "global", "name", "quickResponseOrder", "targetKnotId", "type" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "intent id.",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "quickResponse" : {
+            "type" : "string"
+          },
+          "quickResponseOrder" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/IntentType"
+          },
+          "sourceKnotId" : {
+            "type" : "string",
+            "description" : "source knot id.",
+            "format" : "uuid"
+          },
+          "targetKnotId" : {
+            "type" : "string",
+            "description" : "target knot id.",
+            "format" : "uuid"
+          },
+          "global" : {
+            "type" : "boolean"
+          },
+          "trainingMaterialIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "uuid"
+            }
+          }
+        }
+      },
+      "ExportedStoryTrainingMaterial" : {
+        "required" : [ "name", "text", "type", "visibility" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "training material id.",
+            "format" : "uuid"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/TrainingMaterialType"
+          },
+          "text" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "visibility" : {
+            "type" : "string"
           }
         }
       },
