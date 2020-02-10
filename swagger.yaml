@@ -1517,6 +1517,9 @@ components:
           readOnly: true
     ExportedStory:
       type: object
+      required:
+        - name
+        - locale
       properties:
         name:
           description: Story name.
@@ -1543,8 +1546,15 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ExportedStoryIntent"
+        trainingMaterials:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExportedStoryTrainingMaterial"
     ExportedStoryVariable:
       type: object
+      required:
+        - type
+        - name
       properties:
           name:
             type: string
@@ -1555,6 +1565,11 @@ components:
             description: Validation script
     ExportedStoryScript:
       type: object
+      required:
+        - name
+        - content
+        - version
+        - language
       properties: 
           name:
             description: Script name
@@ -1570,6 +1585,11 @@ components:
             type: string
     ExportedStoryKnot:
       type: object
+      required:
+        - type
+        - tokenizer
+        - name
+        - content
       properties:
         id:
           description: knot id.
@@ -1589,6 +1609,12 @@ components:
           $ref: '#/components/schemas/Coordinates'
     ExportedStoryIntent:
         type: object
+        required:
+          - name
+          - type 
+          - quickResponseOrder
+          - global
+          - targetKnotId
         properties:
           id:
             description: intent id.
@@ -1604,24 +1630,30 @@ components:
           type:
             $ref: '#/components/schemas/IntentType'
           sourceKnotId:
-            description: source knot id id.
+            description: source knot id.
             type: string
             format: uuid
           targetKnotId:
-            description: target knot id id.
+            description: target knot id.
             type: string
             format: uuid
           global:
             type: boolean
-          trainingMaterials:
+          trainingMaterialIds:
             type: array
             items:
-              $ref: '#/components/schemas/ExportedStoryTrainingMaterial'
+              type: string
+              format: uuid
     ExportedStoryTrainingMaterial:
       type:  object
+      required:
+        - type
+        - text
+        - name
+        - visibility
       properties:
         id:
-          description: intent id.
+          description: training material id.
           type: string
           format: uuid
         type:
