@@ -1518,136 +1518,118 @@ components:
     ExportedStory:
       type: object
       properties:
-        id:
-          description: Story id.
-          type: string
-          format: uuid
-          readOnly: true
         name:
           description: Story name.
           type: string
-          readOnly: true
         defaultHint:
           description: Default hint.
           type: string
-          readOnly: true
         locale:
           description: Story locale.
           type: string
-          readOnly: true
         knots:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: knot id.
-                type: string
-                format: uuid
-                readOnly: true
-              type:
-                $ref: '#/components/schemas/KnotType'
-              tokenizer:
-                $ref: '#/components/schemas/TokenizerType'
-              name:
-                type: string
-              content:
-                type: string
-              hint:
-                type: string
-              coordinates:
-                $ref: '#/components/schemas/Coordinates'
+            $ref: '#/components/schemas/ExportedStoryKnot'
         variables:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: variable id.
-                type: string
-                format: uuid
-                readOnly: true
-              name:
-                type: string
-              type:
-                $ref: '#/components/schemas/VariableType'
-              storyId:
-                description: Story id
-                type: string
-                format: uuid
-                readOnly: true
-              validationScript:
-                type: string
-                description: Validation script
+            $ref: '#/components/schemas/ExportedStoryVariable'
         scripts:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: Script id
-                type: string
-                format: uuid
-                readOnly: true
-              name:
-                description: Script name
-                type: string
-              version:
-                description: Script version
-                type: string
-              language:
-                description: Script language
-                type: string
-              content:
-                description: Script content
-                type: string               
+            $ref: "#/components/schemas/ExportedStoryScript"
         intents:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: intent id.
-                type: string
-                format: uuid
-                readOnly: true
-              name:
-                type: string
-              quickResponse:
-                type: string
-              quickResponseOrder:
-                type: integer
-                format: int32
-              type:
-                $ref: '#/components/schemas/IntentType'
-              sourceKnotId:
-                description: source knot id id.
-                type: string
-                format: uuid
-              targetKnotId:
-                description: target knot id id.
-                type: string
-                format: uuid
-              global:
-                type: boolean
-              trainingMaterials:
-                type: array
-                items:
-                  type:  object
-                  properties:
-                    id:
-                      description: intent id.
-                      type: string
-                      format: uuid
-                      readOnly: true
-                    type:
-                      $ref: '#/components/schemas/TrainingMaterialType'
-                    text:
-                      type: string
-                    name:
-                      type: string
-                    visibility:
-                      type: string
+            $ref: "#/components/schemas/ExportedStoryIntent"
+    ExportedStoryVariable:
+      type: object
+      properties:
+          name:
+            type: string
+          type:
+            $ref: '#/components/schemas/VariableType'
+          validationScript:
+            type: string
+            description: Validation script
+    ExportedStoryScript:
+      type: object
+      properties: 
+          name:
+            description: Script name
+            type: string
+          version:
+            description: Script version
+            type: string
+          language:
+            description: Script language
+            type: string
+          content:
+            description: Script content 
+            type: string
+    ExportedStoryKnot:
+      type: object
+      properties:
+        id:
+          description: knot id.
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/KnotType'
+        tokenizer:
+          $ref: '#/components/schemas/TokenizerType'
+        name:
+          type: string
+        content:
+          type: string
+        hint:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+    ExportedStoryIntent:
+        type: object
+        properties:
+          id:
+            description: intent id.
+            type: string
+            format: uuid
+          name:
+            type: string
+          quickResponse:
+            type: string
+          quickResponseOrder:
+            type: integer
+            format: int32
+          type:
+            $ref: '#/components/schemas/IntentType'
+          sourceKnotId:
+            description: source knot id id.
+            type: string
+            format: uuid
+          targetKnotId:
+            description: target knot id id.
+            type: string
+            format: uuid
+          global:
+            type: boolean
+          trainingMaterials:
+            type: array
+            items:
+              type:  object
+              properties:
+                id:
+                  description: intent id.
+                  type: string
+                  format: uuid
+                type:
+                  $ref: '#/components/schemas/TrainingMaterialType'
+                text:
+                  type: string
+                name:
+                  type: string
+                visibility:
+                  type: string
     Session:
       type: object
       required:
