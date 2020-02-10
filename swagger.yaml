@@ -1520,6 +1520,11 @@ components:
       required:
         - name
         - locale
+        - knots
+        - variables
+        - intents
+        - scripts
+        - trainingMaterials
       properties:
         name:
           description: Story name.
