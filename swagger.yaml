@@ -1401,12 +1401,12 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExporttedStory'
+                $ref: '#/components/schemas/ExportedStory'
           description: Payload
           required: true
         responses:
           '200':
-            description: Importted story
+            description: Imported story
             content:
               application/json;charset=utf-8:
                 schema:
@@ -1447,11 +1447,11 @@ paths:
         - StoryExport
       responses:
         '200':
-          description: Exportted story
+          description: Exported story
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExporttedStory'
+                $ref: '#/components/schemas/ExportedStory'
         '400':
           description: Invalid request was sent to the server
           content:
@@ -1515,7 +1515,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-    ExporttedStory:
+    ExportedStory:
       type: object
       properties:
         id:
