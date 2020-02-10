@@ -1616,20 +1616,22 @@ components:
           trainingMaterials:
             type: array
             items:
-              type:  object
-              properties:
-                id:
-                  description: intent id.
-                  type: string
-                  format: uuid
-                type:
-                  $ref: '#/components/schemas/TrainingMaterialType'
-                text:
-                  type: string
-                name:
-                  type: string
-                visibility:
-                  type: string
+              $ref: '#/components/schemas/ExportedStoryTrainingMaterial'
+    ExportedStoryTrainingMaterial:
+      type:  object
+      properties:
+        id:
+          description: intent id.
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/TrainingMaterialType'
+        text:
+          type: string
+        name:
+          type: string
+        visibility:
+          type: string
     Session:
       type: object
       required:
