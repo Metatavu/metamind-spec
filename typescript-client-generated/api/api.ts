@@ -10,6 +10,8 @@ export * from './sessions.service';
 import { SessionsService } from './sessions.service';
 export * from './stories.service';
 import { StoriesService } from './stories.service';
+export * from './storyExport.service';
+import { StoryExportService } from './storyExport.service';
 export * from './trainingMaterials.service';
 import { TrainingMaterialsService } from './trainingMaterials.service';
 export * from './variables.service';
@@ -121,6 +123,10 @@ export default new class Api {
   
   public getStoriesService(token: string): StoriesService {
     return new StoriesService(this.apiUrl, token);
+  }
+  
+  public getStoryExportService(token: string): StoryExportService {
+    return new StoryExportService(this.apiUrl, token);
   }
   
   public getTrainingMaterialsService(token: string): TrainingMaterialsService {

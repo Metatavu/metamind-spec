@@ -9,63 +9,46 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { IntentTrainingMaterials } from './intentTrainingMaterials';
 import { IntentType } from './intentType';
 
 
-export interface Intent { 
+export interface ExportedStoryIntent { 
     /**
      * intent id.
      */
-    readonly id?: string;
-    name?: string;
+    id?: string;
+    name: string;
     quickResponse?: string;
     quickResponseOrder: number;
     type: IntentType;
     /**
-     * source knot id id.
+     * source knot id.
      */
     sourceKnotId?: string;
     /**
-     * target knot id id.
+     * target knot id.
      */
     targetKnotId: string;
     global: boolean;
-    trainingMaterials: IntentTrainingMaterials;
-    /**
-     * Creation time
-     */
-    readonly createdAt?: Date;
-    /**
-     * Last modification time
-     */
-    readonly modifiedAt?: Date;
+    trainingMaterialIds?: Array<string>;
 }
-export interface IntentOpt { 
+export interface ExportedStoryIntentOpt { 
     /**
      * intent id.
      */
-    readonly id?: string;
+    id?: string;
     name?: string;
     quickResponse?: string;
     quickResponseOrder?: number;
     type?: IntentType;
     /**
-     * source knot id id.
+     * source knot id.
      */
     sourceKnotId?: string;
     /**
-     * target knot id id.
+     * target knot id.
      */
     targetKnotId?: string;
     global?: boolean;
-    trainingMaterials?: IntentTrainingMaterials;
-    /**
-     * Creation time
-     */
-    readonly createdAt?: Date;
-    /**
-     * Last modification time
-     */
-    readonly modifiedAt?: Date;
+    trainingMaterialIds?: Array<string>;
 }
