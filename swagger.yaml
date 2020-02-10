@@ -6,86 +6,7 @@ info:
 security:
   - BearerAuth: []
 paths:
-  /storyExport/{storyId}:
-    parameters:
-        - in: path
-          name: storyId
-          schema:
-            type: integer
-          required: true
-          description: "Id of the story to be imported or exported"
-    get:
-      operationId: exportStory
-      summary: Export a story
-      description: export story
-      tags:
-        - StoryJson
-      responses:
-        '200':
-          description: Story JSON representation
-          content:
-            application/json;charset=utf-8:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/StoryJson'
-        '400':
-          description: Invalid request was sent to the server
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '403':
-          description: Attempted to make a call with unauthorized client
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Internal server error
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-  /storyImport/:
-    post:
-        operationId: importStory
-        summary: Import a story
-        description: Import story
-        tags:
-          - StoryJson
-        requestBody:
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/StoryJson'
-          description: Payload
-          required: true
-        responses:
-          '200':
-            description: Import a story
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/StoryJson'
-          '400':
-            description: Invalid request was sent to the server
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-          '403':
-            description: Attempted to make a call with unauthorized client
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-          '500':
-            description: Internal server error
-            content:
-              application/json;charset=utf-8:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
+
   /stories:
     get:
       operationId: listStories
@@ -1469,6 +1390,87 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /storyImport/:
+    post:
+        operationId: importStory
+        summary: Import a story
+        description: Import story
+        tags:
+          - StoryExport
+        requestBody:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ExportedStory'
+          description: Payload
+          required: true
+        responses:
+          '200':
+            description: Imported story
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/Story'
+          '400':
+            description: Invalid request was sent to the server
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          '403':
+            description: Attempted to make a call with unauthorized client
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          '500':
+            description: Internal server error
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                  
+  /storyExport/{storyId}:
+    get:
+      operationId: exportStory
+      summary: Export a story
+      description: export story
+      parameters:
+        - in: path
+          name: storyId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: "Id of the story to be exported"
+      tags:
+        - StoryExport
+      responses:
+        '200':
+          description: Exported story
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ExportedStory'
+        '400':
+          description: Invalid request was sent to the server
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Attempted to make a call with unauthorized client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
 servers:
   - url: /v2
 components:
@@ -1513,139 +1515,160 @@ components:
           type: string
           format: date-time
           readOnly: true
-    StoryJson:
+    ExportedStory:
       type: object
+      required:
+        - name
+        - locale
+        - knots
+        - variables
+        - intents
+        - scripts
+        - trainingMaterials
       properties:
-        id:
-          description: Story id.
-          type: string
-          format: uuid
-          readOnly: true
         name:
           description: Story name.
           type: string
-          readOnly: true
         defaultHint:
           description: Default hint.
           type: string
-          readOnly: true
         locale:
           description: Story locale.
           type: string
-          readOnly: true
         knots:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: knot id.
-                type: string
-                format: uuid
-                readOnly: true
-              type:
-                $ref: '#/components/schemas/KnotType'
-              tokenizer:
-                $ref: '#/components/schemas/TokenizerType'
-              name:
-                type: string
-              content:
-                type: string
-              hint:
-                type: string
-              coordinates:
-                $ref: '#/components/schemas/Coordinates'
+            $ref: '#/components/schemas/ExportedStoryKnot'
         variables:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: variable id.
-                type: string
-                format: uuid
-                readOnly: true
-              name:
-                type: string
-              type:
-                $ref: '#/components/schemas/VariableType'
-              storyId:
-                description: Story id
-                type: string
-                format: uuid
-                readOnly: true
-              validationScript:
-                type: string
-                description: Validation script
+            $ref: '#/components/schemas/ExportedStoryVariable'
         scripts:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: Script id
-                type: string
-                format: uuid
-                readOnly: true
-              name:
-                description: Script name
-                type: string
-              version:
-                description: Script version
-                type: string
-              language:
-                description: Script language
-                type: string
-              content:
-                description: Script content
-                type: string               
+            $ref: "#/components/schemas/ExportedStoryScript"
         intents:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                description: intent id.
-                type: string
-                format: uuid
-                readOnly: true
-              name:
-                type: string
-              quickResponse:
-                type: string
-              quickResponseOrder:
-                type: integer
-                format: int32
-              type:
-                $ref: '#/components/schemas/IntentType'
-              sourceKnotId:
-                description: source knot id id.
-                type: string
-                format: uuid
-              targetKnotId:
-                description: target knot id id.
-                type: string
-                format: uuid
-              global:
-                type: boolean
-              trainingMaterials:
-                type: array
-                items:
-                  type:  object
-                  properties:
-                    id:
-                      description: intent id.
-                      type: string
-                      format: uuid
-                      readOnly: true
-                    type:
-                      $ref: '#/components/schemas/TrainingMaterialType'
-                    text:
-                      type: string
-                    name:
-                      type: string
-                    visibility:
-                      type: string
+            $ref: "#/components/schemas/ExportedStoryIntent"
+        trainingMaterials:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExportedStoryTrainingMaterial"
+    ExportedStoryVariable:
+      type: object
+      required:
+        - type
+        - name
+      properties:
+          name:
+            type: string
+          type:
+            $ref: '#/components/schemas/VariableType'
+          validationScript:
+            type: string
+            description: Validation script
+    ExportedStoryScript:
+      type: object
+      required:
+        - name
+        - content
+        - version
+        - language
+      properties: 
+          name:
+            description: Script name
+            type: string
+          version:
+            description: Script version
+            type: string
+          language:
+            description: Script language
+            type: string
+          content:
+            description: Script content 
+            type: string
+    ExportedStoryKnot:
+      type: object
+      required:
+        - type
+        - tokenizer
+        - name
+        - content
+      properties:
+        id:
+          description: knot id.
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/KnotType'
+        tokenizer:
+          $ref: '#/components/schemas/TokenizerType'
+        name:
+          type: string
+        content:
+          type: string
+        hint:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+    ExportedStoryIntent:
+        type: object
+        required:
+          - name
+          - type 
+          - quickResponseOrder
+          - global
+          - targetKnotId
+        properties:
+          id:
+            description: intent id.
+            type: string
+            format: uuid
+          name:
+            type: string
+          quickResponse:
+            type: string
+          quickResponseOrder:
+            type: integer
+            format: int32
+          type:
+            $ref: '#/components/schemas/IntentType'
+          sourceKnotId:
+            description: source knot id.
+            type: string
+            format: uuid
+          targetKnotId:
+            description: target knot id.
+            type: string
+            format: uuid
+          global:
+            type: boolean
+          trainingMaterialIds:
+            type: array
+            items:
+              type: string
+              format: uuid
+    ExportedStoryTrainingMaterial:
+      type:  object
+      required:
+        - type
+        - text
+        - name
+        - visibility
+      properties:
+        id:
+          description: training material id.
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/TrainingMaterialType'
+        text:
+          type: string
+        name:
+          type: string
+        visibility:
+          type: string
     Session:
       type: object
       required:
