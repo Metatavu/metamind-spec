@@ -16,17 +16,17 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import fi.metatavu.metamind.client.model.IntentTrainingMaterials;
 import fi.metatavu.metamind.client.model.IntentType;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
- * Intent
+ * ExportedStoryIntent
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class Intent {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class ExportedStoryIntent {
 
   @JsonProperty("id")
 
@@ -60,17 +60,16 @@ import java.util.UUID;
 
   private Boolean global = null;
 
-  @JsonProperty("trainingMaterials")
+  @JsonProperty("trainingMaterialIds")
 
-  private IntentTrainingMaterials trainingMaterials = null;
+  private List<UUID> trainingMaterialIds = null;
+  public ExportedStoryIntent id(UUID id) {
+    this.id = id;
+    return this;
+  }
 
-  @JsonProperty("createdAt")
+  
 
-  private OffsetDateTime createdAt = null;
-
-  @JsonProperty("modifiedAt")
-
-  private OffsetDateTime modifiedAt = null;
   /**
   * intent id.
   * @return id
@@ -79,7 +78,10 @@ import java.util.UUID;
   public UUID getId() {
     return id;
   }
-  public Intent name(String name) {
+  public void setId(UUID id) {
+    this.id = id;
+  }
+  public ExportedStoryIntent name(String name) {
     this.name = name;
     return this;
   }
@@ -90,14 +92,14 @@ import java.util.UUID;
   * Get name
   * @return name
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getName() {
     return name;
   }
   public void setName(String name) {
     this.name = name;
   }
-  public Intent quickResponse(String quickResponse) {
+  public ExportedStoryIntent quickResponse(String quickResponse) {
     this.quickResponse = quickResponse;
     return this;
   }
@@ -115,7 +117,7 @@ import java.util.UUID;
   public void setQuickResponse(String quickResponse) {
     this.quickResponse = quickResponse;
   }
-  public Intent quickResponseOrder(Integer quickResponseOrder) {
+  public ExportedStoryIntent quickResponseOrder(Integer quickResponseOrder) {
     this.quickResponseOrder = quickResponseOrder;
     return this;
   }
@@ -133,7 +135,7 @@ import java.util.UUID;
   public void setQuickResponseOrder(Integer quickResponseOrder) {
     this.quickResponseOrder = quickResponseOrder;
   }
-  public Intent type(IntentType type) {
+  public ExportedStoryIntent type(IntentType type) {
     this.type = type;
     return this;
   }
@@ -151,7 +153,7 @@ import java.util.UUID;
   public void setType(IntentType type) {
     this.type = type;
   }
-  public Intent sourceKnotId(UUID sourceKnotId) {
+  public ExportedStoryIntent sourceKnotId(UUID sourceKnotId) {
     this.sourceKnotId = sourceKnotId;
     return this;
   }
@@ -159,17 +161,17 @@ import java.util.UUID;
   
 
   /**
-  * source knot id id.
+  * source knot id.
   * @return sourceKnotId
   **/
-  @Schema(description = "source knot id id.")
+  @Schema(description = "source knot id.")
   public UUID getSourceKnotId() {
     return sourceKnotId;
   }
   public void setSourceKnotId(UUID sourceKnotId) {
     this.sourceKnotId = sourceKnotId;
   }
-  public Intent targetKnotId(UUID targetKnotId) {
+  public ExportedStoryIntent targetKnotId(UUID targetKnotId) {
     this.targetKnotId = targetKnotId;
     return this;
   }
@@ -177,17 +179,17 @@ import java.util.UUID;
   
 
   /**
-  * target knot id id.
+  * target knot id.
   * @return targetKnotId
   **/
-  @Schema(required = true, description = "target knot id id.")
+  @Schema(required = true, description = "target knot id.")
   public UUID getTargetKnotId() {
     return targetKnotId;
   }
   public void setTargetKnotId(UUID targetKnotId) {
     this.targetKnotId = targetKnotId;
   }
-  public Intent global(Boolean global) {
+  public ExportedStoryIntent global(Boolean global) {
     this.global = global;
     return this;
   }
@@ -205,39 +207,29 @@ import java.util.UUID;
   public void setGlobal(Boolean global) {
     this.global = global;
   }
-  public Intent trainingMaterials(IntentTrainingMaterials trainingMaterials) {
-    this.trainingMaterials = trainingMaterials;
+  public ExportedStoryIntent trainingMaterialIds(List<UUID> trainingMaterialIds) {
+    this.trainingMaterialIds = trainingMaterialIds;
     return this;
   }
 
-  
+  public ExportedStoryIntent addTrainingMaterialIdsItem(UUID trainingMaterialIdsItem) {
+    if (this.trainingMaterialIds == null) {
+      this.trainingMaterialIds = new ArrayList<>();
+    }
+    this.trainingMaterialIds.add(trainingMaterialIdsItem);
+    return this;
+  }
 
   /**
-  * Get trainingMaterials
-  * @return trainingMaterials
+  * Get trainingMaterialIds
+  * @return trainingMaterialIds
   **/
-  @Schema(required = true, description = "")
-  public IntentTrainingMaterials getTrainingMaterials() {
-    return trainingMaterials;
+  @Schema(description = "")
+  public List<UUID> getTrainingMaterialIds() {
+    return trainingMaterialIds;
   }
-  public void setTrainingMaterials(IntentTrainingMaterials trainingMaterials) {
-    this.trainingMaterials = trainingMaterials;
-  }
-  /**
-  * Creation time
-  * @return createdAt
-  **/
-  @Schema(description = "Creation time")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-  /**
-  * Last modification time
-  * @return modifiedAt
-  **/
-  @Schema(description = "Last modification time")
-  public OffsetDateTime getModifiedAt() {
-    return modifiedAt;
+  public void setTrainingMaterialIds(List<UUID> trainingMaterialIds) {
+    this.trainingMaterialIds = trainingMaterialIds;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -247,29 +239,27 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Intent intent = (Intent) o;
-    return Objects.equals(this.id, intent.id) &&
-        Objects.equals(this.name, intent.name) &&
-        Objects.equals(this.quickResponse, intent.quickResponse) &&
-        Objects.equals(this.quickResponseOrder, intent.quickResponseOrder) &&
-        Objects.equals(this.type, intent.type) &&
-        Objects.equals(this.sourceKnotId, intent.sourceKnotId) &&
-        Objects.equals(this.targetKnotId, intent.targetKnotId) &&
-        Objects.equals(this.global, intent.global) &&
-        Objects.equals(this.trainingMaterials, intent.trainingMaterials) &&
-        Objects.equals(this.createdAt, intent.createdAt) &&
-        Objects.equals(this.modifiedAt, intent.modifiedAt);
+    ExportedStoryIntent exportedStoryIntent = (ExportedStoryIntent) o;
+    return Objects.equals(this.id, exportedStoryIntent.id) &&
+        Objects.equals(this.name, exportedStoryIntent.name) &&
+        Objects.equals(this.quickResponse, exportedStoryIntent.quickResponse) &&
+        Objects.equals(this.quickResponseOrder, exportedStoryIntent.quickResponseOrder) &&
+        Objects.equals(this.type, exportedStoryIntent.type) &&
+        Objects.equals(this.sourceKnotId, exportedStoryIntent.sourceKnotId) &&
+        Objects.equals(this.targetKnotId, exportedStoryIntent.targetKnotId) &&
+        Objects.equals(this.global, exportedStoryIntent.global) &&
+        Objects.equals(this.trainingMaterialIds, exportedStoryIntent.trainingMaterialIds);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, quickResponse, quickResponseOrder, type, sourceKnotId, targetKnotId, global, trainingMaterials, createdAt, modifiedAt);
+    return java.util.Objects.hash(id, name, quickResponse, quickResponseOrder, type, sourceKnotId, targetKnotId, global, trainingMaterialIds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Intent {\n");
+    sb.append("class ExportedStoryIntent {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -279,9 +269,7 @@ import java.util.UUID;
     sb.append("    sourceKnotId: ").append(toIndentedString(sourceKnotId)).append("\n");
     sb.append("    targetKnotId: ").append(toIndentedString(targetKnotId)).append("\n");
     sb.append("    global: ").append(toIndentedString(global)).append("\n");
-    sb.append("    trainingMaterials: ").append(toIndentedString(trainingMaterials)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
+    sb.append("    trainingMaterialIds: ").append(toIndentedString(trainingMaterialIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

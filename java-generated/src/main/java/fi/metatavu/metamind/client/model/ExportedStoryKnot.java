@@ -20,14 +20,13 @@ import fi.metatavu.metamind.client.model.Coordinates;
 import fi.metatavu.metamind.client.model.KnotType;
 import fi.metatavu.metamind.client.model.TokenizerType;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * Knot
+ * ExportedStoryKnot
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class Knot {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class ExportedStoryKnot {
 
   @JsonProperty("id")
 
@@ -53,21 +52,16 @@ import java.util.UUID;
 
   private String hint = null;
 
-  @JsonProperty("storyId")
-
-  private UUID storyId = null;
-
   @JsonProperty("coordinates")
 
   private Coordinates coordinates = null;
+  public ExportedStoryKnot id(UUID id) {
+    this.id = id;
+    return this;
+  }
 
-  @JsonProperty("createdAt")
+  
 
-  private OffsetDateTime createdAt = null;
-
-  @JsonProperty("modifiedAt")
-
-  private OffsetDateTime modifiedAt = null;
   /**
   * knot id.
   * @return id
@@ -76,7 +70,10 @@ import java.util.UUID;
   public UUID getId() {
     return id;
   }
-  public Knot type(KnotType type) {
+  public void setId(UUID id) {
+    this.id = id;
+  }
+  public ExportedStoryKnot type(KnotType type) {
     this.type = type;
     return this;
   }
@@ -94,7 +91,7 @@ import java.util.UUID;
   public void setType(KnotType type) {
     this.type = type;
   }
-  public Knot tokenizer(TokenizerType tokenizer) {
+  public ExportedStoryKnot tokenizer(TokenizerType tokenizer) {
     this.tokenizer = tokenizer;
     return this;
   }
@@ -112,7 +109,7 @@ import java.util.UUID;
   public void setTokenizer(TokenizerType tokenizer) {
     this.tokenizer = tokenizer;
   }
-  public Knot name(String name) {
+  public ExportedStoryKnot name(String name) {
     this.name = name;
     return this;
   }
@@ -130,7 +127,7 @@ import java.util.UUID;
   public void setName(String name) {
     this.name = name;
   }
-  public Knot content(String content) {
+  public ExportedStoryKnot content(String content) {
     this.content = content;
     return this;
   }
@@ -148,7 +145,7 @@ import java.util.UUID;
   public void setContent(String content) {
     this.content = content;
   }
-  public Knot hint(String hint) {
+  public ExportedStoryKnot hint(String hint) {
     this.hint = hint;
     return this;
   }
@@ -166,15 +163,7 @@ import java.util.UUID;
   public void setHint(String hint) {
     this.hint = hint;
   }
-  /**
-  * Story id
-  * @return storyId
-  **/
-  @Schema(description = "Story id")
-  public UUID getStoryId() {
-    return storyId;
-  }
-  public Knot coordinates(Coordinates coordinates) {
+  public ExportedStoryKnot coordinates(Coordinates coordinates) {
     this.coordinates = coordinates;
     return this;
   }
@@ -192,22 +181,6 @@ import java.util.UUID;
   public void setCoordinates(Coordinates coordinates) {
     this.coordinates = coordinates;
   }
-  /**
-  * Creation time
-  * @return createdAt
-  **/
-  @Schema(description = "Creation time")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-  /**
-  * Last modification time
-  * @return modifiedAt
-  **/
-  @Schema(description = "Last modification time")
-  public OffsetDateTime getModifiedAt() {
-    return modifiedAt;
-  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -216,28 +189,25 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Knot knot = (Knot) o;
-    return Objects.equals(this.id, knot.id) &&
-        Objects.equals(this.type, knot.type) &&
-        Objects.equals(this.tokenizer, knot.tokenizer) &&
-        Objects.equals(this.name, knot.name) &&
-        Objects.equals(this.content, knot.content) &&
-        Objects.equals(this.hint, knot.hint) &&
-        Objects.equals(this.storyId, knot.storyId) &&
-        Objects.equals(this.coordinates, knot.coordinates) &&
-        Objects.equals(this.createdAt, knot.createdAt) &&
-        Objects.equals(this.modifiedAt, knot.modifiedAt);
+    ExportedStoryKnot exportedStoryKnot = (ExportedStoryKnot) o;
+    return Objects.equals(this.id, exportedStoryKnot.id) &&
+        Objects.equals(this.type, exportedStoryKnot.type) &&
+        Objects.equals(this.tokenizer, exportedStoryKnot.tokenizer) &&
+        Objects.equals(this.name, exportedStoryKnot.name) &&
+        Objects.equals(this.content, exportedStoryKnot.content) &&
+        Objects.equals(this.hint, exportedStoryKnot.hint) &&
+        Objects.equals(this.coordinates, exportedStoryKnot.coordinates);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, type, tokenizer, name, content, hint, storyId, coordinates, createdAt, modifiedAt);
+    return java.util.Objects.hash(id, type, tokenizer, name, content, hint, coordinates);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Knot {\n");
+    sb.append("class ExportedStoryKnot {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -245,10 +215,7 @@ import java.util.UUID;
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    hint: ").append(toIndentedString(hint)).append("\n");
-    sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

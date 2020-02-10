@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * Coordinates
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-09-05T15:23:23.571+03:00[Europe/Helsinki]")public class Coordinates {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class Coordinates {
 
   @JsonProperty("x")
 

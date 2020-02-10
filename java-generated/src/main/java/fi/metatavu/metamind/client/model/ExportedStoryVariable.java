@@ -18,18 +18,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import fi.metatavu.metamind.client.model.VariableType;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.OffsetDateTime;
-import java.util.UUID;
 
 /**
- * Variable
+ * ExportedStoryVariable
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class Variable {
-
-  @JsonProperty("id")
-
-  private UUID id = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class ExportedStoryVariable {
 
   @JsonProperty("name")
 
@@ -39,30 +33,10 @@ import java.util.UUID;
 
   private VariableType type = null;
 
-  @JsonProperty("storyId")
-
-  private UUID storyId = null;
-
   @JsonProperty("validationScript")
 
   private String validationScript = null;
-
-  @JsonProperty("createdAt")
-
-  private OffsetDateTime createdAt = null;
-
-  @JsonProperty("modifiedAt")
-
-  private OffsetDateTime modifiedAt = null;
-  /**
-  * variable id.
-  * @return id
-  **/
-  @Schema(description = "variable id.")
-  public UUID getId() {
-    return id;
-  }
-  public Variable name(String name) {
+  public ExportedStoryVariable name(String name) {
     this.name = name;
     return this;
   }
@@ -80,7 +54,7 @@ import java.util.UUID;
   public void setName(String name) {
     this.name = name;
   }
-  public Variable type(VariableType type) {
+  public ExportedStoryVariable type(VariableType type) {
     this.type = type;
     return this;
   }
@@ -98,15 +72,7 @@ import java.util.UUID;
   public void setType(VariableType type) {
     this.type = type;
   }
-  /**
-  * Story id
-  * @return storyId
-  **/
-  @Schema(description = "Story id")
-  public UUID getStoryId() {
-    return storyId;
-  }
-  public Variable validationScript(String validationScript) {
+  public ExportedStoryVariable validationScript(String validationScript) {
     this.validationScript = validationScript;
     return this;
   }
@@ -124,22 +90,6 @@ import java.util.UUID;
   public void setValidationScript(String validationScript) {
     this.validationScript = validationScript;
   }
-  /**
-  * Creation time
-  * @return createdAt
-  **/
-  @Schema(description = "Creation time")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-  /**
-  * Last modification time
-  * @return modifiedAt
-  **/
-  @Schema(description = "Last modification time")
-  public OffsetDateTime getModifiedAt() {
-    return modifiedAt;
-  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -148,33 +98,25 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Variable variable = (Variable) o;
-    return Objects.equals(this.id, variable.id) &&
-        Objects.equals(this.name, variable.name) &&
-        Objects.equals(this.type, variable.type) &&
-        Objects.equals(this.storyId, variable.storyId) &&
-        Objects.equals(this.validationScript, variable.validationScript) &&
-        Objects.equals(this.createdAt, variable.createdAt) &&
-        Objects.equals(this.modifiedAt, variable.modifiedAt);
+    ExportedStoryVariable exportedStoryVariable = (ExportedStoryVariable) o;
+    return Objects.equals(this.name, exportedStoryVariable.name) &&
+        Objects.equals(this.type, exportedStoryVariable.type) &&
+        Objects.equals(this.validationScript, exportedStoryVariable.validationScript);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, type, storyId, validationScript, createdAt, modifiedAt);
+    return java.util.Objects.hash(name, type, validationScript);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Variable {\n");
+    sb.append("class ExportedStoryVariable {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
     sb.append("    validationScript: ").append(toIndentedString(validationScript)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

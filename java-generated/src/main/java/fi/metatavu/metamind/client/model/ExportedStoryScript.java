@@ -17,18 +17,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.OffsetDateTime;
-import java.util.UUID;
 
 /**
- * Script
+ * ExportedStoryScript
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class Script {
-
-  @JsonProperty("id")
-
-  private UUID id = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class ExportedStoryScript {
 
   @JsonProperty("name")
 
@@ -45,23 +39,7 @@ import java.util.UUID;
   @JsonProperty("content")
 
   private String content = null;
-
-  @JsonProperty("createdAt")
-
-  private OffsetDateTime createdAt = null;
-
-  @JsonProperty("modifiedAt")
-
-  private OffsetDateTime modifiedAt = null;
-  /**
-  * Script id
-  * @return id
-  **/
-  @Schema(description = "Script id")
-  public UUID getId() {
-    return id;
-  }
-  public Script name(String name) {
+  public ExportedStoryScript name(String name) {
     this.name = name;
     return this;
   }
@@ -79,7 +57,7 @@ import java.util.UUID;
   public void setName(String name) {
     this.name = name;
   }
-  public Script version(String version) {
+  public ExportedStoryScript version(String version) {
     this.version = version;
     return this;
   }
@@ -97,7 +75,7 @@ import java.util.UUID;
   public void setVersion(String version) {
     this.version = version;
   }
-  public Script language(String language) {
+  public ExportedStoryScript language(String language) {
     this.language = language;
     return this;
   }
@@ -115,7 +93,7 @@ import java.util.UUID;
   public void setLanguage(String language) {
     this.language = language;
   }
-  public Script content(String content) {
+  public ExportedStoryScript content(String content) {
     this.content = content;
     return this;
   }
@@ -133,22 +111,6 @@ import java.util.UUID;
   public void setContent(String content) {
     this.content = content;
   }
-  /**
-  * Creation time
-  * @return createdAt
-  **/
-  @Schema(description = "Creation time")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-  /**
-  * Last modification time
-  * @return modifiedAt
-  **/
-  @Schema(description = "Last modification time")
-  public OffsetDateTime getModifiedAt() {
-    return modifiedAt;
-  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -157,33 +119,27 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Script script = (Script) o;
-    return Objects.equals(this.id, script.id) &&
-        Objects.equals(this.name, script.name) &&
-        Objects.equals(this.version, script.version) &&
-        Objects.equals(this.language, script.language) &&
-        Objects.equals(this.content, script.content) &&
-        Objects.equals(this.createdAt, script.createdAt) &&
-        Objects.equals(this.modifiedAt, script.modifiedAt);
+    ExportedStoryScript exportedStoryScript = (ExportedStoryScript) o;
+    return Objects.equals(this.name, exportedStoryScript.name) &&
+        Objects.equals(this.version, exportedStoryScript.version) &&
+        Objects.equals(this.language, exportedStoryScript.language) &&
+        Objects.equals(this.content, exportedStoryScript.content);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, version, language, content, createdAt, modifiedAt);
+    return java.util.Objects.hash(name, version, language, content);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Script {\n");
+    sb.append("class ExportedStoryScript {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

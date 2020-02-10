@@ -17,16 +17,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import fi.metatavu.metamind.client.model.TrainingMaterialType;
-import fi.metatavu.metamind.client.model.TrainingMaterialVisibility;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * TrainingMaterial
+ * ExportedStoryTrainingMaterial
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class TrainingMaterial {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-10T13:55:11.126+02:00[Europe/Helsinki]")public class ExportedStoryTrainingMaterial {
 
   @JsonProperty("id")
 
@@ -35,10 +33,6 @@ import java.util.UUID;
   @JsonProperty("type")
 
   private TrainingMaterialType type = null;
-
-  @JsonProperty("storyId")
-
-  private UUID storyId = null;
 
   @JsonProperty("text")
 
@@ -50,24 +44,26 @@ import java.util.UUID;
 
   @JsonProperty("visibility")
 
-  private TrainingMaterialVisibility visibility = null;
+  private String visibility = null;
+  public ExportedStoryTrainingMaterial id(UUID id) {
+    this.id = id;
+    return this;
+  }
 
-  @JsonProperty("createdAt")
+  
 
-  private OffsetDateTime createdAt = null;
-
-  @JsonProperty("modifiedAt")
-
-  private OffsetDateTime modifiedAt = null;
   /**
-  * intent id.
+  * training material id.
   * @return id
   **/
-  @Schema(description = "intent id.")
+  @Schema(description = "training material id.")
   public UUID getId() {
     return id;
   }
-  public TrainingMaterial type(TrainingMaterialType type) {
+  public void setId(UUID id) {
+    this.id = id;
+  }
+  public ExportedStoryTrainingMaterial type(TrainingMaterialType type) {
     this.type = type;
     return this;
   }
@@ -78,32 +74,14 @@ import java.util.UUID;
   * Get type
   * @return type
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public TrainingMaterialType getType() {
     return type;
   }
   public void setType(TrainingMaterialType type) {
     this.type = type;
   }
-  public TrainingMaterial storyId(UUID storyId) {
-    this.storyId = storyId;
-    return this;
-  }
-
-  
-
-  /**
-  * Get storyId
-  * @return storyId
-  **/
-  @Schema(description = "")
-  public UUID getStoryId() {
-    return storyId;
-  }
-  public void setStoryId(UUID storyId) {
-    this.storyId = storyId;
-  }
-  public TrainingMaterial text(String text) {
+  public ExportedStoryTrainingMaterial text(String text) {
     this.text = text;
     return this;
   }
@@ -121,7 +99,7 @@ import java.util.UUID;
   public void setText(String text) {
     this.text = text;
   }
-  public TrainingMaterial name(String name) {
+  public ExportedStoryTrainingMaterial name(String name) {
     this.name = name;
     return this;
   }
@@ -139,7 +117,7 @@ import java.util.UUID;
   public void setName(String name) {
     this.name = name;
   }
-  public TrainingMaterial visibility(TrainingMaterialVisibility visibility) {
+  public ExportedStoryTrainingMaterial visibility(String visibility) {
     this.visibility = visibility;
     return this;
   }
@@ -150,28 +128,12 @@ import java.util.UUID;
   * Get visibility
   * @return visibility
   **/
-  @Schema(description = "")
-  public TrainingMaterialVisibility getVisibility() {
+  @Schema(required = true, description = "")
+  public String getVisibility() {
     return visibility;
   }
-  public void setVisibility(TrainingMaterialVisibility visibility) {
+  public void setVisibility(String visibility) {
     this.visibility = visibility;
-  }
-  /**
-  * Creation time
-  * @return createdAt
-  **/
-  @Schema(description = "Creation time")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-  /**
-  * Last modification time
-  * @return modifiedAt
-  **/
-  @Schema(description = "Last modification time")
-  public OffsetDateTime getModifiedAt() {
-    return modifiedAt;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -181,35 +143,29 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TrainingMaterial trainingMaterial = (TrainingMaterial) o;
-    return Objects.equals(this.id, trainingMaterial.id) &&
-        Objects.equals(this.type, trainingMaterial.type) &&
-        Objects.equals(this.storyId, trainingMaterial.storyId) &&
-        Objects.equals(this.text, trainingMaterial.text) &&
-        Objects.equals(this.name, trainingMaterial.name) &&
-        Objects.equals(this.visibility, trainingMaterial.visibility) &&
-        Objects.equals(this.createdAt, trainingMaterial.createdAt) &&
-        Objects.equals(this.modifiedAt, trainingMaterial.modifiedAt);
+    ExportedStoryTrainingMaterial exportedStoryTrainingMaterial = (ExportedStoryTrainingMaterial) o;
+    return Objects.equals(this.id, exportedStoryTrainingMaterial.id) &&
+        Objects.equals(this.type, exportedStoryTrainingMaterial.type) &&
+        Objects.equals(this.text, exportedStoryTrainingMaterial.text) &&
+        Objects.equals(this.name, exportedStoryTrainingMaterial.name) &&
+        Objects.equals(this.visibility, exportedStoryTrainingMaterial.visibility);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, type, storyId, text, name, visibility, createdAt, modifiedAt);
+    return java.util.Objects.hash(id, type, text, name, visibility);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TrainingMaterial {\n");
+    sb.append("class ExportedStoryTrainingMaterial {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    storyId: ").append(toIndentedString(storyId)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
