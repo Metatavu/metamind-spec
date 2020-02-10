@@ -1396,7 +1396,7 @@ paths:
         summary: Import a story
         description: Import story
         tags:
-          - ExporttedStory
+          - StoryExport
         requestBody:
           content:
             application/json;charset=utf-8:
@@ -1444,7 +1444,7 @@ paths:
           required: true
           description: "Id of the story to be exported"
       tags:
-        - Exportted Story
+        - StoryExport
       responses:
         '200':
           description: Exportted story
