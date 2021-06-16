@@ -1746,6 +1746,8 @@ components:
           type: string
           format: date-time
           readOnly: true
+        scope:
+          $ref: '#/components/schemas/KnotScope'
 
     Coordinates: 
       type: object
@@ -1764,6 +1766,14 @@ components:
         - SCRIPT
         - IMAGE
         - EMAIL
+
+    KnotScope:
+      type: string
+      enum:
+        - global
+        - home
+        - basic
+
     Intent:
       type: object
       required:
