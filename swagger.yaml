@@ -1604,6 +1604,8 @@ components:
           $ref: '#/components/schemas/KnotType'
         tokenizer:
           $ref: '#/components/schemas/TokenizerType'
+        scope:
+          $ref: '#/components/schemas/KnotScope'
         name:
           type: string
         content:
