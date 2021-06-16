@@ -1764,6 +1764,7 @@ components:
         - SCRIPT
         - IMAGE
         - EMAIL
+        - TEXT_IMAGE
     Intent:
       type: object
       required:
