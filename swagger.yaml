@@ -1471,8 +1471,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-servers:
-  - url: /v2
 components:
   securitySchemes:
     BearerAuth:
