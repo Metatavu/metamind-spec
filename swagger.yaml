@@ -7,7 +7,7 @@ security:
   - BearerAuth: []
 paths:
 
-  /stories:
+  /v2/stories:
     get:
       operationId: listStories
       summary: List stories
@@ -79,7 +79,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}':
+  /v2/stories/{storyId}:
     get:
       operationId: findStory
       summary: Finds a story
@@ -200,7 +200,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/knots':
+  /v2/stories/{storyId}/knots:
     get:
       operationId: listKnots
       summary: List story knots
@@ -288,7 +288,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/knots/{knotId}':
+  /v2/stories/{storyId}/knots/{knotId}:
     get:
       operationId: findKnot
       summary: Finds a story knot
@@ -430,7 +430,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/intents':
+  /v2/stories/{storyId}/intents:
     get:
       operationId: listIntents
       summary: List story intents
@@ -518,7 +518,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/intents/{intentId}':
+  /v2/stories/{storyId}/intents/{intentId}:
     get:
       operationId: findIntent
       summary: Finds a story intent
@@ -660,7 +660,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/sessions':
+  /v2/stories/{storyId}/sessions:
     post:
       operationId: createSession
       summary: Creates new session
@@ -707,7 +707,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/messages':
+  /v2/stories/{storyId}/messages:
     post:
       operationId: createMessage
       summary: Posts new message
@@ -754,7 +754,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /scripts:
+  /v2/scripts:
     get:
       operationId: listScripts
       summary: List scripts
@@ -826,7 +826,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/scripts/{scriptId}':
+  /v2/scripts/{scriptId}:
     get:
       operationId: findScript
       summary: Finds a script
@@ -947,7 +947,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /trainingMaterials:
+  /v2/trainingMaterials:
     get:
       operationId: listTrainingMaterials
       summary: List trainingMaterials
@@ -1039,7 +1039,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/trainingMaterials/{trainingMaterialId}':
+  /v2/trainingMaterials/{trainingMaterialId}:
     get:
       operationId: findTrainingMaterial
       summary: Finds a trainingMaterial
@@ -1160,7 +1160,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/variables':
+  /v2/stories/{storyId}/variables:
     get:
       operationId: listVariables
       summary: List story variables
@@ -1248,7 +1248,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/stories/{storyId}/variables/{variableId}':
+  /v2/stories/{storyId}/variables/{variableId}:
     get:
       operationId: findVariable
       summary: Finds a story variable
@@ -1390,7 +1390,7 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /storyImport/:
+  /v2/storyImport/:
     post:
         operationId: importStory
         summary: Import a story
@@ -1430,7 +1430,7 @@ paths:
                 schema:
                   $ref: '#/components/schemas/ErrorResponse'
                   
-  /storyExport/{storyId}:
+  /v2/storyExport/{storyId}:
     get:
       operationId: exportStory
       summary: Export a story
@@ -1471,8 +1471,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-servers:
-  - url: /v2
 components:
   securitySchemes:
     BearerAuth:
@@ -1604,6 +1602,8 @@ components:
           $ref: '#/components/schemas/KnotType'
         tokenizer:
           $ref: '#/components/schemas/TokenizerType'
+        scope:
+          $ref: '#/components/schemas/KnotScope'
         name:
           type: string
         content:
@@ -1746,6 +1746,8 @@ components:
           type: string
           format: date-time
           readOnly: true
+        scope:
+          $ref: '#/components/schemas/KnotScope'
 
     Coordinates: 
       type: object
@@ -1764,6 +1766,14 @@ components:
         - SCRIPT
         - IMAGE
         - EMAIL
+
+    KnotScope:
+      type: string
+      enum:
+        - global
+        - home
+        - basic
+
     Intent:
       type: object
       required:
